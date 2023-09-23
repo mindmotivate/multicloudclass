@@ -16,7 +16,7 @@ For more info on the `Rootuser`\. please click the following link: [AWS::RootUse
 
 + Login Link:[AWS::RootUser](https://aws.amazon.com/console/)\.
 
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/rootsignin.JPG">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/rootsignin.JPG" width="200" height="600">
 
 
 ## Create a Security Group: <a name="example-templates-autoscaling-full-stack-template"></a>
@@ -287,41 +287,3 @@ After launching an instance from the template, you will have three additional in
 
 For additional info on the `LaunchTemplates`\. please click the following link: [AWS::LaunchTemplate](https://docs.aws.amazon.com/IAM/latest/UserGuide/launch-templates.html)\.
 
-
-
-
-
-
-
-Return to instances
-Select template3
-Go to Actions   Image and Templates  Create template from instance
-You will be on: Create Launch Template
-
-Call it template3
-Description template3
-Template: template3
-Location: Austin
-Owner: Chewbacca
-Notice that template3 is chosen by default
-The user data script should populate as well 
-considering we using our original instance as the template for this image
-Create Launch Template
-Now we have a launch template named:  template3
-This will help with automation!
-Now go to EC2/launch templates
-Check the box next to your newly created instance
-Then select
-
-Go to actions  launch instance from template
-Now all of the info you need has already been populated
-You can create multiple instances from this template if you choose to
-After Launching instance, The result will be 5 additional, Identical instances
-Now let’s see if we can SSH into our instance!
-Go back to EC2 Dashboard and select your EC2 instance: template3
-Select your original instance
-Select connect:
-
-Connect to Instance
-Connect
-You should see the “bird” 
