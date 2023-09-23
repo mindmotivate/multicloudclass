@@ -16,6 +16,9 @@ For more info on the `Rootuser`\. please click the following link: [AWS::RootUse
 
 + Login Link:[AWS::RootUser](https://aws.amazon.com/console/)\.
 
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/rootsignin.JPG">
+
+
 ## Create a Security Group: <a name="example-templates-autoscaling-full-stack-template"></a>
 
 One of the first tasks that we will perform, will be to set up a security group for the instance that we will create. Think of a Security Groups as a *mini-firewall*. It is a tool that helps control the inbound & outbound traffic for a Virtual Machine. Security groups are an important component of cloud security. They are also free... So please use them!\.
@@ -23,6 +26,8 @@ One of the first tasks that we will perform, will be to set up a security group 
 For additional info on the `SecurityGroups`\. please click the following link: [AWS::SecurityGroups](https://docs.aws.amazon.com/IAM/latest/UserGuide/securitygroups)\.
 
 + Navigate to EC2 console (type EC2 in the top search bar)\.
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/ec2navigate.png">
 
 + Navigate to Security Console (located on the left hand side menu)\.
 
@@ -36,6 +41,8 @@ For additional info on the `SecurityGroups`\. please click the following link: [
 
 *Your screen should look something like this:\.
 
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/basicdetails.JPG">
+
 ## Inbound Rules: <a name="example-templates-autoscaling-full-stack-template"></a>
 
 **Note:** All the *inbound traffic* to your soon to be created EC2 instance, will be blocked by default.  Additionally, all *outbound traffic* is allowed by default. We will implementing a set of rules that will allow outside traffic from the internet or other locations to access our EC2.\.
@@ -44,15 +51,15 @@ For additional info on the `SecurityGroups`\. please click the following link: [
 
 + Select "Add rule" button\.
 
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/addrule.jpg">
+
+
 Please create the following three inbound rules:\.
 
 Inbound Rule 1: TCP ingress rule that allows HTTP access (port 80) from anywhere IPv4\.
 Inbound Rule 2: TCP ingress rule that allows SSH access (port 22) from anywhere IPv4\.
 Inbound Rule 3: TCP ingress rule that allows RDP access (port 3389) from anywhere IPv4\.
 
-*Your screen should look something like this:\.
-
-Insert graphic:\.
 
 **Add descriptions to your inbound rules:** 
 
@@ -62,11 +69,17 @@ HTTP 80 Anywhere IPv4	Description: **My Homepage**\.
 SSH 22 Anywhere IPv4    Description: **SSH**\.
 RDP 3389 Anywhere IPv4	Description: **Windows**\.
 
+*Your screen should look something like this:\.
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/inboundrulesJPG.JPG">
+
+
+
 ## Outbound Rules: <a name="example-templates-autoscaling-full-stack-template"></a>
 
 ## Please read the following CAREFULLY!\.
 
-If you for any reason, alter the out bound rules in any way...\.
+If you for any reason, alter the *outbound* rules in any way...\.
 
 The following will happen...\.
 
@@ -75,6 +88,8 @@ The following will happen...\.
 In all seriousness, do not touch outbound rules until you become an advanced user!\.
 
 Outbound rules will remain untouched!\.
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/Outboundrules.jpg">
 
 
 **Add Tags:** 
@@ -228,19 +243,21 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 
 + Select the "Instance ID" to acess your instance summary\.
 
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/publicIPV4.JPG">
+
 + Copy the "IPv4 Address" 
 
-<img src="https://github.com/mindmotivate/multicloudclass/tree/gh-pages?search=1">
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/CopyIpv4.JPG">
 
 + Type "http://" into your web browser\.
 
 + Paste your copied Public IPv4 address into your web browser along with the "http://" prefix\.
 
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/http.jpg">
+
 + After pressing enter, the following messsgae should appear:
 
-<img instdetails.jpg>/.
-image of the inatance detail screen instdetails.jpg/.
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/instdetails.JPG">
 
 ## Create a Template from your EC2 instance: <a name="example-templates-autoscaling-full-stack-template"></a>\.
 1. Launch the EC2 instance from which you want to create the launch template.
