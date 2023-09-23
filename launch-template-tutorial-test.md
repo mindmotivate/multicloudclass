@@ -231,7 +231,7 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 + Copy the "IPv4 Address" 
 
 <img src="https://github.com/mindmotivate/multicloudclass/tree/gh-pages?search=1">
-
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/CopyIpv4.JPG">
 
 + Type "http://" into your web browser\.
 
