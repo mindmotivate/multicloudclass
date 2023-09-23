@@ -6,8 +6,8 @@ This believe it or not, is one of the beginning stages of Automation in the clou
 
 ## Please be advised: <a name="example-templates-autoscaling-full-stack-template"></a>
 
-You must have a working AWS account first! Ensure you can log in without issue.\.
-For the purposes of this tutorial we will log into our AWS console as (Root) user. (As we become more advanced cloud engineers we will refrain from using the root user)
+You must have a working AWS account to proceed! Ensure you can log in without issue.\.
+For the purposes of this tutorial we will log into our AWS console as (Root) user. *(As we become more advanced cloud engineers we will refrain from using the root user)*
 \.
 
 For more info on the `Rootuser`\. please click the following link: [AWS::RootUser](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html)\.
@@ -20,29 +20,37 @@ For more info on the `Rootuser`\. please click the following link: [AWS::RootUse
 
 One of the first tasks that we will perform, will be to set up a security group for the instance that we will create. Think of a Security Groups as a *mini-firewall*. It is a tool that helps control the inbound & outbound traffic for a Virtual Machine. Security groups are an important component of cloud security. They are also free... So please use them!\.
 
-For additional info on the `Securitygroups`\. please click the following link: [AWS::SecurityGroups](https://docs.aws.amazon.com/IAM/latest/UserGuide/securitygroups)\.
+For additional info on the `SecurityGroups`\. please click the following link: [AWS::SecurityGroups](https://docs.aws.amazon.com/IAM/latest/UserGuide/securitygroups)\.
 
 + Navigate to EC2 console (type EC2 in the top search bar)\.
 
 + Navigate to Security Console (located on the left hand side menu)\.
 
-+ Select Launch a security group
++ Select Launch a "create a security group" button\.
 
-+ Name your security group: In this tutorial we will name our security group: **conclavetemplate**\.
++ In the "Basic Details" category, name your security group: In this tutorial we will name our security group: **conclavetemplate**\.
 
-+ Describe you secuirty group: We will also describe it with the same name: **conclavetemplate**\.
++ Provide a description for your security group: We will also describe it with the same name: **conclavetemplate**\.
 
-**Note:** All the *inbound traffic* to your soon to be created EC2 instance, will be blocked by default.  Additionally, all *outbound traffic* is allowed by default. We will implementing a set of rules that will allow outside traffic from the internet or other locations to access our EC2.\.
++ "VPC" will remain untouched (do not make any changes here)\.
+
+*Your screen should look something like this:\.
 
 ## Inbound Rules: <a name="example-templates-autoscaling-full-stack-template"></a>
 
-We will begin with the Inbound Rules. Please enter the following using the drop down menus:/.
+**Note:** All the *inbound traffic* to your soon to be created EC2 instance, will be blocked by default.  Additionally, all *outbound traffic* is allowed by default. We will implementing a set of rules that will allow outside traffic from the internet or other locations to access our EC2.\.
+
++ Scroll down to the "Inbound rule" section\.
+
++ Select "Add rule" button\.
+
+Please create the following three inbound rules:\.
 
 Inbound Rule 1: TCP ingress rule that allows HTTP access (port 80) from anywhere IPv4\.
 Inbound Rule 2: TCP ingress rule that allows SSH access (port 22) from anywhere IPv4\.
 Inbound Rule 3: TCP ingress rule that allows RDP access (port 3389) from anywhere IPv4\.
 
-You screen should look something like this:\.
+*Your screen should look something like this:\.
 
 Insert graphic:\.
 
@@ -72,7 +80,7 @@ Outbound rules will remain untouched!\.
 **Add Tags:** 
 
 The last step here will be to add some tags (three or more)\.
-Get in the habit of using descriptive tags for your security, is a security best practice and it helps with overall\. organization!\.
+Get in the habit of using descriptive tags for your security, is a security best practice and it helps with overall organization!\.
 
 Let’s add some tags: (at least 3)\.
 
@@ -87,10 +95,10 @@ Congratulations! You have successfully created a security group!\.
 
 ## Create an EC2 Instance: <a name="example-templates-autoscaling-full-stack-template"></a>
 
-Our next tasks will be to create a EC2. EC2 stands for *Elastic Compute Cloud"
+Our next task will be to create an EC2 instance. EC2 stands for *Elastic Compute Cloud"
 It is the Amazon Web Services version of a virtual machine.\. 
 
-For additional info on the `EC2`\. please click the following link: [AWS::EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/EC2.html)\.
+For additional info on the `EC2` please click the following link: [AWS::EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/EC2.html)\.
 
 + Navigate to EC2 console (type EC2 in the top search bar)\.
 
@@ -98,36 +106,39 @@ For additional info on the `EC2`\. please click the following link: [AWS::EC2](h
 
 + Name your EC2: In this tutorial we will name it: **conclavetemplate**\.
 
-+ Describe EC2: We will also describe it as: **conclavetemplate**\.
++ Do not change the default setting for "Application and OS Images"
 
-By keeping our naming conventions consistent we will be able to keep things organized.\.
++ Do not change the default setting for "Instance Type"
+
+*By keeping our naming conventions consistent we will be able to keep things organized.*\.
 
 You screen should look something like this:\.
 
 Insert graphic:\.
 
-The follwing categories will remain untouched:\.
 
+**Key Pair (login):**</a>\.
 
+Next, we will create a "keypair"\.
 
-**Key Pair Creation:**</a>\.
++ Select "create new key pair"\.
 
-Next, we will create a keypair
++ Name your key pair: **conclavetemplate**\.
 
-Which key pair type should you use?\.
++ Select **RSA** for for "Key pair type" (this option shold already be selected by default)\.
 
-Great question! It depends on your operating system, or in somee instances it is a matter of personal preference.\.
++ You will choose either **.pem** or **.ppk** depending on your OS\.
 
 **.pem vs. .ppk**
 
 The .pem and .ppk file formats are both used for storing private key information of asymmetric key pairs, but they differ in the following ways\,
 
-System/platform compatibility: The .pem format is commonly used in Linux BASH and Mac BASH environments, as well as in Windows/Linux/Mac PowerShell environments. On the other hand, the .ppk format is primarily used by Windows PuTTY/Cygwin users.\.
+System/platform compatibility: The .pem format is commonly used in Linux BASH and Mac BASH environments, as well as in Windows 10/Linux/Mac PowerShell environments. On the other hand, the .ppk format is primarily used by Windows PuTTY/Cygwin users.\.
 
 
 | **File Format** | **System/Platform Compatibility** | **File Contents** |
 |-----------------|----------------------------------|-------------------|
-| .pem            | Linux BASH, Mac BASH              | Contains private key information in a specific format |
+| .pem            | Linux BASH, Mac BASH, Windows 10         | Contains private key information in a specific format |
 | .ppk            | Windows PuTTY/Cygwin              | Similar to .pem but in a different format for use with PuTTY |
 
 
@@ -139,20 +150,21 @@ For additional info on the `KeyPairs`\. please click the following link: [AWS::K
 
 + Go to Network Settings and Select 'Existing Security Group'\.
 
-+ Select the security group we made earler convenitenly titled: conclavetemplate\.
++ Select the security group we made earler convenitenly titled: **conclavetemplate**\.
 
 **Launch Script**</a.
 
-Here we will add a launch script that will intialize our ec2:\.
-This process in known as bootstrapping
+Here we will add a launch script that will intialize our EC2.
+This process in known as **bootstrapping**\.
+Bootstrapping refers to the process of automatically launching and configuring an EC2 instance using a launch script. It allows you to customize the instance by automatically running commands or scripts when it starts up\.
 For additional info on `Bootstrapping`\. please click the following link: [AWS::Bootstrap](https://docs.aws.amazon.com/IAM/latest/UserGuide/bootstrapping.html)\.
 
 + Scroll down to Advanced Details\.
 
-+ Copy an paste this code provided below into your user data box\..
++ Copy an paste the following code into your user data box:\.
 
 
-**Copy Launch Script Below:**
+**Copy Launch Script Below:**\.
 
 ```
 #!/bin/bash
@@ -208,12 +220,24 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 
 
 
-Launch Instance
-Click on your instance
-Click on your IPv4 address to copy it
-Go to your web browser and type in http:// first, then paste you address
-http://54.221.3.90
-Make sure it works!
++ Launch your instance
+
++ Navigate to "Instances" and check the status of your newly created instance\.
+
++ Ensure that your instance appears in the list and that it is running\.
+
++ Select the "Instance ID" to acess your instance summary\.
+
++ Copy the "IPv4 Address" 
+
++ Type "http://" into your web browser\.
+
++ Paste your copied Public IPv4 address into your web browser along with the "http://" prefix\.
+
++ After pressing enter, the following messsgae should appear:
+
+<img instdetails.jpg>/.
+image of the inatance detail screen instdetails.jpg/.
 
 ## Create a Template from your EC2 instance: <a name="example-templates-autoscaling-full-stack-template"></a>\.
 1. Launch the EC2 instance from which you want to create the launch template.
