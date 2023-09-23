@@ -122,7 +122,14 @@ Great question! It depends on your operating system, or in somee instances it is
 
 The .pem and .ppk file formats are both used for storing private key information of asymmetric key pairs, but they differ in the following ways\,
 
-System/platform compatibility: The .pem format is commonly used in Linux BASH and Mac BASH environments, as well as in Windows/Linux/Mac PowerShell environments. On the other hand, the .ppk format is primarily used by Windows PuTTY/Cygwin users.\,
+System/platform compatibility: The .pem format is commonly used in Linux BASH and Mac BASH environments, as well as in Windows/Linux/Mac PowerShell environments. On the other hand, the .ppk format is primarily used by Windows PuTTY/Cygwin users.\.
+
+
+| **File Format** | **System/Platform Compatibility** | **File Contents** |
+|-----------------|----------------------------------|-------------------|
+| .pem            | Linux BASH, Mac BASH              | Contains private key information in a specific format |
+| .ppk            | Windows PuTTY/Cygwin              | Similar to .pem but in a different format for use with PuTTY |
+
 
 For additional info on the `KeyPairs`\. please click the following link: [AWS::KeyPair](https://docs.aws.amazon.com/IAM/latest/UserGuide/keypair)\.
 
@@ -197,12 +204,50 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 
 
 
+
+
+
+
 Launch Instance
 Click on your instance
 Click on your IPv4 address to copy it
 Go to your web browser and type in http:// first, then paste you address
 http://54.221.3.90
 Make sure it works!
+
+## Create a Template from your EC2 instance: <a name="example-templates-autoscaling-full-stack-template"></a>\.
+1. Launch the EC2 instance from which you want to create the launch template.
+2. Once the instance is running, go to the **EC2 Dashboard** in the AWS Management Console.
+3. Select the instance you just launched.
+4. Go to **Actions** > **Image and Templates** > **Create Template from Instance**.
+5. You will be taken to the **Create Launch Template** page.
+6. Provide a name for your launch template (e.g., "template3").
+7. Add a description for your template (e.g., "template3 description").
+8. The template field should be pre-populated with the name of your instance.
+9. Choose a location for your template (e.g., "Austin").
+10. Specify the owner of the template (e.g., "Chewbacca").
+11. Review the details and make sure that your user data script is populated correctly.
+12. Click on **Create Launch Template**.
+
+Now you have a launch template named "conclavetemplate" that you can use for automation!\.
+
+To view your launch templates, go to **EC2** > **Launch Templates**.\.
+
+To launch an instance from your template, select the box next to your newly created template and then click on **Actions** > **Launch Instance from Template**.\
+
+All the necessary information will already be populated, and you can create multiple instances from this template if needed.
+
+Let's go ahead and create three instances from your template.\.
+
+After launching an instance from the template, you will have three additional instances.\.
+
+For additional info on the `LaunchTemplates`\. please click the following link: [AWS::LaunchTemplate](https://docs.aws.amazon.com/IAM/latest/UserGuide/launch-templates.html)\.
+
+
+
+
+
+
 
 Return to instances
 Select template3
