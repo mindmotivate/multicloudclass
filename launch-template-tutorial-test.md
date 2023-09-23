@@ -62,7 +62,7 @@ If you for any reason, alter the out bound rules in any way...\.
 
 The following will happen...\.
 
-Insert Graphic\.
+<img src="https://media.tenor.com/jWqSNxUmdVsAAAAd/no-hit.gif" alt="Dont Touch GIF" width="300" height="200">
 
 In all seriousness, do not touch outbound rules until you become an advanced user!\.
 
