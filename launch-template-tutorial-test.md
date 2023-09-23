@@ -16,8 +16,7 @@ For more info on the `Rootuser`\. please click the following link: [AWS::RootUse
 
 + Login Link:[AWS::RootUser](https://aws.amazon.com/console/)\.
 
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/rootsignin.JPG" width="200" height="600">
-
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/rootsignin.JPG">
 
 ## Create a Security Group: <a name="example-templates-autoscaling-full-stack-template"></a>
 
