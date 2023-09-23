@@ -230,6 +230,9 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 
 + Copy the "IPv4 Address" 
 
+<img src="https://github.com/mindmotivate/multicloudclass/tree/gh-pages?search=1">
+
+
 + Type "http://" into your web browser\.
 
 + Paste your copied Public IPv4 address into your web browser along with the "http://" prefix\.
@@ -253,7 +256,7 @@ image of the inatance detail screen instdetails.jpg/.
 11. Review the details and make sure that your user data script is populated correctly.
 12. Click on **Create Launch Template**.
 
-Now you have a launch template named "conclavetemplate" that you can use for automation!\.
+**Now you have a launch template named "conclavetemplate" that you can use for automation!\.**
 
 To view your launch templates, go to **EC2** > **Launch Templates**.\.
 
