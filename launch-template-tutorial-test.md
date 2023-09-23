@@ -93,15 +93,19 @@ Outbound rules will remain untouched!\.
 
 **Add Tags:** 
 
-The last step here will be to add some tags (three or more)\.
+The last step here will be to add some tags (three at minimum)
 Get in the habit of using descriptive tags for your security, is a security best practice and it helps with overall organization!\.
 
-Let’s add some tags: (at least 3)\.
+Let’s add some tags:\.
 
 Name: **pythoncrew**\.
 Owner: **Chewbacca**\.
 Location: **Colombia**\.
 Security: **High**\.
+
+Here's an example:
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/tags.JPG">
 
 Press the **"Create your security group** button"!\.
 
@@ -259,30 +263,53 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/instdetails.JPG">
 
 ## Create a Template from your EC2 instance: <a name="example-templates-autoscaling-full-stack-template"></a>\.
-1. Launch the EC2 instance from which you want to create the launch template.
-2. Once the instance is running, go to the **EC2 Dashboard** in the AWS Management Console.
-3. Select the instance you just launched.
-4. Go to **Actions** > **Image and Templates** > **Create Template from Instance**.
-5. You will be taken to the **Create Launch Template** page.
-6. Provide a name for your launch template (e.g., "template3").
-7. Add a description for your template (e.g., "template3 description").
-8. The template field should be pre-populated with the name of your instance.
-9. Choose a location for your template (e.g., "Austin").
-10. Specify the owner of the template (e.g., "Chewbacca").
-11. Review the details and make sure that your user data script is populated correctly.
-12. Click on **Create Launch Template**.
++ Launch the EC2 instance from which you want to create the launch template.
++ Once the instance is running, go to the **EC2 Dashboard** in the AWS Management Console.
++ Select the instance you just launched.
++ Go to **Actions** > **Image and Templates** > **Create Template from Instance**.
++ You will be taken to the **Create Launch Template** page.
++ Provide a name for your launch template (e.g., "conclavetemplate").
++ Add a description for your template (e.g., "conclavetemplate").
+
+Since we are creating a template from a pre-existing instance, the majority of the template imformation fields will be pre-populated. We should need to change or update anything here.\.
+
+Scroll through the remaining fields to ensure that they are populated:\.
++ Application and OS Images
++ Instance Types
++ Key pair
++ Network Settings
++ Storage Volumes
++ Resource tags
++ Advanced Details
+
+After confimring that all values are populated..\.
+
+Click on **Create Launch Template**.
 
 **Now you have a launch template named "conclavetemplate" that you can use for automation!\.**
 
 To view your launch templates, go to **EC2** > **Launch Templates**.\.
 
+<img src="">
+
 To launch an instance from your template, select the box next to your newly created template and then click on **Actions** > **Launch Instance from Template**.\
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/launchinstancefromtemplate.JPG">
 
 All the necessary information will already be populated, and you can create multiple instances from this template if needed.
 
 Let's go ahead and create three instances from your template.\.
 
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/launch3.JPG">
+
+
 After launching an instance from the template, you will have three additional instances.\.
+
+<img src="https://github.com/mindmotivate/multicloudclass/blob/gh-pages/3instanceslaunched.JPG">
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/createdinstancesrunning.JPG">
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages/timestamps.JPG">
 
 For additional info on the `LaunchTemplates`\. please click the following link: [AWS::LaunchTemplate](https://docs.aws.amazon.com/IAM/latest/UserGuide/launch-templates.html)\.
 
