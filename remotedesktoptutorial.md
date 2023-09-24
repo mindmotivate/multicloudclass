@@ -1,11 +1,9 @@
-# Remote Desktop Protocal Tutorial: Launching a Virtual Windows Machine: <a name="example-templates-autoscaling"></a>
-(RDP) is a Microsoft proprietary protocol that enables remote connection to an EC2 instance, typically over TCP port 3389. It provides network access for a remote user over an encrypted channel.  
-For additional info on the `RDP`\. please click the following link: [AWS::RDP](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol)
+# Remote Desktop Protocal Tutorial: Launching a Virtual Windows Machine <a name="example-templates-autoscaling"></a>
+(RDP) is a Microsoft proprietary protocol that enables remote connection to an EC2 instance, typically over TCP port 3389. It provides network access for a remote user over an encrypted channel. For additional info on the `RDP`\. please click the following link: [AWS::RDP](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol)
 
 ## Step 1: Create an EC2 Instance
 To create an EC2 instance, follow these instructions:\.
-<img src="">
-<img src="">
+
 1. Launch the AWS Management Console.
 
 2. Navigate to the Amazon EC2 service.
@@ -26,9 +24,15 @@ To create an EC2 instance, follow these instructions:\.
 *We will utlize the security group that we created in the previous tutorial. Please ensure that your tutorial has an inbound rule set for RDP traffic on port 3389.*
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-rdp/existingsecuritygroup.JPG">
 
+7. Create a new key pair and download it to your computer.
+*Note that the OS systen used in this example is Windows 10, therefore we are creating a .pem pair, You do have the option of using a .ppk for use with Putty or another operating system* Additonal info regarding Putty [AWS::Putty](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html#putty-private-key)
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-rdp/createnewkeypair.JPG">
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-rdp/createkeypair.JPG">
+
 
 7. Review your settings and click on "Launch" to create the EC2 instance.
-
 
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-rdp/launchbutton.JPG">
 
@@ -40,8 +44,8 @@ To create an EC2 instance, follow these instructions:\.
 
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-rdp/instancedetails.JPG">
 
-**Note: Security groups enable you to control traffic to your instance, including the kind of traffic that can reach your instance
-To connect to your instance.Ensure that the security group associated with your instance allows incoming RDP traffic (port 3389) from your IP address. The default security group does not allow incoming RDP traffic by default.**
+*Note: Security groups enable you to control traffic to your instance, including the kind of traffic that can reach your instance*
+*To connect to your instance.Ensure that the security group associated with your instance allows incoming RDP traffic (port 3389) from your IP address. The default security group does not allow incoming RDP traffic by default.*
 
 ## Step 2: Connect to Your Instance
 To connect to your EC2 instance using RDP, follow these instructions:
@@ -54,19 +58,18 @@ To connect to your EC2 instance using RDP, follow these instructions:
 4. Click on "Get Password".
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-rdp/getpassword.JPG">
 
-*This may take a few minutes*
+*You may be prompted to wait a few minutes after clicking on "Get Password"*
 
 5. Download the password to your desktop when prompted.
 
 6. Decrypt your password
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-rdp/getpassword.JPG">
 
-8. After decrypting, copy the password to your clipboard and paste in a new .txt or in your notepad for safe keeping. You will need to use it again very soon.
+8. After decrypting, store it somewhere safe!
+*You may wan to copy the password to your clipboard and paste in a new .txt or in your notepad for safe keeping. You will need to use it again very soon.*
 
-6. Upload your .pem file.
+6. Upload your .pem file. 
+*You download the .pem file during the instance creation step
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-rdp/uploadpem.JPG">
-
-<img src="">
 
 ## Step 3: Launch Windows RDP Client
 To configure RDP access for your EC2 instance, follow these instructions:
