@@ -57,51 +57,43 @@ You should see the following VPC dashboard:
 
 ## Step 2: Select your desired region. 
 (As stated in the lecture, be sure to do a bit of due diligence here regarding region selection.) We will use N. Virginia in this example.
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/chooseregion.png" width="25%" height="25%">
+
 Navigate to “Your VPC” on the left side of the page
 Please note that every region should have a “Default VPC” already established
-Do not make any changes to your default VPC
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/chooseregion.png" width="35%" height="35%">
+Do not make any changes to the settings of your "default VPC"
+
 ## Step 3: We will rename our “Default VPC” as “Do Not Touch” 
 It is good practice to do this for any region that you are working in!
-This will serve as a reminder to help prevent any future issues or accidental deletions 
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/vpcintances.png" width="50%" height="50%">
+This will serve as a reminder to help prevent any future issues or accidental deletions<br> 
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/vpcintances.png" width="75%" height="75%">
 
 
 ## Step 4: Click “Create VPC” 
 
 Click: “VPC and more”
-This gives you a visual representation while you build your VPC
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png" width="75%" height="75%">
+This gives you a visual representation while you build your VPC<br>
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png" width="55%" height="55%">
 Name your VPC (with one word only )
 Do not include “white spaces” in your naming conventions
 In this example we will name it: “firstvpc”
 As a general rule: Don’t use default VPC’s, it’s lazy and unprofessional
 
 
-Intro to OCTECT’s
+## Intro to OCTECT’s ##
 A few basic concepts related to IP address format:<br> 
-Concept	Definition	Example<br>
+
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/octect_table.JPG" width="75%" height="75%">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Change the “IPv4 CIDR block” (main network) default from 10.0.0.0/16 to another starting IP address using the following conditions…<br>
+## Change the “IPv4 CIDR block” (main network) default from 10.0.0.0/16 to another starting IP address using the following conditions…<br> ##
 •	Your region needs an identifying number<br> 
 •	Choose a number that is easy to remember<br>
 •	This can be your own original number (preferably two digits)<br> 
 
-This number will replace the second “Octet” in the address ONLY<br>
+## This number will replace the second “Octet” in the address ONLY ##<br>
 Example: North Virginia 10.*36*.0.0/16<br>
 Do not change the Third and Fourth OCTET in the address<br>
 Example: North Virginia 10.36.0.0/16<br>
@@ -114,6 +106,7 @@ Tokyo:97<br>
 Virginia:76 <br>
 Paris:94<br>
 <img src="">
+
 For the purposes of this tutorial, we will define a specific range for each cloud provider. These are the ranges with which you can obtain a value for your second octet (for this tutorial)<br>
 
 AWS: 10.1-99.0.0/16<br>
