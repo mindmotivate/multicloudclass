@@ -52,22 +52,26 @@ For additional documentation on VPC’s please refer here:* (link)
 
 ## Step 1: Navigate to your top search bar and type: VPC
 You should see the following VPC dashboard:
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-rdp/launchinstance.JPG">
+
 
 ## Step 2: Select your desired region. 
 (As stated in the lecture, be sure to do a bit of due diligence here regarding region selection.) We will use N. Virginia in this example.
 Navigate to “Your VPC” on the left side of the page
 Please note that every region should have a “Default VPC” already established
 Do not make any changes to your default VPC
-
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/chooseregion.png">
 ## Step 3: We will rename our “Default VPC” as “Do Not Touch” 
 It is good practice to do this for any region that you are working in!
 This will serve as a reminder to help prevent any future issues or accidental deletions 
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/vpcintances.png">
+
 
 ## Step 4: Click “Create VPC” 
 
 Click: “VPC and more”
 This gives you a visual representation while you build your VPC
-
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png">
 Name your VPC (with one word only )
 Do not include “white spaces” in your naming conventions
 In this example we will name it: “firstvpc”
@@ -77,6 +81,9 @@ As a general rule: Don’t use default VPC’s, it’s lazy and unprofessional
 Intro to OCTECT’s
 A few basic concepts related to IP address format:<br> 
 Concept	Definition	Example<br>
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/octect_table.JPG">
+![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/2a3f9838-057b-4ee9-803f-e65dcaa1722a)
+
 
 
 
@@ -100,22 +107,22 @@ Do not change the Third and Fourth OCTET in the address<br>
 Example: North Virginia 10.36.0.0/16<br>
 Do not change the LAST number in the address (Host)
 Example: North Virginia 10.36.0.0/16
-
+<img src="">
 Sample Region Identifiers:<br>
 Ireland:32<br>
 Tokyo:97<br>
 Virginia:76 <br>
 Paris:94<br>
-
+<img src="">
 For the purposes of this tutorial, we will define a specific range for each cloud provider. These are the ranges with which you can obtain a value for your second octet (for this tutorial)<br>
 
 AWS: 10.1-99.0.0/16<br>
 Azure: 10.200-255.0.0/16<br>
 Google Cloud/Oracle: 10.10-199.0.0/16<br>
-
+<img src="">
 
 You can have the same network in two different areas however if they are joined, they will NOT WORK. This is what’s referred to as overlap. 
-
+<img src="">
 
 
 
@@ -130,24 +137,24 @@ Do your due diligence here!  The zone selection if of the upmpost importance. Pl
 •	Some regulations require 4 AZ’s you must clarify with your company before proceeding<br>
 •	If you have a domain registration or get a security cert. for your domain, you need to be in N. Virginia region (regardless if your global)<br>
 *You need to understand which regions have which services available<br>
-
+<img src="">
 In our tutorial we will choose the following:<br>
 •	We will choose the following number of Availability Zones: 3<br>
 •	We will choose the following number of Pubic Subnets: 3<br>
 •	We will choose the following number of Private Subnets: 3<br>
 Your screen should look similar to this:<br>
-
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/avzone.png">
 
 
 Next, we will plan out our Subnet routing!
 Create an entirely separate document in order to plan out our routing
 *You must do this to remove confusion
-
+<img src="">
 Take quick look at the following subnet diagram:
 It represents or previously specified requirements
 There are 3 availability zones shown
 There is a public and private subnet in each zone
- 
+ <img src="">
 
 
 
@@ -163,11 +170,11 @@ We have specified that each zone has a public and private subnet<br>
 4.private / zone A<br>
 5.private/ zone B<br>
 6.private / zone C<br>
-
+<img src="">
 Subnet Plan
 We will now add the subnet values based of our previously determined
 CDIR of: 10.36.0.0/16
-
+<img src="">
 We will list out 6 subnets:
 Notice how the first two octets are the same as our CDIR
 Also note how the last number in now 24 (this is due to binary which will be explained in another tutorial)
@@ -177,7 +184,8 @@ Also note how the last number in now 24 (this is due to binary which will be exp
 4. 10.36.0.0/24
 5. 10.36.0.0/24
 6. 10.36.0.0/24
-
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/first2octects.JPG">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/hostnumber.JPG">
 
 You cannot have the name subnet in multiple regions
 You can only have one public per av zone
@@ -185,14 +193,14 @@ You can however, have multiple privates per av
 Regarding
 1 digit is public
 2 digits in private
-
+<img src="">
 1. 10.36.1.0/24  (ensure that the 2nd octet is a single digit) public / zone A
 2. 10.36.2.0/24 (ensure that the 2nd octet is a single digit) public / zone B
 3. 10.36.3.0/24 (ensure that the 2nd octet is a single digit) public / zone C
 4. 10.36.11.0/24 (ensure that the 2nd octet is two digits) private / zone A
 5. 10.36.12.0/24 (ensure that the 2nd octet is two digits) private / zone B
 6. 10.36.13.0/24 (ensure that the 2nd octet is two digits) private / zone C
-
+<img src="">
 Here is an example of the completed subnet planning sheet:
 
 North Virginia 10.36.0.0/16:
@@ -204,13 +212,13 @@ North Virginia 10.36.0.0/16:
 10.36.12.0/24 = subnet private 1B 
 10.36.13.0/24 = subnet private 1C 
 
-
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/completedplanningsheet.JPG">
 
 Next, we will enter our Subnet routing into AWS 
 
 Note: if you accidentally enter a “white space” you will not see the numerical value here:
 Please ensure there are no white spaces or else your network will not work properly!
-
+<img src="">
 Make the following selections:<br>
 NAT Gateway (in 1 AZ)<br>
 VPC endpoints(default)<br>
@@ -222,7 +230,7 @@ Wait several minutes for process to complete
  
 As a side note, your NAT will be created during this phase
 
- 
+ <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/createvpcwaitscreen.png">
 
 
 
@@ -246,7 +254,7 @@ Tokyo 10.97.0.0/16:
 10.97.13.0/24 = subnet private 1C  not in use
 10.97.14.0/24 = subnet private 1D
 
-
+<img src="">
 Create Security Groups for each VPC
 Configure Network settings
 
@@ -257,13 +265,13 @@ Enable!!!!
 Review you summary detail before launching your instance!
 
 
-
+<img src="">
 To create an EC2 instance, follow these instructions:
 Launch the AWS Management Console.
 Navigate to the Amazon EC2 service.
 Click on "Launch Instance" to start the instance creation process. In this example we will name our instance "Windowsbox"
 
-
+<img src="">
 Teardown Procedure
 There is a specific order that you must follow when tearing down resources in AWS VPC. 
 1.	Detach the NAT gateways: If NAT gateways are present in the VPC, delete them. It will take few minutes to be patient.
@@ -271,3 +279,5 @@ There is a specific order that you must follow when tearing down resources in AW
 3.	Delete all resources: Before deleting the VPC, ensure that all resources within the VPC are deleted. This includes EC2 instances.
 4.	Delete security groups: While you will not be charged for security groups, you can delete all security groups associated with the VPC. (Please do not delete the Default!)
 5.	Delete VPC: Finally, delete the VPC itself.
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/TeardownJPG.JPG">
+   
