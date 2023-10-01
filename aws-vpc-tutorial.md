@@ -68,7 +68,7 @@ Do not make any changes to the settings of your "default VPC"
 It is good practice to do this for any region that you are working in!
 This will serve as a reminder to help prevent any future issues or accidental deletions<br> 
 
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/vpcintances.png" width="75%" height="75%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/vpcintances.png" width="90%" height="90%">
 
 
 ## Step 4: Click “Create VPC” 
@@ -76,7 +76,7 @@ This will serve as a reminder to help prevent any future issues or accidental de
 Click: “VPC and more”
 This gives you a visual representation while you build your VPC<br>
 
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png" width="55%" height="55%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png" width="5%" height="5%">
 Name your VPC (with one word only )
 Do not include “white spaces” in your naming conventions
 In this example we will name it: “firstvpc”
