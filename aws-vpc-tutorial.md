@@ -76,7 +76,7 @@ This will serve as a reminder to help prevent any future issues or accidental de
 Click: “VPC and more”
 This gives you a visual representation while you build your VPC<br>
 
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png" width="5%" height="5%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png" width="85%" height="85%">
 Name your VPC (with one word only )
 Do not include “white spaces” in your naming conventions
 In this example we will name it: “firstvpc”
