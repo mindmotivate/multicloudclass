@@ -60,7 +60,7 @@ You should see the following VPC dashboard:
 Navigate to “Your VPC” on the left side of the page
 Please note that every region should have a “Default VPC” already established
 Do not make any changes to your default VPC
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/chooseregion.png" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/chooseregion.png" width=35%" height="35%">
 ## Step 3: We will rename our “Default VPC” as “Do Not Touch” 
 It is good practice to do this for any region that you are working in!
 This will serve as a reminder to help prevent any future issues or accidental deletions 
@@ -71,7 +71,7 @@ This will serve as a reminder to help prevent any future issues or accidental de
 
 Click: “VPC and more”
 This gives you a visual representation while you build your VPC
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png" width="75%" height="75%">
 Name your VPC (with one word only )
 Do not include “white spaces” in your naming conventions
 In this example we will name it: “firstvpc”
@@ -82,7 +82,7 @@ Intro to OCTECT’s
 A few basic concepts related to IP address format:<br> 
 Concept	Definition	Example<br>
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/octect_table.JPG" width="75%" height="75%">
-![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/2a3f9838-057b-4ee9-803f-e65dcaa1722a)
+
 
 
 
@@ -184,8 +184,8 @@ Also note how the last number in now 24 (this is due to binary which will be exp
 4. 10.36.0.0/24
 5. 10.36.0.0/24
 6. 10.36.0.0/24
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/first2octects.JPG" width="50%" height="50%">
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/hostnumber.JPG" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/first2octects.JPG" width="60%" height="60%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/hostnumber.JPG" width="65%" height="65%">
 
 You cannot have the name subnet in multiple regions
 You can only have one public per av zone
