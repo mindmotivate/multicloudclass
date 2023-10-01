@@ -88,7 +88,8 @@ A few basic concepts related to IP address format:<br>
 
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/octect_table.JPG" width="75%" height="75%">
 
-## Change the “IPv4 CIDR block” (main network) default from 10.0.0.0/16 to another starting IP address using the following conditions…<br> ##
+## Step 5: Change the “IPv4 CIDR block” ## 
+Change the default from 10.0.0.0/16 to another starting IP address using the following conditions…<br>
 •	Your region needs an identifying number<br> 
 •	Choose a number that is easy to remember<br>
 •	This can be your own original number (preferably two digits)<br> 
@@ -99,29 +100,23 @@ Do not change the Third and Fourth OCTET in the address<br>
 Example: North Virginia 10.36.0.0/16<br>
 Do not change the LAST number in the address (Host)
 Example: North Virginia 10.36.0.0/16
-<img src="">
+
+
 Sample Region Identifiers:<br>
 Ireland:32<br>
 Tokyo:97<br>
-Virginia:76 <br>
+Virginia:76<br>
 Paris:94<br>
-<img src="">
 
 For the purposes of this tutorial, we will define a specific range for each cloud provider. These are the ranges with which you can obtain a value for your second octet (for this tutorial)<br>
 
 AWS: 10.1-99.0.0/16<br>
 Azure: 10.200-255.0.0/16<br>
 Google Cloud/Oracle: 10.10-199.0.0/16<br>
-<img src="">
 
-You can have the same network in two different areas however if they are joined, they will NOT WORK. This is what’s referred to as overlap. 
-<img src="">
+*Note: You can have the same network in two different areas however if they are joined, they will NOT WORK. This is what’s referred to as overlap.* 
 
-
-
-
-Next We will choose the Availability Zones
-
+## Step 6: Choose the Availability Zones ## 
 Firstly, Check to see how many AV’s you have in your region!
 Do your due diligence here!  The zone selection if of the upmpost importance. Please consider the following:
 •	N. Virgina has 3 regions<br>
@@ -129,8 +124,8 @@ Do your due diligence here!  The zone selection if of the upmpost importance. Pl
 •	In Sao Paulo AV “b” is not available (even though it is displayed on the site)<br>
 •	Some regulations require 4 AZ’s you must clarify with your company before proceeding<br>
 •	If you have a domain registration or get a security cert. for your domain, you need to be in N. Virginia region (regardless if your global)<br>
-*You need to understand which regions have which services available<br>
-<img src="">
+*You need to understand which regions have which services available<br>*
+
 In our tutorial we will choose the following:<br>
 •	We will choose the following number of Availability Zones: 3<br>
 •	We will choose the following number of Pubic Subnets: 3<br>
@@ -138,38 +133,34 @@ In our tutorial we will choose the following:<br>
 Your screen should look similar to this:<br>
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/avzone.png width="50%" height="50%"">
 
+## Step 7: Plan Subnet Routing ## 
 
-Next, we will plan out our Subnet routing!
 Create an entirely separate document in order to plan out our routing
-*You must do this to remove confusion
-<img src="">
+*You must do this to remove confusion!*
+
 Take quick look at the following subnet diagram:
 It represents or previously specified requirements
 There are 3 availability zones shown
-There is a public and private subnet in each zone
- <img src="">
+There is a public and private subnet in each zone:<br>
+![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/4cdb98a5-716b-4d4c-aa1c-758994ee3153)
 
-
-
-
-
-Layout
-We will create a list of 6 items based off our AZ / Sub net requirements
-Let’s layout our plan first….
+## Intial Layout: ##
+We will create a list of 6 items based off our AZ / Sub net requirements <br>
+Let’s layout our plan first….<br>
 We have specified that each zone has a public and private subnet<br>
-       1. public / zone A<br>
+1.public / zone A<br>
 2.public / zone B<br>
 3.public / zone C<br>
 4.private / zone A<br>
 5.private/ zone B<br>
 6.private / zone C<br>
-<img src="">
-Subnet Plan
+
+## Subnet Plan ##
 We will now add the subnet values based of our previously determined
 CDIR of: 10.36.0.0/16
-<img src="">
-We will list out 6 subnets:
-Notice how the first two octets are the same as our CDIR
+
+## We will list out 6 subnets:<br> ##
+*Notice how the first two octets are the same as our CDIR*
 Also note how the last number in now 24 (this is due to binary which will be explained in another tutorial)
 1. 10.36.0.0/24
 2. 10.36.0.0/24
@@ -180,48 +171,48 @@ Also note how the last number in now 24 (this is due to binary which will be exp
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/first2octects.JPG" width="60%" height="60%">
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/hostnumber.JPG" width="65%" height="65%">
 
-You cannot have the name subnet in multiple regions
-You can only have one public per av zone
-You can however, have multiple privates per av
-Regarding
-1 digit is public
-2 digits in private
-<img src="">
-1. 10.36.1.0/24  (ensure that the 2nd octet is a single digit) public / zone A
-2. 10.36.2.0/24 (ensure that the 2nd octet is a single digit) public / zone B
-3. 10.36.3.0/24 (ensure that the 2nd octet is a single digit) public / zone C
-4. 10.36.11.0/24 (ensure that the 2nd octet is two digits) private / zone A
-5. 10.36.12.0/24 (ensure that the 2nd octet is two digits) private / zone B
-6. 10.36.13.0/24 (ensure that the 2nd octet is two digits) private / zone C
-<img src="">
-Here is an example of the completed subnet planning sheet:
+## Subnet Rules: ##
+You cannot have the name subnet in multiple regions<br>
+You can only have one public per av zone<br>
+You can however, have multiple privates per av<br>
+1 digit in the second octet represents a public subnet<br>
+2 digits in the second octet represents a private subnet<br>
 
-North Virginia 10.36.0.0/16:
-10.36.1.0/24 = subnet public 1A 
-10.36.2.0/24 = subnet public 1B 
-10.36.3.0/24 = subnet public 1C 
+*per the previous rules..*
+1. 10.36.1.0/24  (ensure that the 2nd octet is a single digit) public / zone A<br>
+2. 10.36.2.0/24 (ensure that the 2nd octet is a single digit) public / zone B<br>
+3. 10.36.3.0/24 (ensure that the 2nd octet is a single digit) public / zone C<br>
+4. 10.36.11.0/24 (ensure that the 2nd octet is two digits) private / zone A<br>
+5. 10.36.12.0/24 (ensure that the 2nd octet is two digits) private / zone B<br>
+6. 10.36.13.0/24 (ensure that the 2nd octet is two digits) private / zone C<br>
 
-10.36.11.0/24 = subnet private 1A 
-10.36.12.0/24 = subnet private 1B 
-10.36.13.0/24 = subnet private 1C 
+## Here is an example of the completed subnet planning sheet:<br> ##
+
+North Virginia 10.36.0.0/16:<br>
+10.36.1.0/24 = subnet public 1A <br>
+10.36.2.0/24 = subnet public 1B <br>
+10.36.3.0/24 = subnet public 1C <br>
+
+10.36.11.0/24 = subnet private 1A <br>
+10.36.12.0/24 = subnet private 1B <br>
+10.36.13.0/24 = subnet private 1C <br>
 
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/completedplanningsheet.JPG" width="50%" height="50%">
 
-Next, we will enter our Subnet routing into AWS 
+## Step 8: Carefully Enter Subnet Values into AWS ## 
 
-Note: if you accidentally enter a “white space” you will not see the numerical value here:
-Please ensure there are no white spaces or else your network will not work properly!
-<img src="">
-Make the following selections:<br>
-NAT Gateway (in 1 AZ)<br>
-VPC endpoints(default)<br>
+*Note: if you accidentally enter a “white space” you will not see the numerical value here:
+Please ensure there are no white spaces or else your network will not work properly!*<br>
 
-Check and RE-CHECK everything before proceeding!
+*Make the following selections:<br>*
+NAT Gateway: (in 1 AZ)<br>
+VPC Endpoints: (default)<br>
 
-Create VPC
-Wait several minutes for process to complete
- 
-As a side note, your NAT will be created during this phase
+## Check and RE-CHECK everything before proceeding! ##
+
+## Step 9: Create VPC ##
+*Wait several minutes for process to complete*<br>
+*As a side note, your NAT will be created during this phase!*<br>
 
  <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/createvpcwaitscreen.png" width="50%" height="50%">
 
