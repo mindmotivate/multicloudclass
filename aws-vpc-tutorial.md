@@ -60,7 +60,7 @@ You should see the following VPC dashboard:
 Navigate to “Your VPC” on the left side of the page
 Please note that every region should have a “Default VPC” already established
 Do not make any changes to your default VPC
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/chooseregion.png">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/chooseregion.png" width="50%" height="50%">
 ## Step 3: We will rename our “Default VPC” as “Do Not Touch” 
 It is good practice to do this for any region that you are working in!
 This will serve as a reminder to help prevent any future issues or accidental deletions 
@@ -81,7 +81,7 @@ As a general rule: Don’t use default VPC’s, it’s lazy and unprofessional
 Intro to OCTECT’s
 A few basic concepts related to IP address format:<br> 
 Concept	Definition	Example<br>
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/octect_table.JPG" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/octect_table.JPG" width="75%" height="75%">
 ![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/2a3f9838-057b-4ee9-803f-e65dcaa1722a)
 
 
@@ -279,5 +279,5 @@ There is a specific order that you must follow when tearing down resources in AW
 3.	Delete all resources: Before deleting the VPC, ensure that all resources within the VPC are deleted. This includes EC2 instances.
 4.	Delete security groups: While you will not be charged for security groups, you can delete all security groups associated with the VPC. (Please do not delete the Default!)
 5.	Delete VPC: Finally, delete the VPC itself.
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/TeardownJPG.JPG" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/TeardownJPG.JPG" width="75%" height="75%">
    
