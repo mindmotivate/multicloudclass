@@ -64,14 +64,14 @@ Do not make any changes to your default VPC
 ## Step 3: We will rename our “Default VPC” as “Do Not Touch” 
 It is good practice to do this for any region that you are working in!
 This will serve as a reminder to help prevent any future issues or accidental deletions 
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/vpcintances.png">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/vpcintances.png" width="50%" height="50%">
 
 
 ## Step 4: Click “Create VPC” 
 
 Click: “VPC and more”
 This gives you a visual representation while you build your VPC
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png" width="50%" height="50%">
 Name your VPC (with one word only )
 Do not include “white spaces” in your naming conventions
 In this example we will name it: “firstvpc”
@@ -81,7 +81,7 @@ As a general rule: Don’t use default VPC’s, it’s lazy and unprofessional
 Intro to OCTECT’s
 A few basic concepts related to IP address format:<br> 
 Concept	Definition	Example<br>
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/octect_table.JPG">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/octect_table.JPG" width="50%" height="50%">
 ![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/2a3f9838-057b-4ee9-803f-e65dcaa1722a)
 
 
@@ -143,7 +143,7 @@ In our tutorial we will choose the following:<br>
 •	We will choose the following number of Pubic Subnets: 3<br>
 •	We will choose the following number of Private Subnets: 3<br>
 Your screen should look similar to this:<br>
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/avzone.png">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/avzone.png width="50%" height="50%"">
 
 
 Next, we will plan out our Subnet routing!
@@ -184,8 +184,8 @@ Also note how the last number in now 24 (this is due to binary which will be exp
 4. 10.36.0.0/24
 5. 10.36.0.0/24
 6. 10.36.0.0/24
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/first2octects.JPG">
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/hostnumber.JPG">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/first2octects.JPG" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/hostnumber.JPG" width="50%" height="50%">
 
 You cannot have the name subnet in multiple regions
 You can only have one public per av zone
@@ -212,7 +212,7 @@ North Virginia 10.36.0.0/16:
 10.36.12.0/24 = subnet private 1B 
 10.36.13.0/24 = subnet private 1C 
 
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/completedplanningsheet.JPG">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/completedplanningsheet.JPG" width="50%" height="50%">
 
 Next, we will enter our Subnet routing into AWS 
 
@@ -230,7 +230,7 @@ Wait several minutes for process to complete
  
 As a side note, your NAT will be created during this phase
 
- <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/createvpcwaitscreen.png">
+ <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/createvpcwaitscreen.png" width="50%" height="50%">
 
 
 
@@ -279,5 +279,5 @@ There is a specific order that you must follow when tearing down resources in AW
 3.	Delete all resources: Before deleting the VPC, ensure that all resources within the VPC are deleted. This includes EC2 instances.
 4.	Delete security groups: While you will not be charged for security groups, you can delete all security groups associated with the VPC. (Please do not delete the Default!)
 5.	Delete VPC: Finally, delete the VPC itself.
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/TeardownJPG.JPG">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/TeardownJPG.JPG" width="50%" height="50%">
    
