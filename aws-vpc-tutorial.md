@@ -60,7 +60,7 @@ You should see the following VPC dashboard:
 Navigate to “Your VPC” on the left side of the page
 Please note that every region should have a “Default VPC” already established
 Do not make any changes to your default VPC
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/chooseregion.png" width=35%" height="35%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/chooseregion.png" width="35%" height="35%">
 ## Step 3: We will rename our “Default VPC” as “Do Not Touch” 
 It is good practice to do this for any region that you are working in!
 This will serve as a reminder to help prevent any future issues or accidental deletions 
