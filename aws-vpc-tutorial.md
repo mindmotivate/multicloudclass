@@ -1,66 +1,69 @@
-An Intro introduction to AWS VPC
+# An Intro introduction to AWS VPC Creation:  
 
 Motivated Mindstate
 
 
+
+## Greeting future AWS Cloud Engineers! <a name="example-templates-autoscaling-full-stack-template"></a>
 Greeting future AWS Cloud Engineers!
 Before we get into all of the fun and confusing technical jargon surrounding Virtual Private Clouds, allow me provide a few analogies to help set the stage for what we will be learning today!
 
 Think of a Amazon Virtual Private Cloud (VPC)  like a virtual data center in the cloud. It’s a private space that you can create in the cloud to store your data and run your applications. It’s actually a bit like having your own private room in a shared house.
 
-A VPC is made up of smaller networks called subnets. Think of subnets as different rooms within your private space. Each subnet can have its own rules and settings, like who can enter and what they can do. 
+A **VPC** is made up of smaller networks called subnets. Think of subnets as different rooms within your private space. Each subnet can have its own rules and settings, like who can enter and what they can do. 
 
-A route table is like a map that tells your VPC how to send data between different subnets. It’s like having a map of your house that tells you how to get from one room to another.
+A **route table** is like a map that tells your VPC how to send data between different subnets. It’s like having a map of your house that tells you how to get from one room to another.
 
-An internet gateway is like a door that connects your VPC to the internet. It allows you to access the internet from within your private space.
+An **internet gateway** is like a door that connects your VPC to the internet. It allows you to access the internet from within your private space.
 
-Network Address Translation (NAT) is like a translator that helps your VPC communicate with the internet. It translates private IP addresses into public IP addresses so that data can be sent and received.
+**Network Address Translation (NAT)** is like a translator that helps your VPC communicate with the internet. It translates private IP addresses into public IP addresses so that data can be sent and received.
 
-Security groups are like bouncers that control who can enter and exit your private space. They make sure that only authorized people can access your data and applications.
+**Security groups** are like bouncers that control who can enter and exit your private space. They make sure that only authorized people can access your data and applications.
 
 NACL (Network Access Control List): Think of NACL as a security gatekeeper at the entrance of a neighborhood. It operates at the subnet level and controls traffic by allowing or denying access based on predefined rules. Just like a gatekeeper checks who can enter the neighborhood, NACL checks the source and destination IP addresses to determine if traffic is allowed or denied. It also specifies the return traffic that must be allowed1.
 
-OK… So everything is crystal clear right?
-If not, don’t worry. Follow along as  I explain with more “technical” detail!  
+**OK… So everything is crystal clear right?
+If not, don’t worry. Follow along as  I explain with more “technical” detail!**  
 
-•	VPC (Virtual Private Cloud): A VPC is a virtual data center in the cloud that allows you to have complete control over your virtual networking environment. It includes features such as selecting your own private IP address range, creating subnets, configuring route tables, and network gateways. VPCs provide benefits like privacy, security, and preventing loss of proprietary data .
+•	**VPC (Virtual Private Cloud)**: A VPC is a virtual data center in the cloud that allows you to have complete control over your virtual networking environment. It includes features such as selecting your own private IP address range, creating subnets, configuring route tables, and network gateways. VPCs provide benefits like privacy, security, and preventing loss of proprietary data .
 
-•	Subnets: Subnets are smaller networks created by dividing a large network. They help with network maintenance and provide security by isolating different parts of the network from each other .
+•	**Subnets**: Subnets are smaller networks created by dividing a large network. They help with network maintenance and provide security by isolating different parts of the network from each other .
 
-•	Route Tables: A route table contains a set of rules called routes that determine where network traffic should be directed. In a VPC, you can have multiple route tables to control traffic flow .
+•	**Route Tables**: A route table contains a set of rules called routes that determine where network traffic should be directed. In a VPC, you can have multiple route tables to control traffic flow .
 
-•	Internet Gateways (IGW): An internet gateway is a combination of hardware and software that provides your private networks within a VPC with a route to the outside world. It allows communication between instances within the VPC and the internet. Each VPC can have only one internet gateway attached to it .
+•	**Internet Gateways (IGW)**: An internet gateway is a combination of hardware and software that provides your private networks within a VPC with a route to the outside world. It allows communication between instances within the VPC and the internet. Each VPC can have only one internet gateway attached to it .
 
-•	Network Address Translation (NAT): NAT is used when instances within a subnet have private IP addresses that cannot be used in public. NAT maps the private IP addresses to public addresses on the way out and vice versa on the way in. Elastic IP addresses are static, public IPv4 addresses designed for dynamic cloud computing. They can be associated with any instance or network interface in your VPC, allowing rapid remapping of addresses in case of instance failure .
+•	**Network Address Translation (NAT)**: NAT is used when instances within a subnet have private IP addresses that cannot be used in public. NAT maps the private IP addresses to public addresses on the way out and vice versa on the way in. Elastic IP addresses are static, public IPv4 addresses designed for dynamic cloud computing. They can be associated with any instance or network interface in your VPC, allowing rapid remapping of addresses in case of instance failure .
 
-•	Security Groups: Security groups are sets of firewall rules that control traffic for your instances. In Amazon Firewall, the only action that can be carried out is “allow.” You cannot create rules to deny traffic. The destination for traffic is always the instance on which the security group is applied .
+•	**Security Groups**: Security groups are sets of firewall rules that control traffic for your instances. In Amazon Firewall, the only action that can be carried out is “allow.” You cannot create rules to deny traffic. The destination for traffic is always the instance on which the security group is applied .
 
-•	Customer Gateway: A customer gateway is the anchor on your side of the Amazon VPC VPN connection that links your data center or network to your Amazon VPC. It can be a physical or software appliance.
+•	**Customer Gateway**: A customer gateway is the anchor on your side of the Amazon VPC VPN connection that links your data center or network to your Amazon VPC. It can be a physical or software appliance.
 
-•	Virtual Private Gateway: A virtual private gateway is the VPN concentrator on the Amazon side of the VPN connection. You create a virtual private gateway and attach it to the VPC from which you want to create the VPN connection.
+•	**Virtual Private Gateway**: A virtual private gateway is the VPN concentrator on the Amazon side of the VPN connection. You create a virtual private gateway and attach it to the VPC from which you want to create the VPN connection.
 
-•	VPN: VPN stands for “virtual private networking,” which is a popular internet security method originally designed for large organizations where employees needed to connect to a certain computer from different locations.
+•	**VPN**: VPN stands for “virtual private networking,” which is a popular internet security method originally designed for large organizations where employees needed to connect to a certain computer from different locations.
 
-•	VPC Peering: A VPC peering connection allows you to route traffic between two VPCs using IPv4 or IPv6 private addresses. Instances in either VPC can communicate with each other as if they are within the same network. You can create a VPC peering connection between your own VPCs or with a VPC in another AWS account. A VPC peering connection helps you facilitate the transfer of data.
+•	**VPC Peering**: A VPC peering connection allows you to route traffic between two VPCs using IPv4 or IPv6 private addresses. Instances in either VPC can communicate with each other as if they are within the same network. You can create a VPC peering connection between your own VPCs or with a VPC in another AWS account. A VPC peering connection helps you facilitate the transfer of data.
 
-•	Network Access Control Lists (NACL): NACL is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets. You might set up network ACLs with rules similar to your security groups to add an additional layer of security to your VPC. The default network ACL is configured to allow all traffic to flow in and out of the subnets to which it is associated.
+•	**Network Access Control Lists (NACL)**: NACL is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets. You might set up network ACLs with rules similar to your security groups to add an additional layer of security to your VPC. The default network ACL is configured to allow all traffic to flow in and out of the subnets to which it is associated.
 
-Let’s create a Virtual Private Cloud 
-For additional documentation on VPC’s please refer here: (link)
+*Let’s create a Virtual Private Cloud!
+For additional documentation on VPC’s please refer here:* (link)
 
-Step 1: Navigate to your top search bar and type: VPC
+## Step 1: Navigate to your top search bar and type: VPC
 You should see the following VPC dashboard:
 
-Step 2: Select your desired region. (As stated in the lecture, be sure to do a bit of due diligence here regarding region selection.) We will use N. Virginia in this example.
+## Step 2: Select your desired region. 
+(As stated in the lecture, be sure to do a bit of due diligence here regarding region selection.) We will use N. Virginia in this example.
 Navigate to “Your VPC” on the left side of the page
 Please note that every region should have a “Default VPC” already established
 Do not make any changes to your default VPC
 
-Step 3: We will rename our “Default VPC” as “Do Not Touch” 
+## Step 3: We will rename our “Default VPC” as “Do Not Touch” 
 It is good practice to do this for any region that you are working in!
 This will serve as a reminder to help prevent any future issues or accidental deletions 
 
-Step 4: Click “Create VPC” 
+## Step 4: Click “Create VPC” 
 
 Click: “VPC and more”
 This gives you a visual representation while you build your VPC
@@ -72,12 +75,8 @@ As a general rule: Don’t use default VPC’s, it’s lazy and unprofessional
 
 
 Intro to OCTECT’s
-A few basic concepts related to IP address format: 
-Concept	Definition	Example
-IP address	A unique identifier for a device on a network. It consists of four numbers separated by dots, each ranging from 0 to 255.	192.168.1.15
-Octet	A number that represents 8 bits of binary data in an IP address.	192 is an octet and its binary form is 11000000
-Subnet	A smaller network within a larger network that allows devices to communicate more efficiently and securely with each other.	A subnet can have a range of IP addresses, such as 192.168.1.0 to 192.168.1.255
-CIDR notation	A way of specifying how many bits are used for the network part and how many bits are used for the host part of an IP address. It consists of an IP address followed by a slash and a number.	192.168.1.15/24 means that the first 24 bits are used for the network part and the last 8 bits are used for the host par
+A few basic concepts related to IP address format:<br> 
+Concept	Definition	Example<br>
 
 
 
@@ -90,28 +89,29 @@ CIDR notation	A way of specifying how many bits are used for the network part an
 
 
 
-Change the “IPv4 CIDR block” (main network) default from 10.0.0.0/16 to another starting IP address using the following conditions…
-•	Your region needs an identifying number 
-•	Choose a number that is easy to remember:
-•	This can be your own original number (preferably two digits) 
+Change the “IPv4 CIDR block” (main network) default from 10.0.0.0/16 to another starting IP address using the following conditions…<br>
+•	Your region needs an identifying number<br> 
+•	Choose a number that is easy to remember<br>
+•	This can be your own original number (preferably two digits)<br> 
 
-This number will replace the second “Octet” in the address ONLY
-Example: North Virginia 10.36.0.0/16
-Do not change the Third and Fourth OCTET in the address
-Example: North Virginia 10.36.0.0/16
+This number will replace the second “Octet” in the address ONLY<br>
+Example: North Virginia 10.*36*.0.0/16<br>
+Do not change the Third and Fourth OCTET in the address<br>
+Example: North Virginia 10.36.0.0/16<br>
 Do not change the LAST number in the address (Host)
 Example: North Virginia 10.36.0.0/16
 
-Sample Region Identifiers:
-Ireland:32
-Tokyo:97
-Virginia:76 
-Paris:94
+Sample Region Identifiers:<br>
+Ireland:32<br>
+Tokyo:97<br>
+Virginia:76 <br>
+Paris:94<br>
 
-For the purposes of this tutorial, we will define a specific range for each cloud provider. These are the ranges with which you can obtain a value for your second octet (for this tutorial)
-AWS: 10.1-99.0.0/16
-Azure: 10.200-255.0.0/16
-Google Cloud/Oracle: 10.10-199.0.0/16
+For the purposes of this tutorial, we will define a specific range for each cloud provider. These are the ranges with which you can obtain a value for your second octet (for this tutorial)<br>
+
+AWS: 10.1-99.0.0/16<br>
+Azure: 10.200-255.0.0/16<br>
+Google Cloud/Oracle: 10.10-199.0.0/16<br>
 
 
 You can have the same network in two different areas however if they are joined, they will NOT WORK. This is what’s referred to as overlap. 
@@ -124,18 +124,18 @@ Next We will choose the Availability Zones
 
 Firstly, Check to see how many AV’s you have in your region!
 Do your due diligence here!  The zone selection if of the upmpost importance. Please consider the following:
-•	N. Virgina has 3 regions
-•	California does not have an “a” ZONE
-•	In Sao Paulo AV “b” is not available (even though it is displayed on the site)
-•	Some regulations require 4 AZ’s you must clarify with your company before proceeding
-•	If you have a domain registration or get a security cert. for your domain, you need to be in N. Virginia region (regardless if your global)
-*You need to understand which regions have which services available
+•	N. Virgina has 3 regions<br>
+•	California does not have an “a” ZONE<br>
+•	In Sao Paulo AV “b” is not available (even though it is displayed on the site)<br>
+•	Some regulations require 4 AZ’s you must clarify with your company before proceeding<br>
+•	If you have a domain registration or get a security cert. for your domain, you need to be in N. Virginia region (regardless if your global)<br>
+*You need to understand which regions have which services available<br>
 
-In our tutorial we will choose the following:
-•	We will choose the following number of Availability Zones: 3
-•	We will choose the following number of Pubic Subnets: 3
-•	We will choose the following number of Private Subnets: 3
-Your screen should look similar to this:
+In our tutorial we will choose the following:<br>
+•	We will choose the following number of Availability Zones: 3<br>
+•	We will choose the following number of Pubic Subnets: 3<br>
+•	We will choose the following number of Private Subnets: 3<br>
+Your screen should look similar to this:<br>
 
 
 
@@ -156,13 +156,13 @@ There is a public and private subnet in each zone
 Layout
 We will create a list of 6 items based off our AZ / Sub net requirements
 Let’s layout our plan first….
-We have specified that each zone has a public and private subnet
-1. public / zone A
-2.public / zone B
-3.public / zone C
-4.private / zone A
-5.private/ zone B
-6.private / zone C
+We have specified that each zone has a public and private subnet<br>
+       1. public / zone A<br>
+2.public / zone B<br>
+3.public / zone C<br>
+4.private / zone A<br>
+5.private/ zone B<br>
+6.private / zone C<br>
 
 Subnet Plan
 We will now add the subnet values based of our previously determined
@@ -211,9 +211,9 @@ Next, we will enter our Subnet routing into AWS
 Note: if you accidentally enter a “white space” you will not see the numerical value here:
 Please ensure there are no white spaces or else your network will not work properly!
 
-Make the following selections:
-NAT Gateway (in 1 AZ)
-VPC endpoints(default)
+Make the following selections:<br>
+NAT Gateway (in 1 AZ)<br>
+VPC endpoints(default)<br>
 
 Check and RE-CHECK everything before proceeding!
 
