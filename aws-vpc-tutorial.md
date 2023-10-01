@@ -130,8 +130,9 @@ In our tutorial we will choose the following:<br>
 •	We will choose the following number of Availability Zones: 3<br>
 •	We will choose the following number of Pubic Subnets: 3<br>
 •	We will choose the following number of Private Subnets: 3<br>
+
 Your screen should look similar to this:<br>
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/avzone.png width="50%" height="50%"">
+![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/a03e5d06-503e-46f1-b799-40ca4578576d)
 
 ## Step 7: Plan Subnet Routing ## 
 
