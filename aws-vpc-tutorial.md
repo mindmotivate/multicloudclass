@@ -97,7 +97,7 @@ Change the default from 10.0.0.0/16 to another starting IP address using the fol
 •	Choose a number that is easy to remember<br>
 •	This can be your own original number (preferably two digits)<br> 
 
-## This number will replace the second “Octet” in the address ONLY ##<br>
+*This number will replace the second “Octet” in the address ONLY*<br>
 Example: North Virginia 10.*36*.0.0/16<br>
 Do not change the Third and Fourth OCTET in the address<br>
 Example: North Virginia 10.36.0.0/16<br>
