@@ -52,7 +52,7 @@ For additional documentation on VPC’s please refer here:[AWS::VPC](https://doc
 
 ## Step 1: Navigate to your top search bar and type: VPC
 You should see the following VPC dashboard:
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-rdp/launchinstance.JPG">
+![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/b0c4ad48-1956-4854-9c79-f8f367dd3c26)
 
 
 ## Step 2: Select your desired region. 
@@ -81,7 +81,7 @@ Name your VPC (with one word only )
 Do not include “white spaces” in your naming conventions
 In this example we will name it: “firstvpc”
 As a general rule: Don’t use default VPC’s, it’s lazy and unprofessional
-
+![namevpc](https://github.com/mindmotivate/multicloudclass/assets/130941970/a679055d-e198-43f7-90f6-e7de3d31118c)
 
 ## Intro to OCTECT’s ##
 A few basic concepts related to IP address format:<br> 
