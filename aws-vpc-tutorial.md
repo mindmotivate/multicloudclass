@@ -1,6 +1,6 @@
 # An Intro introduction to AWS VPC Creation:  
 
-Motivated Mindstate
+[Motivated Mindstate](https://github.com/mindmotivate)
 
 
 
