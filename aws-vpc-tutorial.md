@@ -83,7 +83,8 @@ Name your VPC (with one word only )
 Do not include “white spaces” in your naming conventions
 In this example we will name it: “firstvpc”
 As a general rule: Don’t use default VPC’s, it’s lazy and unprofessional<br>
-![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/8f141d7b-8b8a-4dba-aa53-6ab7ccdacbc1)
+![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/8305b628-2518-4eca-88c3-e1ca43058d00)
+
 
 
 ## Intro to OCTECT’s ##
