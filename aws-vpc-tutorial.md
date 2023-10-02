@@ -220,52 +220,20 @@ VPC Endpoints: (default)<br>
 
  <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/createvpcwaitscreen.png" width="50%" height="50%">
 
+## Step 10: Create Security Groups for each VPC ##
+*For instructions on how to setup a security group refer to the following documentation:<br>*
+[AWS::SG](https://github.com/mindmotivate/multicloudclass/blob/main/launch-template-tutorial-test.md#create-a-security-group-)
 
+## Step 11:Create an EC2 instance ## 
+*For instructions on how to create an EC2 instances refer to the following documentation:<br>*
+[AWS::EC2](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 
-
-
-
-
-
-Second Example
-In this example we use Tokyo as our region
-However. Tokyo does not have a region C
-But it will in the future therefore we will plan for a C but noted that it Is not in use!
-Tokyo 10.97.0.0/16:
-10.97.1.0/24 = subnet public 1A 
-10.97.2.0/24 = subnet public 1B 
-10.97.3.0/24 = subnet public 1C  not in use
-10.97.4.0/24 = subnet public 1D 
-
-10.97.11.0/24 = subnet private 1A 
-10.97.12.0/24 = subnet private 1B 
-10.97.13.0/24 = subnet private 1C  not in use
-10.97.14.0/24 = subnet private 1D
-
-<img src="">
-Create Security Groups for each VPC
-Configure Network settings
-
-Review your instance to mak sure it in public1 (or any public)
-Auto assign pulic 
-Enable!!!!
-
-Review you summary detail before launching your instance!
-
-
-<img src="">
-To create an EC2 instance, follow these instructions:
-Launch the AWS Management Console.
-Navigate to the Amazon EC2 service.
-Click on "Launch Instance" to start the instance creation process. In this example we will name our instance "Windowsbox"
-
-<img src="">
-Teardown Procedure
+## Teardown Procedure ##
 There is a specific order that you must follow when tearing down resources in AWS VPC. 
-1.	Detach the NAT gateways: If NAT gateways are present in the VPC, delete them. It will take few minutes to be patient.
-2.	Release Elastic IPs: You cannot release the Elastic IP’s until the NAT gateways deletion process has completed.
-3.	Delete all resources: Before deleting the VPC, ensure that all resources within the VPC are deleted. This includes EC2 instances.
-4.	Delete security groups: While you will not be charged for security groups, you can delete all security groups associated with the VPC. (Please do not delete the Default!)
-5.	Delete VPC: Finally, delete the VPC itself.
+1.	Dhttps://github.com/mindmotivate/multicloudclass/blob/main/launch-template-tutorial-test.md#create-an-ec2-instance-etach the NAT gateways: If NAT gateways are present in the VPC, delete them. It will take few minutes to be patient.<br>
+2.	Release Elastic IPs: You cannot release the Elastic IP’s until the NAT gateways deletion process has completed.<br>
+3.	Delete all resources: Before deleting the VPC, ensure that all resources within the VPC are deleted. This includes EC2 instances.<br>
+4.	Delete security groups: While you will not be charged for security groups, you can delete all security groups associated with the VPC. (Please do not delete the Default!)<br>
+5.	Delete VPC: Finally, delete the VPC itself.<br>
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/TeardownJPG.JPG" width="75%" height="75%">
    
