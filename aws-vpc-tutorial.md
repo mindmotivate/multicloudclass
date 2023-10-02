@@ -82,8 +82,9 @@ This gives you a visual representation while you build your VPC<br>
 Name your VPC (with one word only )
 Do not include “white spaces” in your naming conventions
 In this example we will name it: “firstvpc”
-As a general rule: Don’t use default VPC’s, it’s lazy and unprofessional
-![namevpc](https://github.com/mindmotivate/multicloudclass/assets/130941970/a679055d-e198-43f7-90f6-e7de3d31118c)
+As a general rule: Don’t use default VPC’s, it’s lazy and unprofessional<br>
+![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/8f141d7b-8b8a-4dba-aa53-6ab7ccdacbc1)
+
 
 ## Intro to OCTECT’s ##
 A few basic concepts related to IP address format:<br> 
