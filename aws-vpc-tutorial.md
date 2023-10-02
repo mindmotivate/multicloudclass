@@ -8,7 +8,7 @@ Motivated Mindstate
 Greeting future AWS Cloud Engineers!
 Before we get into all of the fun and confusing technical jargon surrounding Virtual Private Clouds, allow me provide a few analogies to help set the stage for what we will be learning today!
 
-Think of a Amazon Virtual Private Cloud (VPC)  like a virtual data center in the cloud. It’s a private space that you can create in the cloud to store your data and run your applications. It’s actually a bit like having your own private room in a shared house.
+Think of a Amazon **Virtual Private Cloud** (VPC)  like a virtual data center in the cloud. It’s a private space that you can create in the cloud to store your data and run your applications. It’s actually a bit like having your own private room in a shared house.
 
 A **VPC** is made up of smaller networks called subnets. Think of subnets as different rooms within your private space. Each subnet can have its own rules and settings, like who can enter and what they can do. 
 
