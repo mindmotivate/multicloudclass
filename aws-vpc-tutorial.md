@@ -20,7 +20,7 @@ An **internet gateway** is like a door that connects your VPC to the internet. I
 
 **Security groups** are like bouncers that control who can enter and exit your private space. They make sure that only authorized people can access your data and applications.
 
-NACL (Network Access Control List): Think of NACL as a security gatekeeper at the entrance of a neighborhood. It operates at the subnet level and controls traffic by allowing or denying access based on predefined rules. Just like a gatekeeper checks who can enter the neighborhood, NACL checks the source and destination IP addresses to determine if traffic is allowed or denied. It also specifies the return traffic that must be allowed1.
+**NACL** (Network Access Control List): Think of NACL as a security gatekeeper at the entrance of a neighborhood. It operates at the subnet level and controls traffic by allowing or denying access based on predefined rules. Just like a gatekeeper checks who can enter the neighborhood, NACL checks the source and destination IP addresses to determine if traffic is allowed or denied. It also specifies the return traffic that must be allowed1.
 
 **OK… So everything is crystal clear right?
 If not, don’t worry. Follow along as  I explain with more “technical” detail!**  
