@@ -74,8 +74,7 @@ This will serve as a reminder to help prevent any future issues or accidental de
 
 
 ## Step 4: Click “Create VPC” 
-
-Click: “VPC and more”
+Once you arrive at the "Create VPC" screen, go ahead and click: “VPC and more”<br>
 This gives you a visual representation while you build your VPC<br>
 
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/fullcreatevpcscreen.png" width="100%" height="100%">
