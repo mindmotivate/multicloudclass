@@ -52,7 +52,7 @@ For additional documentation on VPC’s please refer here:[AWS::VPC](https://doc
 
 ## Step 1: Navigate to your top search bar and type: "VPC"
 You should see the following VPC dashboard:
-<![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/eba6d2f5-3aba-480f-804a-f477cd29804d)width="50%" height="50%">
+![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/eba6d2f5-3aba-480f-804a-f477cd29804d)
 
 
 ## Step 2: Select your desired region. 
