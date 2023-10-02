@@ -48,7 +48,7 @@ If not, don’t worry. Follow along as  I explain with more “technical” deta
 •	**Network Access Control Lists (NACL)**: NACL is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets. You might set up network ACLs with rules similar to your security groups to add an additional layer of security to your VPC. The default network ACL is configured to allow all traffic to flow in and out of the subnets to which it is associated.
 
 *Let’s create a Virtual Private Cloud!
-For additional documentation on VPC’s please refer here:* (link)
+For additional documentation on VPC’s please refer here:[AWS::VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 
 ## Step 1: Navigate to your top search bar and type: VPC
 You should see the following VPC dashboard:
