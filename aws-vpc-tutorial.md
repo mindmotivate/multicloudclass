@@ -230,10 +230,10 @@ VPC Endpoints: (default)<br>
 
 ## Teardown Procedure ##
 There is a specific order that you must follow when tearing down resources in AWS VPC. 
-1.	Dhttps://github.com/mindmotivate/multicloudclass/blob/main/launch-template-tutorial-test.md#create-an-ec2-instance-etach the NAT gateways: If NAT gateways are present in the VPC, delete them. It will take few minutes to be patient.<br>
+1. If NAT gateways are present in the VPC, delete them. It will take few minutes to be patient.<br>
 2.	Release Elastic IPs: You cannot release the Elastic IP’s until the NAT gateways deletion process has completed.<br>
 3.	Delete all resources: Before deleting the VPC, ensure that all resources within the VPC are deleted. This includes EC2 instances.<br>
 4.	Delete security groups: While you will not be charged for security groups, you can delete all security groups associated with the VPC. (Please do not delete the Default!)<br>
 5.	Delete VPC: Finally, delete the VPC itself.<br>
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/TeardownJPG.JPG" width="75%" height="75%">
+
    
