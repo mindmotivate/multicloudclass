@@ -74,6 +74,7 @@ This will serve as a reminder to help prevent any future issues or accidental de
 
 
 ## Step 4: Click “Create VPC” 
+![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/ef1145f2-6a60-4b92-8206-4f1aa86e3577)<br>
 Once you arrive at the "Create VPC" screen, go ahead and click: “VPC and more”<br>
 This gives you a visual representation while you build your VPC<br>
 
