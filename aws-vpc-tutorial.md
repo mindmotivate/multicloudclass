@@ -50,22 +50,24 @@ If not, don’t worry. Follow along as  I explain with more “technical” deta
 *Let’s create a Virtual Private Cloud!
 For additional documentation on VPC’s please refer here:[AWS::VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 
-## Step 1: Navigate to your top search bar and type: VPC
+## Step 1: Navigate to your top search bar and type: "VPC"
 You should see the following VPC dashboard:
-![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/b0c4ad48-1956-4854-9c79-f8f367dd3c26)
+<![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/eba6d2f5-3aba-480f-804a-f477cd29804d)width="50%" height="50%">
 
 
 ## Step 2: Select your desired region. 
-(As stated in the lecture, be sure to do a bit of due diligence here regarding region selection.) We will use N. Virginia in this example.
+(As stated in the lecture, be sure to do a bit of due diligence here regarding region selection.) We will use N. Virginia in this example.<br>
 
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/chooseregion.png" width="25%" height="25%">
 
-Navigate to “Your VPC” on the left side of the page
-Please note that every region should have a “Default VPC” already established
-Do not make any changes to the settings of your "default VPC"
-
 ## Step 3: We will rename our “Default VPC” as “Do Not Touch” 
-It is good practice to do this for any region that you are working in!
+Navigate to “Your VPC” on the left side of the page<br>
+![image](https://github.com/mindmotivate/multicloudclass/assets/130941970/437939a9-48ba-44a6-b46d-32db0fea753a)
+
+Please note that every region should have a “Default VPC” already established<br>
+Do not make any changes to the settings of your "default VPC"<br>
+
+It is good practice to do this for any region that you are working in!<br>
 This will serve as a reminder to help prevent any future issues or accidental deletions<br> 
 
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/vpcintances.png" width="105%" height="105%">
