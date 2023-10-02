@@ -222,11 +222,11 @@ VPC Endpoints: (default)<br>
 
 ## Step 10: Create Security Groups for each VPC ##
 *For instructions on how to setup a security group refer to the following documentation:<br>*
-[AWS::SG](https://github.com/mindmotivate/multicloudclass/blob/main/launch-template-tutorial-test.md#create-a-security-group-)
+[Security Group Tutorial](https://github.com/mindmotivate/multicloudclass/blob/main/launch-template-tutorial-test.md#create-a-security-group-)
 
 ## Step 11:Create an EC2 instance ## 
 *For instructions on how to create an EC2 instances refer to the following documentation:<br>*
-[AWS::EC2](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+[EC2 Tutorial](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 
 ## Teardown Procedure ##
 There is a specific order that you must follow when tearing down resources in AWS VPC. 
