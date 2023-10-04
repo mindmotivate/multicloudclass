@@ -4,8 +4,8 @@
 
 
 
-## Greeting future AWS Cloud Engineers! <a name="example-templates-autoscaling-full-stack-template"></a>
-Greeting future AWS Cloud Engineers!
+## Greetings future AWS Cloud Engineers! <a name="example-templates-autoscaling-full-stack-template"></a>
+Greetings future AWS Cloud Engineers!
 Before we get into all of the fun and confusing technical jargon surrounding Virtual Private Clouds, allow me provide a few analogies to help set the stage for what we will be learning today!
 
 Think of a Amazon **Virtual Private Cloud** (VPC)  like a virtual data center in the cloud. It’s a private space that you can create in the cloud to store your data and run your applications. It’s actually a bit like having your own private room in a shared house.
