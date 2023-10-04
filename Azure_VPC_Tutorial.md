@@ -1,10 +1,7 @@
 
 # Creating an Azure Virtual Private Network using your Azure Account
 
-
-![motivatedmindstatelogo](https://github.com/mindmotivate/multicloudclass/assets/130941970/9b1d52bb-6b5c-46da-a431-1e72e843fd2f)width="50%" height="50%"
-
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/octect_table.JPG" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-azure-vpc/mmlogo.PNG" width="15%" height="15%">
 
 1. **Log in to the Azure portal**: Go to the [Azure portal](https://portal.azure.com/) and sign in with your credentials.
 
