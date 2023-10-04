@@ -232,6 +232,10 @@ VPC Endpoints: (default)<br>
 5. Add inbound and outbound rules as needed (HTTP IPV4 / SSH IPv4 / RDP IPb4)<br>
 6. (Optional)Choose "Create Key Pair" Windows (.pem) <br>
 
+## Step 11:Create an EC2 instance ## 
+*For instructions on how to create an EC2 instances refer to the following documentation:<br>*
+[EC2 Tutorial](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+
 ## Create an EC2 instance: ##
 1. From Amazon EC2 console, navigate to Instances and choose Launch Instance and assign matching naming convention<br>
 2. Select an Amazon Machine Image (default) and choose Next.<br>
@@ -239,10 +243,6 @@ VPC Endpoints: (default)<br>
 4. Select the VPC we previously created with the instance and choose a subnet within that VPC.<br>
 5. Configure any additional settings as needed (such as User Data).<br>
 6. Review your settings and launch your instance.<br>
-
-## Step 11:Create an EC2 instance ## 
-*For instructions on how to create an EC2 instances refer to the following documentation:<br>*
-[EC2 Tutorial](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 
 ## Teardown Procedure ##
 There is a specific order that you must follow when tearing down resources in AWS VPC.<br>
