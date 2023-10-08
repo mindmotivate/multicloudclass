@@ -83,9 +83,10 @@ Fill out the required fields:<br>
     **Run with acure spot discount:** Leave the checkbox unchecked <br>
     <br>
     <br>![spotdiscount](https://github.com/mindmotivate/multicloudclass/assets/130941970/54ce64c8-73be-4fd9-9fb4-ad6cc5503146)
-
     <br>
     **Size:** We will use the default option for this category <br>
+    <br>
+    ![sizevm](https://github.com/mindmotivate/multicloudclass/assets/130941970/0f2deea2-b153-4861-a624-7a2d56722dbb)<br>
 
 
 
