@@ -28,89 +28,15 @@ Ok, Let's Begin!<br>
 ![vmportal3](https://github.com/mindmotivate/multicloudclass/assets/130941970/2ab965b4-8222-4f0b-91f1-c8ae5e5ee363)
 
     **Alternate Method 3:**
-    Upon selecting the "three lines" at the top left corner of your screen, you will review a list of resources and services which includes virtual machines:<br>
-  ![threelinesicon](https://github.com/mindmotivate/multicloudclass/assets/130941970/ee5b6268-c90d-452c-8570-9a789c595dca)
-<br>  
+    Upon selecting the "three lines" at the top left corner of your screen, you will review a list of resources and services which        includes virtual machines:<br>
 <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/bf49c6c9-3632-4343-b5b6-fb6f1ff2959a" width="50%" height="50%"><br>
 
-**Alternate Method 4:**
-   Although we will not cover this method in this tutotial, you have the ability to create a VM using the "CLI"(command line interface)<br>
+    **Alternate Method 4:**  Although we will not cover this method in this tutotial, you have the ability to create a VM using the **( 
+    "CLI"(command line interface)**
 
  *As you can see, there are a variety of menu options at your disposal!<br>*
 
-3. **Create a resource group** > **Networking** > **Virtual network**.
-Fill out the required fields:<br>
-
-**Project Details**<br>
-    <br>
-    **Subscription:** In order to proceed you must ensure that a Subscription is attached to your VM.<br>
-    **Resource Groups:** Here will name our resource group. Select "Create New" (in blue letters)<br>
-   
-    *(For the purposes of this tutorial we will name our resource group "VMdemo")*
-   ![Demogroupname](https://github.com/mindmotivate/multicloudclass/assets/130941970/a9846886-74b3-44f6-8372-eea35191eb9a)<br>
-
-
-    **Region:** Azure provides one or more geographical regions in which you may build your network. Regions allow you to meet specific data and compliance requirements.<br> 
-   
-  ![regionselectionJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/9e961514-6bcd-4ded-9389-74ccf5835853)<br>
-
-  **Availability Options:** Multiple Availability Zones provide an increased level of control & stability over your data.<br> 
-![availoptions](https://github.com/mindmotivate/multicloudclass/assets/130941970/2e744396-168f-4693-a3f3-1c1dcf5951bb)<br>
-<br>
-  **Availability Zone:** These are physically separate zones, that lie within an Azure region. They drastically improve the avaibility of your VMs. Typically, there are three Availability Zones per supported Azure region.
-<br>
-![3AZs](https://github.com/mindmotivate/multicloudclass/assets/130941970/56832148-bd83-4ef0-81a5-f8a9efad06d6)<br>
-  *Notice that after you select your specificied number of regions, You will see the coresponding number of VM names displayed in the "Virtual Machine Name" box* <br> 
-(Example: If you select 3 Availability Zones, you will see three enumerated VM names appear<br>
-<br>
-![vmnamecreations](https://github.com/mindmotivate/multicloudclass/assets/130941970/8cec03e1-d1b6-44d9-bf0a-f576d1054b05)<br>
-<br>
-    **Security Type:<br>**
-    ![standardsecurity](https://github.com/mindmotivate/multicloudclass/assets/130941970/857ad278-2e26-4952-8500-00ec3045bdb9)
-    <br> 
-    **Image:<br>**
-    ![seeallimages](https://github.com/mindmotivate/multicloudclass/assets/130941970/b06a13c7-9221-425c-befb-c06c9a8d458d)<br>
-    <br>
-    ![marketplace](https://github.com/mindmotivate/multicloudclass/assets/130941970/95cb8692-a104-439c-bb13-d662feffd027)<br>
-    <br>
-    ![unbuntu22gen2](https://github.com/mindmotivate/multicloudclass/assets/130941970/35da8f80-187f-40a6-83a5-8a1428df8ca3)<br>
-    <br>
-    **VM Architecture:<br>**
-    ![VMarchitecture](https://github.com/mindmotivate/multicloudclass/assets/130941970/cac296dd-6c77-422d-b191-35dc601d53e9)<br>
-    <br>
-    <br>
-    <br>
-    **Run with acure spot discount:** Leave the checkbox unchecked <br>
-    <br>
-    <br>![spotdiscount](https://github.com/mindmotivate/multicloudclass/assets/130941970/54ce64c8-73be-4fd9-9fb4-ad6cc5503146)
-
-    <br>
-    **Size:** We will use the default option for this category <br>
-
-
-
-    
-**Admin Default Category**: <br>
-For the following categories you will simply use the default settings:<br>
-       <br>
-       • **Authentication Type:** SSH Public Key<br>
-       • **Username:** azureuser <br>
-       • **SSH Public Key Source:** generate new key pair <br>
-       • **Key Pair Name:** VMDemo-1<br>
-
-Your screen should look similar to this:<br>
-![Adminaccountdefaults](https://github.com/mindmotivate/multicloudclass/assets/130941970/a5ca4907-e9d9-4ea2-81a7-5358333a7ac3)
-
-
-
-
-
-In the Azure portal, select **Create a resource** > **High availability** > **Availability Zones**. Fill out the required fields,
-
-
-
-
-7. , including the name of your virtual network, the address space, and the subnet details. Make sure to select **US East** as the region for your virtual network.
+7. select **Create a resource** > **Networking** > **Virtual network**. Fill out the required fields, including the name of your virtual network, the address space, and the subnet details. Make sure to select **US East** as the region for your virtual network.
 Create a Virtual Network:
 •	Log in to the Azure portal.
 •	Select Create a resource > Networking > Virtual network.
