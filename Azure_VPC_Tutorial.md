@@ -1,7 +1,6 @@
 
 # Creating an Azure Virtual Private Network using your Azure Account
 
-
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-azure-vpc/mmlogo.PNG" width="15%" height="15%">
 
 In this tutorial we will walk through the various steps requiredfor creating and launching a Virtual Private Network on the Microsoft Azure Cloud. We will begin with the creation of a "Virtual Machine" (in the world of AWS, a virtual machine would be referred to as an EC2) and then we will proceed to create our first Virtual Private Cloud.<br>
@@ -45,11 +44,10 @@ Fill out the required fields:<br>
     <br>
     **Subscription:** In order to proceed you must ensure that a Subscription is attached to your VM.<br>
     **Resource Groups:** Here will name our resource group. Select "Create New" (in blue letters)<br>
-   
-    *(For the purposes of this tutorial we will name our resource group "VMdemo")*
+    <br>
+    *(For the purposes of this tutorial we will name our resource group "VMdemo")*<br>
    ![Demogroupname](https://github.com/mindmotivate/multicloudclass/assets/130941970/a9846886-74b3-44f6-8372-eea35191eb9a)<br>
-
-
+    <br>
     **Region:** Azure provides one or more geographical regions in which you may build your network. Regions allow you to meet specific data and compliance requirements.<br> 
    
   ![regionselectionJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/9e961514-6bcd-4ded-9389-74ccf5835853)<br>
@@ -57,11 +55,10 @@ Fill out the required fields:<br>
   **Availability Options:** Multiple Availability Zones provide an increased level of control & stability over your data.<br> 
 ![availoptions](https://github.com/mindmotivate/multicloudclass/assets/130941970/2e744396-168f-4693-a3f3-1c1dcf5951bb)<br>
 <br>
-  **Availability Zone:** These are physically separate zones, that lie within an Azure region. They drastically improve the avaibility of your VMs. Typically, there are three Availability Zones per supported Azure region.
+  **Availability Zone:** These are physically separate zones, that lie within an Azure region. They repsrecent the phyiscal locations of the AZ data centers.  By having your data stored in multiple locations (ie:redundancy) you n drastically improve avaibility. There are typically three Availability Zones per supported Azure region.<br>
 <br>
 ![3AZs](https://github.com/mindmotivate/multicloudclass/assets/130941970/56832148-bd83-4ef0-81a5-f8a9efad06d6)<br>
-  *Notice that after you select your specificied number of regions, You will see the coresponding number of VM names displayed in the "Virtual Machine Name" box* <br> 
-(Example: If you select 3 Availability Zones, you will see three enumerated VM names appear<br>
+  *Notice that after you select your specificied number of regions, You will see the coresponding number of VM names displayed in the "Virtual Machine Name" box: VMdemo-1, VMdemo-2, VMdemo-3*<br>
 <br>
 ![vmnamecreations](https://github.com/mindmotivate/multicloudclass/assets/130941970/8cec03e1-d1b6-44d9-bf0a-f576d1054b05)<br>
 <br>
@@ -71,9 +68,9 @@ Fill out the required fields:<br>
     **Image:<br>**
     ![seeallimages](https://github.com/mindmotivate/multicloudclass/assets/130941970/b06a13c7-9221-425c-befb-c06c9a8d458d)<br>
     <br>
-    ![marketplace](https://github.com/mindmotivate/multicloudclass/assets/130941970/95cb8692-a104-439c-bb13-d662feffd027)<br>
+    <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/95cb8692-a104-439c-bb13-d662feffd027" width="55%" height="55%"><br>
     <br>
-    ![unbuntu22gen2](https://github.com/mindmotivate/multicloudclass/assets/130941970/35da8f80-187f-40a6-83a5-8a1428df8ca3)<br>
+    <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/35da8f80-187f-40a6-83a5-8a1428df8ca3" width="35%" height="35%"><br>
     <br>
     **VM Architecture:<br>**
     ![VMarchitecture](https://github.com/mindmotivate/multicloudclass/assets/130941970/cac296dd-6c77-422d-b191-35dc601d53e9)<br>
@@ -81,11 +78,10 @@ Fill out the required fields:<br>
     <br>
     <br>
     **Run with acure spot discount:** Leave the checkbox unchecked <br>
-    <br>
     <br>![spotdiscount](https://github.com/mindmotivate/multicloudclass/assets/130941970/54ce64c8-73be-4fd9-9fb4-ad6cc5503146)
     <br>
-    **Size:** We will use the default option for this category <br>
     <br>
+    **Size:** We will use the default option for this category <br>
     ![sizevm](https://github.com/mindmotivate/multicloudclass/assets/130941970/0f2deea2-b153-4861-a624-7a2d56722dbb)<br>
 
 
@@ -106,34 +102,241 @@ Your screen should look similar to this:<br>
 
 
 
-In the Azure portal, select **Create a resource** > **High availability** > **Availability Zones**. Fill out the required fields,
+**Inbound Port Rules**: <br>
+• For the "Inbound Port Rules" we will be selecting<br>
+• Public inbound ports: choose allow selected port<br>
+• Select inbound ports: select both HTTP(80) and SSH(22) options<br>
+<br>
+Your dashboard should look similar to this:<br>
+<br>
+![inboundrules](https://github.com/mindmotivate/multicloudclass/assets/130941970/7ddef758-e251-4836-926e-0dc38a643523)
+<br>
+<br>
+**Disk:**
+<br>
+Please skip past the "Disk" category as we will not make any changes at this time<br>
+
+4. **Create a Virtual Network**<br>
+   Next we will fill out the required field regarding out Virtual Network. We will name our subnet and then establish our CIDR and our subnets.<br>
+   <br>
+    **Select "Create New**<br>
+   We will name our Vnet using the same name we previously created for our virtual network with the addition of "vnet"<br>
+   Therefore our Vnet name will be:"VMdemo-vnet"<br>
+    <img src ="https://github.com/mindmotivate/multicloudclass/assets/130941970/e01e56c1-d8b3-4b4b-9422-1457dadcc796">
+   **Address Space**: <br>
+Here, we will add our new CIDR<br>
+For this tutorial, we are using: **10.202.0.0/16**<br>
+**(Please remember to NEVER use the DEFAULT CIDR that is provided for you)** <br>
+
+![donotusedefaultpng](https://github.com/mindmotivate/multicloudclass/assets/130941970/5cb5e27f-ff9b-4965-84b4-0421df9a4d60)<br>
+<br>
+![ciderrangeJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/1b419ebb-ef2a-4558-839f-12ad07e6af87)<br>
+
+   **Subnets**: <br>
+Here we will establish our subnets<br>
+As always, we will plan our subnets by utilizing a planning sheet:<br>
+<br>
+Example Planning Document:<br>
+PublicA: 10.202.1.0/24<br>
+PublicA: 10.202.2.0/24<br>
+PublicA: 10.202.3.0/24<br>
+<br>
+For more info reagrding subnet planning please visit the previous tutorial:<br>
+*(The thought process and rules for building/naming subnets are similar to AWS)*<br>
+<br>
+<br>
+![subnetnames](https://github.com/mindmotivate/multicloudclass/assets/130941970/faf9162d-4155-4810-b0d8-cc20c5a78574)<br>
+<br>
+*Note: We will only utilizing the **"public"** subnet ranges, therefore you will have three subnets total*<br>
+<br>
+Similar to AWS when you enter in the subnet values, you should see the number of available addresses displayed on the right side of each entry
+In our example you will notice the number "256" to the left of the subnet addresss. Use this as a method to "self check" your work. If you accidentally type the wrong number or accidentally add whitespace at the ened of the entry, you will see a different numerical value.<br>
+<br>
+<br>
+![256addresses](https://github.com/mindmotivate/multicloudclass/assets/130941970/4b5b49f7-3bb8-43c4-99e8-f9eb5258ba25)<br>
+<br>
+After the subnetting is complete, click Ok: and proceed to Networking section<br>
+<br>
+**Networking**<br>
+Regarding the "Networking" we make the following selections:
+• Virtual Network: VMdemo-vnet<br>
+• Subnet: PublicA<br>
+• Public IP: VMdemo-1-ip, VMdemo-2-ip, VMdemo-3-ip<br>
+• NIC network security group: Basic<br>
+• Public inbound ports: Alloe Selected Ports<br>
+• Select inbound ports: HTTP(80), SS(220<b)r>
+• Delete NIC when VM is deleted: Check Box<br>
+• Enable accelerated networking: Uncheck BoxCheck<br>
+<br>
+**Load Balancing**<br>
+• Load Balancing options: None<br>
+<br>
+Ater the previous selections have been made, your screen should look similar to this:
+<br>
+Next, we will proceed to the Management section<br>
+<br>
+4. **Management**<br>
+No changes will be made here. Simply ensure that your subscription is under the "Basic Plan" 
+Otherwise continue to the next section which is: "Monitoring"<br>
+<br>
+<br>
+Click Monitoring next<br>
+![monitoringnext](https://github.com/mindmotivate/multicloudclass/assets/130941970/770ff8a8-1b08-4f21-bf60-298b75e9d601)
+<br>
+4. **Monitoring**<br>
+On the Monitoring page, make the following selections:<br>
+<br>
+We will enable recommended alert rules by clicking the checkbox:<br>
+<br>![enablealerts](https://github.com/mindmotivate/multicloudclass/assets/130941970/8110afaf-56bd-4edf-b3da-208d4ff66fd8)
+<br>
+After clicking you will see another menu appear. We wiill simply click "Save"
+<br>
+![alertsave](https://github.com/mindmotivate/multicloudclass/assets/130941970/761011fa-6a0b-4bee-bb0b-3cfbebba66cc)
+<br>
+![alertsavetwo](https://github.com/mindmotivate/multicloudclass/assets/130941970/b77564c2-eb43-4cc7-acdd-e3c3f54c757d)
+<br>
+We will process to the "Advanced" section next<br>
+<br>![advancednext](https://github.com/mindmotivate/multicloudclass/assets/130941970/e200cd5a-4e6c-43d3-a1eb-49fc6bd3eb0c)
+<br>
+Click Advanced next<br>
+![advancednext](https://github.com/mindmotivate/multicloudclass/assets/130941970/2c079a21-b0a0-43ae-ac5e-f1613817bf40)
+<br>
+<br>
+**Enter Userdata**<br>
+<br>
+We will naviagte to the "add user data" box:<br>
+![userdataJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/24fc8b69-1c1f-4343-b6f5-95ab21530358)<br>
+<br>
+<br>
+Please copy and paste the following script in the box:<br>
+**Copy Launch Script Below:**\.
+
+```
+#!/bin/bash
+
+# Update system and install Apache2 and jq
+apt-get update -y
+apt-get install -y apache2 jq
+
+# Ensure Apache2 is running and enabled on boot
+systemctl start apache2
+systemctl enable apache2
+
+# Fetch Azure VM metadata
+METADATA=$(curl -H Metadata:true -s "http://169.254.169.254/metadata/instance?api-version=2021-01-01")
+
+# Log metadata for debugging purposes
+echo "$METADATA" > /tmp/metadata.json
+
+# Extract data from the fetched metadata
+local_ipv4=$(echo "$METADATA" | jq -r '.network.interface[0].ipv4.ipAddress[0].privateIpAddress')
+az=$(echo "$METADATA" | jq -r '.compute.location')
+vm_id=$(echo "$METADATA" | jq -r '.compute.vmId')
+
+# Generate an HTML file with the extracted data
+cat <<EOF > /var/www/html/index.html
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+<title>Details for Azure VM</title>
+</head>
+<body>
+<div>
+<h1>Azure Instance Details</h1>
+<h1>Samurai Katana</h1>
+
+<p><b>Instance Name:</b> $(hostname -f)</p>
+<p><b>Instance Private IP Address:</b> ${local_ipv4}</p>
+<p><b>Availability Zone:</b> ${az}</p>
+<p><b>Virtual Machine ID:</b> ${vm_id}</p>
+</div>
+</body>
+</html>
+EOF
+
+# Remove the temporary file
+rm /tmp/metadata.json
+
+```
+<br>
+<br>
+
+![pasteecript](https://github.com/mindmotivate/multicloudclass/assets/130941970/fa539fe0-819a-4c04-9856-a4c5650651aa)<br>
+<br>
+4. **Tags**<br>
+On the "Tags" page, create the following tags:<br>
+<br>
+• Service: Homepage<br>
+• Company: Microsoft<br>
+• Location: Austin<br>
+<br>
+<br>
+![createtags](https://github.com/mindmotivate/multicloudclass/assets/130941970/e6104c56-002a-4267-b571-bc11920f3320)
+<br>
+After applying Tags we will click "Review + Create"<br>
+<br>
+![reviewcreate](https://github.com/mindmotivate/multicloudclass/assets/130941970/08169e98-9189-4cfe-9870-b85ec5eaee86)
+<br>
 
 
 
+3. **Create your VM!**
 
-7. , including the name of your virtual network, the address space, and the subnet details. Make sure to select **US East** as the region for your virtual network.
-Create a Virtual Network:
-•	Log in to the Azure portal.
-•	Select Create a resource > Networking > Virtual network.
-•	Fill out the required fields, including the name of your virtual network, the address space, and the subnet details.
-•	Make sure to select US East as the region for your virtual network.
-•	Click on Review + create and then click on Create.
-8. **Create availability zones**: In the Azure portal, select **Create a resource** > **High availability** > **Availability Zones**. Fill out the required fields, including the name of your availability zone and the region details. Make sure to select **US East** as the region for your availability zone.
+After we create our VM:<br>
+![createvm](https://github.com/mindmotivate/multicloudclass/assets/130941970/2ac9b913-f19a-4241-bff4-e1e2ccef81e0)<br>
 
-9. **Create inbound rules**: In the Azure portal, select your virtual network and then select **Firewalls and virtual networks** > **Inbound security rules**. Create two inbound rules: one for HTTP and one for SSH, both allowing traffic from anywhere on IPV4.
+We will see a pop up menu asking if we want to download private keys. Select yes and download them to your computer"<br>
+![downloadkey](https://github.com/mindmotivate/multicloudclass/assets/130941970/c1ce3f70-a4a6-4ae0-a478-cfd238c04688)
 
-10. **Choose an Amazon Linux 2023 AMI machine image**: In the Azure portal, select **Create a resource** > **Compute** > **Virtual machine**. Choose an Amazon Linux 2023 AMI machine image from the list of available images.
-•	In the Azure portal, select Create a resource > Compute > Virtual machine.
-•	Choose an Amazon Linux 2023 AMI machine image from the list of available images.
-•	Fill out the required fields, including the name of your virtual machine, username, password, and disk type.
-•	Make sure to select your virtual network and availability zone in this step.
-•	Click on Review + create and then click on Create.
+Initial Deployment in Progress:<br>
+
+Deployment in Progress:<br>
+![deploymentinprogressJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/5551c734-9ec6-4715-80d4-cf7172d29d29)<br>
+![deploymentinprogress](https://github.com/mindmotivate/multicloudclass/assets/130941970/16055edf-bfb1-4502-95eb-e2b026fc8c7b)<br>
+
+Final Deployment in Progress:<br>![deploymentinprogress](https://github.com/mindmotivate/multicloudclass/assets/130941970/d6bf3721-7794-4965-93fd-93b861260e00)<br>
+
+![deploymentcreate3](https://github.com/mindmotivate/multicloudclass/assets/130941970/c8e0093a-23fa-4e90-9cd2-ab89499a2fe1)<br>
+
+Wait a few moments for your instance to be created:<br>
+
+Validation Complete Screen:<br>
+<br>
+![resourcedashboardJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/48f574d5-0521-4bd8-9310-b13e137d3336)<br>
+<br>
+![ipaddress](https://github.com/mindmotivate/multicloudclass/assets/130941970/23d96bd5-4fe5-4004-a08d-f310a5b538b9)<br>
+<br>
+
+Type http:// in the search bar first before pasting the public IP address of your new instance<br>
+![http](https://github.com/mindmotivate/multicloudclass/assets/130941970/52cd78bf-e351-4086-8138-95190df0fd03)<br>
+
+Instance details should be displayed on the screen:<br>
+
+<br>
+![InstanceDetails](https://github.com/mindmotivate/multicloudclass/assets/130941970/7b5369f9-0347-4362-aa2f-90bd03f493ee)
+<br>
 
 
-11. **Configure your virtual machine**: Fill out the required fields, including the name of your virtual machine, username, password, and disk type. Make sure to select your virtual network and availability zone in this step.
+10. **Teardown Procedure:**<br>
+Type "resource groups" in the top search bar<br>
+Select the vpc you want to delete.<br>
+Click on the Delete resource group button.<br>
+In the confirmation dialog box,paste your copied resource group name<br>
+If you want to delete all associated resources with the virtual machine, select the Delete all resources checkbox.<br>
+Click on Delete to complete the deletion process.<br>
 
-12. **Connect to your virtual machine**: Once your virtual machine is created, you can connect to it using SSH or RDP.
+<br>
 
+![resourcegroups](https://github.com/mindmotivate/multicloudclass/assets/130941970/9af3b2c9-d830-421c-9ea5-ff1d011d340e)<br>
+<br>
+![clickresourcename](https://github.com/mindmotivate/multicloudclass/assets/130941970/dda08429-fc8e-42cf-919c-38584cd8427f)<br>
+<br>
+![deleteresourcegroup](https://github.com/mindmotivate/multicloudclass/assets/130941970/2e119c40-db01-4042-b05c-b07bc1588a32)<br>
+<br>
+![deletegroupsteps](https://github.com/mindmotivate/multicloudclass/assets/130941970/5190e31b-a0a7-4758-910b-36b6d9703a7d)<br>
+<br>
+
+**Cheat Sheet:**
 1. Sign in to your Azure account and navigate to the Azure portal.
 2. In the search box at the top of the portal, enter "Virtual machine" and select "Virtual machines" from the search results.
 3. Select "+ Add" to create a new virtual machine.
@@ -166,58 +369,4 @@ Create a Virtual Network:
 That's it! You should now have an Azure virtual machine instance created in the US East region with availability zones in three regions, two inbound rules (HTTP and SSH), and an Amazon Linux 2023 AMI machine image.
 
 
-## Plugins
-
-Dillinger is currently extended with the following plugins.
-Instructions on how to use them in your own application are linked below.
-
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
-
-
-## Development
-
-Want to contribute? Great!
-
-Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantaneously see your updates!
-
-Open your favorite Terminal and run these commands.
-
-First Tab:
-
-```sh
-node app
-```
-
-Second Tab:
-
-```sh
-gulp watch
-```
-
-(optional) Third:
-
-```sh
-karma test
-```
-
-#### Building for source
-
-For production release:
-
-```sh
-gulp build --prod
-```
-
-Generating pre-built zip archives for distribution:
-
-```sh
-gulp build dist --prod
 ```
