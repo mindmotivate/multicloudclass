@@ -11,21 +11,23 @@ In this tutorial we will walk through the various steps requiredfor creating and
 
 Ok, Let's Begin!<br>
 
-1. **Log in to the Azure portal**: Go to the [Azure portal](https://portal.azure.com/) and sign in with your credentials.<br>
+# 1. **Log in to the Azure portal** <br>
+**Go to the [Azure portal](https://portal.azure.com/) and sign in with your credentials.<br>**
 
 <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/efca307d-db83-4e9d-b93b-6560981b2b09" width="40%" height="40%">
 
-2. **Select "Virtual Machine" Icon**: Once you are inside the Azure portal, you can then proceed to create a "Virtual Machine"<br>
-    Please note that there are several ways to access and create various resources in Azure!<br>
+# 2. **Create a Virtual Machine**: 
+**Once you are inside the Azure portal, you can then proceed to create a "Virtual Machine"<br>**
+    *Please note that there are several ways to access and create various resources in Azure!<br>*
     We can simply select the: **"Create a Resource"** icon and naviagte to the **"Virtual Machine"** icon:<br>
-
-
-    **Alternate Method 1:** we can manually type in the words "virtual machine" via the portal search bar:
+    <br>
+    <br>
+    **Alternate Method 1:** we can manually type in the words "virtual machine" via the portal search bar:<br>
 ![vmportal](https://github.com/mindmotivate/multicloudclass/assets/130941970/fc539366-77d8-4002-9dbe-0840198cdc0d)
-
+    <br>
     **Alternate Method 2:** If you have previously used the virtual machine feature in the past, the icon may already be displayed on your dashboard!:<br> 
 ![vmportal3](https://github.com/mindmotivate/multicloudclass/assets/130941970/2ab965b4-8222-4f0b-91f1-c8ae5e5ee363)
-
+    <br>
     **Alternate Method 3:**
     Upon selecting the "three lines" at the top left corner of your screen, you will review a list of resources and services which includes virtual machines:<br>
   ![threelinesicon](https://github.com/mindmotivate/multicloudclass/assets/130941970/ee5b6268-c90d-452c-8570-9a789c595dca)
@@ -34,11 +36,13 @@ Ok, Let's Begin!<br>
 
 **Alternate Method 4:**
    Although we will not cover this method in this tutotial, you have the ability to create a VM using the "CLI"(command line interface)<br>
+    <br>
+    For more infrmation regarding the creation of a VM using Azure CLI refer to the following documentation:[AZURE::CLI](https://learn.microsoft.com/en-us/azure/virtual-network/quick-create-cli)<br>
+    <br>
+    ***As you can see, there are a variety of menu options at your disposal!<br>***
 
- *As you can see, there are a variety of menu options at your disposal!<br>*
-
-3. **Create a resource group** > **Networking** > **Virtual network**.
-Fill out the required fields:<br>
+# 3. **Create a resource group**
+Fill out the required fields reagrding project details:<br>
 
 **Project Details**<br>
     <br>
@@ -46,26 +50,30 @@ Fill out the required fields:<br>
     **Resource Groups:** Here will name our resource group. Select "Create New" (in blue letters)<br>
     <br>
     *(For the purposes of this tutorial we will name our resource group "VMdemo")*<br>
-   ![Demogroupname](https://github.com/mindmotivate/multicloudclass/assets/130941970/a9846886-74b3-44f6-8372-eea35191eb9a)<br>
+    <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/a9846886-74b3-44f6-8372-eea35191eb9a" width="75%" height="75%">
     <br>
     **Region:** Azure provides one or more geographical regions in which you may build your network. Regions allow you to meet specific data and compliance requirements.<br> 
-   
-  ![regionselectionJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/9e961514-6bcd-4ded-9389-74ccf5835853)<br>
+   <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/9e961514-6bcd-4ded-9389-74ccf5835853" width="75%" height="75%">
 
   **Availability Options:** Multiple Availability Zones provide an increased level of control & stability over your data.<br> 
-![availoptions](https://github.com/mindmotivate/multicloudclass/assets/130941970/2e744396-168f-4693-a3f3-1c1dcf5951bb)<br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/2e744396-168f-4693-a3f3-1c1dcf5951bb" width="75%" height="75%">
 <br>
   **Availability Zone:** These are physically separate zones, that lie within an Azure region. They repsrecent the phyiscal locations of the AZ data centers.  By having your data stored in multiple locations (ie:redundancy) you n drastically improve avaibility. There are typically three Availability Zones per supported Azure region.<br>
 <br>
-![3AZs](https://github.com/mindmotivate/multicloudclass/assets/130941970/56832148-bd83-4ef0-81a5-f8a9efad06d6)<br>
-  *Notice that after you select your specificied number of regions, You will see the coresponding number of VM names displayed in the "Virtual Machine Name" box: VMdemo-1, VMdemo-2, VMdemo-3*<br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/56832148-bd83-4ef0-81a5-f8a9efad06d6" width="75%" height="75%">
 <br>
-![vmnamecreations](https://github.com/mindmotivate/multicloudclass/assets/130941970/8cec03e1-d1b6-44d9-bf0a-f576d1054b05)<br>
+  ***Notice that after you select your specificied number of regions, You will see the coresponding number of VM names displayed in the "Virtual Machine Name" box: VMdemo-1, VMdemo-2, VMdemo-3***<br>
+<br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/56832148-bd83-4ef0-81a5-f8a9efad06d6" width="75%" height="75%">
+<br>
 <br>
     **Security Type:<br>**
+    Choose "Standard" for your security type<br>
     ![standardsecurity](https://github.com/mindmotivate/multicloudclass/assets/130941970/857ad278-2e26-4952-8500-00ec3045bdb9)
     <br> 
     **Image:<br>**
+    For image type, we will select an Unbuntu Machine from the Marketplace. Simply select the words: see all images" to search all marketplace products.
+    Type "Unbuntu in the search bar and locate the image entitled ***"Unbuntu Minimal 2204 LTS x64 Gen 2"<br>***
     ![seeallimages](https://github.com/mindmotivate/multicloudclass/assets/130941970/b06a13c7-9221-425c-befb-c06c9a8d458d)<br>
     <br>
     <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/95cb8692-a104-439c-bb13-d662feffd027" width="55%" height="55%"><br>
@@ -73,11 +81,13 @@ Fill out the required fields:<br>
     <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/35da8f80-187f-40a6-83a5-8a1428df8ca3" width="35%" height="35%"><br>
     <br>
     **VM Architecture:<br>**
+    Select 64 for tis options<br>
     ![VMarchitecture](https://github.com/mindmotivate/multicloudclass/assets/130941970/cac296dd-6c77-422d-b191-35dc601d53e9)<br>
     <br>
     <br>
     <br>
-    **Run with acure spot discount:** Leave the checkbox unchecked <br>
+    **Run with acure spot discount:**<br> 
+    Leave the checkbox unchecked <br>
     <br>![spotdiscount](https://github.com/mindmotivate/multicloudclass/assets/130941970/54ce64c8-73be-4fd9-9fb4-ad6cc5503146)
     <br>
     <br>
@@ -260,17 +270,20 @@ rm /tmp/metadata.json
 ```
 <br>
 <br>
-
-![pasteecript](https://github.com/mindmotivate/multicloudclass/assets/130941970/fa539fe0-819a-4c04-9856-a4c5650651aa)<br>
 <br>
-4. **Tags**<br>
+Entire script shold be pasted into the box as shown here:<br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/fa539fe0-819a-4c04-9856-a4c5650651aa" width="50%" height="50%">
+<br>
+
+
+4.**Tags**<br>
 On the "Tags" page, create the following tags:<br>
 <br>
 • Service: Homepage<br>
 • Company: Microsoft<br>
 • Location: Austin<br>
 <br>
-<br>
+
 ![createtags](https://github.com/mindmotivate/multicloudclass/assets/130941970/e6104c56-002a-4267-b571-bc11920f3320)
 <br>
 After applying Tags we will click "Review + Create"<br>
