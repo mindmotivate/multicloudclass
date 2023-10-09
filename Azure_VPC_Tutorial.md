@@ -126,7 +126,7 @@ Your dashboard should look similar to this:<br>
 <br>
 Please skip past the "Disk" category as we will not make any changes at this time<br>
 
-4. **Create a Virtual Network**<br>
+# 4. **Create a Virtual Network**<br>
    Next we will fill out the required field regarding out Virtual Network. We will name our subnet and then establish our CIDR and our subnets.<br>
    <br>
     **Select "Create New**<br>
@@ -293,7 +293,7 @@ After applying Tags we will click "Review + Create"<br>
 
 
 
-3. **Create your VM!**
+# 5. **Launch Your Virtual Machine**
 
 After we create our VM:<br>
 ![createvm](https://github.com/mindmotivate/multicloudclass/assets/130941970/2ac9b913-f19a-4241-bff4-e1e2ccef81e0)<br>
