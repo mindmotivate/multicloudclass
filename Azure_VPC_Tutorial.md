@@ -1,5 +1,5 @@
 
-# Creating an Azure Virtual Private Network using your Azure Account
+# How to Create a Virtual Private Network with Azure 
 
 <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-azure-vpc/mmlogo.PNG" width="15%" height="15%">
 
