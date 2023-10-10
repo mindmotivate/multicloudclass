@@ -282,8 +282,7 @@ On the "Tags" page, create the following tags:<br>
 • Company: Microsoft<br>
 • Location: Austin<br>
 <br>
-
-![createtags](https://github.com/mindmotivate/multicloudclass/assets/130941970/e6104c56-002a-4267-b571-bc11920f3320)
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/e6104c56-002a-4267-b571-bc11920f3320" width="60%" height="60%"><br>
 <br>
 After applying Tags we will click "Review + Create"<br>
 <br>
@@ -297,58 +296,60 @@ After applying Tags we will click "Review + Create"<br>
 After we create our VM:<br>
 ![createvm](https://github.com/mindmotivate/multicloudclass/assets/130941970/2ac9b913-f19a-4241-bff4-e1e2ccef81e0)<br>
 
-We will see a pop up menu asking if we want to download private keys. Select yes and download them to your computer"<br>
-![downloadkey](https://github.com/mindmotivate/multicloudclass/assets/130941970/c1ce3f70-a4a6-4ae0-a478-cfd238c04688)
-
+We will see a pop up menu asking if we want to download private keys. Select "yes" and download the key to your computer"<br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/c1ce3f70-a4a6-4ae0-a478-cfd238c04688" width="60%" height="60%"><br>
+<br>
 Initial Deployment in Progress:<br>
 
 Deployment in Progress:<br>
-![deploymentinprogressJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/5551c734-9ec6-4715-80d4-cf7172d29d29)<br>
-![deploymentinprogress](https://github.com/mindmotivate/multicloudclass/assets/130941970/16055edf-bfb1-4502-95eb-e2b026fc8c7b)<br>
-
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/5551c734-9ec6-4715-80d4-cf7172d29d29" width="75%" height="75%"><br>
+<br>
 Final Deployment in Progress:<br>![deploymentinprogress](https://github.com/mindmotivate/multicloudclass/assets/130941970/d6bf3721-7794-4965-93fd-93b861260e00)<br>
-
-![deploymentcreate3](https://github.com/mindmotivate/multicloudclass/assets/130941970/c8e0093a-23fa-4e90-9cd2-ab89499a2fe1)<br>
+Deployment Complete:<br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/c8e0093a-23fa-4e90-9cd2-ab89499a2fe1" width="75%" height="75%"><br>
+<br>
 
 Wait a few moments for your instance to be created:<br>
 
 Validation Complete Screen:<br>
 <br>
-![resourcedashboardJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/48f574d5-0521-4bd8-9310-b13e137d3336)<br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/48f574d5-0521-4bd8-9310-b13e137d3336" width="55%" height="55%"><br>
 <br>
-![ipaddress](https://github.com/mindmotivate/multicloudclass/assets/130941970/23d96bd5-4fe5-4004-a08d-f310a5b538b9)<br>
 <br>
 
+# 6. **Find Your IP Adress**<br>
+**Locate the IP address for your instance:**<br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/23d96bd5-4fe5-4004-a08d-f310a5b538b9" width="55%" height="55%"><br>
+<br>
 Type http:// in the search bar first before pasting the public IP address of your new instance<br>
 ![http](https://github.com/mindmotivate/multicloudclass/assets/130941970/52cd78bf-e351-4086-8138-95190df0fd03)<br>
 
 Instance details should be displayed on the screen:<br>
 
 <br>
-![InstanceDetails](https://github.com/mindmotivate/multicloudclass/assets/130941970/7b5369f9-0347-4362-aa2f-90bd03f493ee)
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/7b5369f9-0347-4362-aa2f-90bd03f493ee" width="55%" height="55%"><br>
+<br>
+<br>
+
+# 7. **Teardown Procedure:**<br>
+-Type "resource groups" in the top search bar<br>
+-Select the vpc you want to delete.<br>
+-Click on the "Delete resource group" button.<br>
+-In the confirmation dialog box, paste your copied resource group name<br>
+-If you want to delete all associated resources with the virtual machine, select the "Delete all resources" checkbox.<br>
+-Click on Delete to complete the deletion process.<br>
+
+
+<br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/9af3b2c9-d830-421c-9ea5-ff1d011d340e" width="65%" height="65%">
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/dda08429-fc8e-42cf-919c-38584cd8427f" width="65%" height="65%">
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/2e119c40-db01-4042-b05c-b07bc1588a32" width="65%" height="65%">
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/5190e31b-a0a7-4758-910b-36b6d9703a7d" width="65%" height="65%">
 <br>
 
 
-10. **Teardown Procedure:**<br>
-Type "resource groups" in the top search bar<br>
-Select the vpc you want to delete.<br>
-Click on the Delete resource group button.<br>
-In the confirmation dialog box,paste your copied resource group name<br>
-If you want to delete all associated resources with the virtual machine, select the Delete all resources checkbox.<br>
-Click on Delete to complete the deletion process.<br>
-
-<br>
-
-![resourcegroups](https://github.com/mindmotivate/multicloudclass/assets/130941970/9af3b2c9-d830-421c-9ea5-ff1d011d340e)<br>
-<br>
-![clickresourcename](https://github.com/mindmotivate/multicloudclass/assets/130941970/dda08429-fc8e-42cf-919c-38584cd8427f)<br>
-<br>
-![deleteresourcegroup](https://github.com/mindmotivate/multicloudclass/assets/130941970/2e119c40-db01-4042-b05c-b07bc1588a32)<br>
-<br>
-![deletegroupsteps](https://github.com/mindmotivate/multicloudclass/assets/130941970/5190e31b-a0a7-4758-910b-36b6d9703a7d)<br>
-<br>
-
-**Cheat Sheet:**
+# **Cheat Sheet:**<br>
+**Quick Reference Guide For Aforementioned Steps:**
 1. Sign in to your Azure account and navigate to the Azure portal.
 2. In the search box at the top of the portal, enter "Virtual machine" and select "Virtual machines" from the search results.
 3. Select "+ Add" to create a new virtual machine.
@@ -378,7 +379,7 @@ Click on Delete to complete the deletion process.<br>
         * SSH (22): Allow traffic from any source IP address (0.0.0.0/0).
 8. Review and create your virtual machine.
 
-That's it! You should now have an Azure virtual machine instance created in the US East region with availability zones in three regions, two inbound rules (HTTP and SSH), and an Amazon Linux 2023 AMI machine image.
+**That's it! You should now have an Azure virtual machine instance created in the US East region with availability zones in three regions, two inbound rules (HTTP and SSH), and an Amazon Linux 2023 AMI machine image.**
 
 
 ```
