@@ -42,14 +42,12 @@ Ok, Let's Begin!<br>
     ***As you can see, there are a variety of menu options at your disposal!<br>***
 
 # 3. **Create a resource group**
-Fill out the required fields reagrding project details:<br>
-
-**Project Details**<br>
+Fill out the required fields regarding **Project Details**<br>
     <br>
     **Subscription:** In order to proceed you must ensure that a Subscription is attached to your VM.<br>
     **Resource Groups:** Here will name our resource group. Select "Create New" (in blue letters)<br>
     <br>
-    *(For the purposes of this tutorial we will name our resource group "VMdemo")*<br>
+    *(For the purposes of this tutorial we will name our resource group "Demogroup")*<br>
     <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/a9846886-74b3-44f6-8372-eea35191eb9a" width="75%" height="75%">
     <br>
     **Region:** Azure provides one or more geographical regions in which you may build your network. Regions allow you to meet specific data and compliance requirements.<br> 
@@ -58,11 +56,11 @@ Fill out the required fields reagrding project details:<br>
   **Availability Options:** Multiple Availability Zones provide an increased level of control & stability over your data.<br> 
 <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/2e744396-168f-4693-a3f3-1c1dcf5951bb" width="75%" height="75%">
 <br>
-  **Availability Zone:** These are physically separate zones, that lie within an Azure region. They repsrecent the phyiscal locations of the AZ data centers.  By having your data stored in multiple locations (ie:redundancy) you n drastically improve avaibility. There are typically three Availability Zones per supported Azure region.<br>
+  **Availability Zone:** These are physically separate zones, that lie within an Azure region. They represent the physical locations of the AZ data centers.  By having your data stored in multiple locations (ie: redundancy) you drastically improve the avaibility of your resources. There are typically three Availability Zones per supported Azure region.<br>
 <br>
 <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/56832148-bd83-4ef0-81a5-f8a9efad06d6" width="75%" height="75%">
 <br>
-  ***Notice that after you select your specificied number of regions, You will see the coresponding number of VM names displayed in the "Virtual Machine Name" box: VMdemo-1, VMdemo-2, VMdemo-3***<br>
+  ***Notice that after you select your specificied number of regions, you will see the coresponding number of VM names displayed in the "Virtual Machine Name" box: VMdemo-1, VMdemo-2, VMdemo-3***<br>
 <br>
 <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/56832148-bd83-4ef0-81a5-f8a9efad06d6" width="75%" height="75%">
 <br>
@@ -78,21 +76,23 @@ Fill out the required fields reagrding project details:<br>
     <br>
     <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/95cb8692-a104-439c-bb13-d662feffd027" width="55%" height="55%"><br>
     <br>
-    <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/35da8f80-187f-40a6-83a5-8a1428df8ca3" width="35%" height="35%"><br>
+    <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/35da8f80-187f-40a6-83a5-8a1428df8ca3" width="25%" height="25%"><br>
     <br>
     **VM Architecture:<br>**
     Select 64 for tis options<br>
-    ![VMarchitecture](https://github.com/mindmotivate/multicloudclass/assets/130941970/cac296dd-6c77-422d-b191-35dc601d53e9)<br>
+    <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/cac296dd-6c77-422d-b191-35dc601d53e9" width="30%" height="30%"><br>
     <br>
     <br>
     <br>
     **Run with acure spot discount:**<br> 
     Leave the checkbox unchecked <br>
-    <br>![spotdiscount](https://github.com/mindmotivate/multicloudclass/assets/130941970/54ce64c8-73be-4fd9-9fb4-ad6cc5503146)
+     <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/54ce64c8-73be-4fd9-9fb4-ad6cc5503146" width="30%" height="30%"><br>
     <br>
     <br>
-    **Size:** We will use the default option for this category <br>
-    ![sizevm](https://github.com/mindmotivate/multicloudclass/assets/130941970/0f2deea2-b153-4861-a624-7a2d56722dbb)<br>
+    <br>
+    **Size:** We will use the default option for this category (leave as is or choose cheapest options) <br>
+    <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/0f2deea2-b153-4861-a624-7a2d56722dbb" width="85%" height="85%"><br>
+    
 
 
 
@@ -106,10 +106,7 @@ For the following categories you will simply use the default settings:<br>
        • **Key Pair Name:** VMDemo-1<br>
 
 Your screen should look similar to this:<br>
-![Adminaccountdefaults](https://github.com/mindmotivate/multicloudclass/assets/130941970/a5ca4907-e9d9-4ea2-81a7-5358333a7ac3)
-
-
-
+ <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/a5ca4907-e9d9-4ea2-81a7-5358333a7ac3" width="85%" height="85%"><br>
 
 
 **Inbound Port Rules**: <br>
@@ -119,48 +116,52 @@ Your screen should look similar to this:<br>
 <br>
 Your dashboard should look similar to this:<br>
 <br>
-![inboundrules](https://github.com/mindmotivate/multicloudclass/assets/130941970/7ddef758-e251-4836-926e-0dc38a643523)
-<br>
-<br>
-**Disk:**
-<br>
-Please skip past the "Disk" category as we will not make any changes at this time<br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/7ddef758-e251-4836-926e-0dc38a643523" width="85%" height="85%"><br>
 
+<br>
+<br>
+
+**Disk:** Please skip past the "Disk" category as we will not make any changes at this time<br>
+<br>
 # 4. **Create a Virtual Network**<br>
-   Next we will fill out the required field regarding out Virtual Network. We will name our subnet and then establish our CIDR and our subnets.<br>
+   Next, we will fill out the required field regarding our Virtual Network. 
+   We will establish a new CIDR range and then we will provide names our individual subnets.<br>
    <br>
-    **Select "Create New**<br>
+    **Select "Create New" and add a name**<br>
    We will name our Vnet using the same name we previously created for our virtual network with the addition of "vnet"<br>
-   Therefore our Vnet name will be:"VMdemo-vnet"<br>
+   Therefore our Vnet name will be: **"VMdemo-vnet"** <br>
+   <br>
     <img src ="https://github.com/mindmotivate/multicloudclass/assets/130941970/e01e56c1-d8b3-4b4b-9422-1457dadcc796">
    **Address Space**: <br>
 Here, we will add our new CIDR<br>
 For this tutorial, we are using: **10.202.0.0/16**<br>
-**(Please remember to NEVER use the DEFAULT CIDR that is provided for you)** <br>
+**(Please remember to NEVER use the DEFAULT CIDR that is provided for you, as it lacks professionalism!)** <br>
 
 ![donotusedefaultpng](https://github.com/mindmotivate/multicloudclass/assets/130941970/5cb5e27f-ff9b-4965-84b4-0421df9a4d60)<br>
 <br>
+**(The new CIDR that we have provided for this tutotrial is: 10.202.0.0/16)** <br>
 ![ciderrangeJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/1b419ebb-ef2a-4558-839f-12ad07e6af87)<br>
-
-   **Subnets**: <br>
+**For addtional insights regarding CIDR please click the following link:**[AZURE::CIDR Notation](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)<br>
+<br>
+<br>
+**Subnets**: <br>
 Here we will establish our subnets<br>
 As always, we will plan our subnets by utilizing a planning sheet:<br>
 <br>
 Example Planning Document:<br>
 PublicA: 10.202.1.0/24<br>
-PublicA: 10.202.2.0/24<br>
-PublicA: 10.202.3.0/24<br>
+PublicB: 10.202.2.0/24<br>
+PublicC: 10.202.3.0/24<br>
 <br>
-For more info reagrding subnet planning please visit the previous tutorial:<br>
+For more info regarding subnet planning please visit the previous tutorial: [subnet design](https://github.com/mindmotivate/multicloudclass/assets/130941970/faf9162d-4155-4810-b0d8-cc20c5a78574)<br>
 *(The thought process and rules for building/naming subnets are similar to AWS)*<br>
 <br>
 <br>
-![subnetnames](https://github.com/mindmotivate/multicloudclass/assets/130941970/faf9162d-4155-4810-b0d8-cc20c5a78574)<br>
 <br>
 *Note: We will only utilizing the **"public"** subnet ranges, therefore you will have three subnets total*<br>
 <br>
-Similar to AWS when you enter in the subnet values, you should see the number of available addresses displayed on the right side of each entry
-In our example you will notice the number "256" to the left of the subnet addresss. Use this as a method to "self check" your work. If you accidentally type the wrong number or accidentally add whitespace at the ened of the entry, you will see a different numerical value.<br>
+Similarly in AWS, when you enter in the subnet values, you should see the number of available addresses displayed on the right side of each entry.
+In our example you will notice the number "256" to the left of the subnet addresss. Use this as a method of "self checking" your work. If you accidentally type the wrong number or accidentally add whitespace at the end of the entry, you will see a different numerical value.<br>
 <br>
 <br>
 ![256addresses](https://github.com/mindmotivate/multicloudclass/assets/130941970/4b5b49f7-3bb8-43c4-99e8-f9eb5258ba25)<br>
@@ -190,26 +191,24 @@ No changes will be made here. Simply ensure that your subscription is under the 
 Otherwise continue to the next section which is: "Monitoring"<br>
 <br>
 <br>
-Click Monitoring next<br>
-![monitoringnext](https://github.com/mindmotivate/multicloudclass/assets/130941970/770ff8a8-1b08-4f21-bf60-298b75e9d601)
+Click Monitoring next:   <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/770ff8a8-1b08-4f21-bf60-298b75e9d601" width="25%" height="25%">
+<br>
+<br>
 <br>
 4. **Monitoring**<br>
 On the Monitoring page, make the following selections:<br>
 <br>
 We will enable recommended alert rules by clicking the checkbox:<br>
-<br>![enablealerts](https://github.com/mindmotivate/multicloudclass/assets/130941970/8110afaf-56bd-4edf-b3da-208d4ff66fd8)
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/8110afaf-56bd-4edf-b3da-208d4ff66fd8" width="45%" height="45%"><br>
 <br>
-After clicking you will see another menu appear. We wiill simply click "Save"
+After clicking you will see another menu appear. We will simply click "Save"
 <br>
-![alertsave](https://github.com/mindmotivate/multicloudclass/assets/130941970/761011fa-6a0b-4bee-bb0b-3cfbebba66cc)
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/761011fa-6a0b-4bee-bb0b-3cfbebba66cc" width="75%" height="75%"><br>
 <br>
-![alertsavetwo](https://github.com/mindmotivate/multicloudclass/assets/130941970/b77564c2-eb43-4cc7-acdd-e3c3f54c757d)
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/b77564c2-eb43-4cc7-acdd-e3c3f54c757d" width="75%" height="75%"><br>
 <br>
-We will process to the "Advanced" section next<br>
-<br>![advancednext](https://github.com/mindmotivate/multicloudclass/assets/130941970/e200cd5a-4e6c-43d3-a1eb-49fc6bd3eb0c)
-<br>
-Click Advanced next<br>
-![advancednext](https://github.com/mindmotivate/multicloudclass/assets/130941970/2c079a21-b0a0-43ae-ac5e-f1613817bf40)
+We will proceed to the "Advanced" section next: *Click Advanced next* <br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/2c079a21-b0a0-43ae-ac5e-f1613817bf40" width="25%" height="25%"><br>
 <br>
 <br>
 **Enter Userdata**<br>
