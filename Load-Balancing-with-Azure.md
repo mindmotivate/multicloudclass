@@ -80,6 +80,21 @@ For the purposes of this tutorial,we will name our resource group **"ProdApp1-RG
 •Now select “create”:<br>
 *You should now see your newly created resource group “ProdApp1-RG” appear under “resource groups”*:<br>
 
+
+
+
+
+
+# 2. **Create a Network Security Group** 
+Create a Security Group
+Next, we will create our security group
+Navigate to network security group and select “create”
+TAGS:
+Go ahead and create this familiar set of tags
+Validation Screen:
+If we select go to resource, we will be in what appears to be a “Firewall” environment complete with all of the bells and whistles
+
+
 Never modify: “DENIES”
 Deny all inbound
 Deny all outbound
@@ -102,14 +117,14 @@ Create another inbound rule for HTTP
 
 
 
-# 2. **Create a Network Security Group** 
-Create a Security Group
-Next, we will create our security group
-Navigate to network security group and select “create”
-TAGS:
-Go ahead and create this familiar set of tags
-Validation Screen:
-If we select go to resource, we will be in what appears to be a “Firewall” environment complete with all of the bells and whistles
+
+
+
+
+
+
+
+
 # 2. **Create a Virtual Network** 
 Let’s create our VNnet next. Select from portal dashboard or type it into the search bar.
 <br>
