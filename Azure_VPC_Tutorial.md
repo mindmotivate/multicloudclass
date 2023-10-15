@@ -1,7 +1,7 @@
 
 # How to Create a Virtual Private Network with Azure 
 
-<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-azure-vpc/mmlogo.PNG" width="15%" height="15%">
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-azure-vpc/mmlogo.PNG" width="16%" height="16%">
 
 In this tutorial we will walk through the various steps requiredfor creating and launching a Virtual Private Network on the Microsoft Azure Cloud. We will begin with the creation of a "Virtual Machine" (in the world of AWS, a virtual machine would be referred to as an EC2) and then we will proceed to create our first Virtual Private Cloud.<br>
 
