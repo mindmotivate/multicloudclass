@@ -80,6 +80,36 @@ For the purposes of this tutorial,we will name our resource group **"ProdApp1-RG
 •Now select “create”:<br>
 *You should now see your newly created resource group “ProdApp1-RG” appear under “resource groups”*:<br>
 
+Never modify: “DENIES”
+Deny all inbound
+Deny all outbound
+As always don’t touch aoutbound rules as well
+It will render your firewall useless
+You “lock the door inside your own house”
+Your in door should obviously have limitations however your out door should not have limitation
+
+
+The 6500’s represent the relative weight
+The lightest stay at the top
+The heaviest stay at the bottom
+The smaller numbers go first
+
+Inbound Security Rules
+
+
+Create another inbound rule for HTTP
+
+
+
+
+# 2. **Create a Network Security Group** 
+Create a Security Group
+Next, we will create our security group
+Navigate to network security group and select “create”
+TAGS:
+Go ahead and create this familiar set of tags
+Validation Screen:
+If we select go to resource, we will be in what appears to be a “Firewall” environment complete with all of the bells and whistles
 # 2. **Create a Virtual Network** 
 Let’s create our VNnet next. Select from portal dashboard or type it into the search bar.
 <br>
@@ -121,6 +151,98 @@ For more info regarding subnet planning please visit the previous tutorial: [sub
 <br>
 *Note: We will only utilizing the **"public"** subnet ranges, therefore you will have three subnets total*<br>
 <br>
+
+Create Public A
+After we create our first IP range for PublicA, will selct "Create a New NAT Gateway"
+We will name our NAT gateway: "PublicA-NAT"
+We will select "PublicA-publicipAddress" for the public IP address
+(azure creates this name based on your previous naming convention)
+Note: We will only need to add the NAT gateway name to one public IP address
+Create Public B
+Create Public C
+
+•Tags: Let’s add the following tags:<br>
+•Review & Create: Let’s review an create!<br>
+*Wait for validation screen to appear*<br>
+•Now select “create”:<br>
+*You should now see your newly created resource group “ProdApp1-VNET” appear under “virtual networks”*:<br>
+
+Congrats!, we have just deployed:
+Our VNET
+The Subnet NAT Gateway
+The public IP address for the Subnet
+
+
+Navigate back to “resource groups” and open the App1-RG group that you created initially
+Take a moment to observe the list of resource group contents 
+You will see all of the resources you created including you VNet listed here:
+A resource group in Azure is a “Logical Container” It other words it is a way to group your related resources together in a collection of sorts
+
+
+
+Create a VM Scaleset
+Type “virtual machine sclae set” in the top search bar and select the VM icon
+In this tutorial we will be creating a “set “ of VM
+A set of “identical” vms called a “scale set”
+We will name our VM Scale Set ProdApp1-Vnet
+Settings:
+Availability Zone: These are physically separate zones, that lie within an Azure region. They represent the physical locations of the AZ data centers. By having your data stored in multiple locations (ie: redundancy) you drastically improve the avaibility of your resources. There are typically three Availability Zones per supported Azure region.
+Notice that after you select your specificied number of regions
+av1, av2, av3
+Image:
+For image type, we will select an Unbuntu Machine from the Marketplace. Simply select the words: see all images" to search all marketplace products. Type "Unbuntu in the search bar and locate the image entitled "Unbuntu Minimal 2204 LTS x64 Gen 2
+VM Architecture:
+Select 64 for tis options
+Admin Default Category:
+For the following categories you will simply use the default settings:
+
+• Authentication Type: SSH Public Key
+• Username: azureuser
+• SSH Public Key Source: generate new key pair
+• Key Pair Name: VMDemo-1
+
+
+
+
+Select the following Orchestration Settings:
+Select the following spot discount and scaling settings:
+Select the following Admin settnavigateings
+We will name our user “unbuntuuser”
+Next: go to spot: no changes here
+Next: go to disk
+Change os disk size to “standard” ssd”
+We don’t need a premium option for the purposes of this tutorial
+Next we will  to: “Networking”
+For the “Virtual Network Configuration” setting, select the name of our previously created Vnet
+ProdApp1-Vnet"
+
+Select the previously named and created NIC by checking the appropriate box
+for Load Balancing options choose: Azure Load Balancer
+
+Create a Load Balance fron within your scaleset
+We will name our Load : “ProdApp1-LB01"
+
+Make sure it is PUBLIC!
+
+we will establish two inbound rules:
+Load Balancer
+NAT
+Create
+
+Next we will
+Edit the NIC
+
+disable public IP
+disable express
+
+Health: enable health monitoring and autp repairs
+Management: enable
+
+ADVANCED:
+spreading: fixed
+After naming our LB, we must provide our LB with its own IP address
+Enable user data:
+
 Similarly in AWS, when you enter in the subnet values, you should see the number of available addresses displayed on the right side of each entry.
 In our example you will notice the number "256" to the left of the subnet addresss. Use this as a method of "self checking" your work. If you accidentally type the wrong number or accidentally add whitespace at the end of the entry, you will see a different numerical value.<br>
 <br>
