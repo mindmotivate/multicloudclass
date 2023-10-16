@@ -199,6 +199,7 @@ We will select "(new)PublicA-publicipAddress" for the public IP address (this ca
 (azure creates this name based on your previous naming convention)
 Network Security Group: Select "ProdApp1-NSG" (this is the securit group you previously created)
 ***Note: We will only need to add the NAT gateway name to one public IP address***
+***The Subnet NAT Gateway bears the public IP address for the entire Subnet***
 Press the "Add" button when complete
 
 Create Public B
@@ -223,94 +224,200 @@ Press the "Add" button when complete
 •Review & Create: Let’s review an create!<br>
 *Wait for validation screen to appear*<br>
 •Now select “create”:<br>
-Patiently wait for your deployment to complete..lol
+Patiently wait for your deployment to complete...lol
 Congrats! you have just sucessfully deployed your Virtual Network
 
-The Subnet NAT Gateway
-The public IP address for the Subnet
+Next, on to the Load Balancer....
 
 
-Navigate back to “resource groups” and open the App1-RG group that you created initially
-Take a moment to observe the list of resource group contents 
-You will see all of the resources you created including you VNet listed here:
-A resource group in Azure is a “Logical Container” It other words it is a way to group your related resources together in a collection of sorts
+# 5. **Create a Load Balancer** 
+Next, we will create our Load Balancer
+Select from portal dashboard or type "Load Balancer" into the search bar.
+<br>
+Ensure that the proper subscription and resource groups are selected<br>
+Select “create”
+For the purposes of this tutorial,we will name our resource group **"ProdApp1-LB"**<br> 
+<br>
+Make the following Basic selections:
+SKU: Standard
+*Very Important: make sure "type" is set to public!
+Type: Public
+Tier: Regional
+
+Next, Make the following Frontend IP Configuration selections:
+For the purposes of this tutorial,we will name our resource group **"ProdApp1-frontendip"**<br> 
+Select "create new" under the "Public IP Address" category
+
+We will add a public ip address
+For the purposes of this tutorial,we will name it:"ProdApp1-frontendip-public-address"<br> 
+select "OK"
+
+Next, Make the following "Backend Pool" selections:
+Press the "Add backend pool" button
+Name: For the purposes of this tutorial, we will name it:"ProdApp1-backendpool"<br> 
+Virtual Network: Associate it with you Vnet: (the name of your virtual netowrk should auto populate this field)
+Click "Save" when complete
+
+Similar to our security group, the load balancer will also have its own set of inbound rules...
+**Add Load Balancing Rules**
+Frontend IP address: select the "ProdApp1-frontendip" from the drop down list
+Backend Pool: select the "ProdApp1-backendpool" from the drop down list
+
+We will create a new health probe, so select "create new"
+Health Probe: name it: ProdApp1-healthprobe
+Click "Save" to save you new health probe name
+Check over all you selections
+Click "Save" to complete your add load baancing rule selections
+
+
+The load balancer will also have a NAT rules...
+**Add NAT Rule**
+Name: We will name it "ProdApp1-NAT"
+Target Backend Pool: select the "ProdApp1-backendpool" from the drop down list
+Frontend IP Address: select the "ProdApp1-frontendip" from the drop down list
+Frontend port rage start: 50,0000
+Maximum number of machines: 3,0000
+Backend Port: 22 
+Leave all other options on their default settings
+Press the "Add" button when complete
+
+Outbound Rules: skip past these by pressing "next"
+
+•**Tags:** Let’s add the following tags:<br>
+<br>
+• Name: ProdApp1-LB<br>
+• Owner: Chewbacca
+• Location: Austin<br>
+• Planet: Mustafar<br>
+*tags are optional, however it is good practice to add them*
+•Review & Create: Let’s review an create!<br>
+*Wait for validation screen to appear*<br>
+•Now select “create”:<br>
+Patiently wait for your deployment to complete...lol
+Congrats! you have just sucessfully created your Load Balancer
 
 
 
 
-# 5. **Create a VM Scale Set** 
-Type “virtual machine scaLe set” in the top search bar and select the VM icon
 
-We will name our VM Scale Set ProdApp1-Vnet
+# 6. **Create a VM Scale Set** 
+Type “virtual machine scale set” in the top search bar and select the scale set icon
+We will name our VM Scale Set: "ProdApp1-VMscale"
 
-Settings:
-Availability Zone: These are physically separate zones, that lie within an Azure region. They represent the physical locations of the AZ data centers. By having your data stored in multiple locations (ie: redundancy) you drastically improve the avaibility of your resources. There are typically three Availability Zones per supported Azure region.
-Notice that after you select your specificied number of regions
-av1, av2, av3
-Image:
-For image type, we will select an Unbuntu Machine from the Marketplace. Simply select the words: see all images" to search all marketplace products. Type "Unbuntu in the search bar and locate the image entitled "Unbuntu Minimal 2204 LTS x64 Gen 2
-VM Architecture:
-Select 64 for tis options
-Admin Default Category:
-For the following categories you will simply use the default settings:
+Select "Create" button<br>
+•Subscription: Ensure that the proper subscription and resource groups are selected<br>
+•Region: The region will remain: (US) West US 3<br>
+Availability Zone: Select Zone1, Zone2 & Zone3
+*These are physically separate zones, that lie within an Azure region. They represent the physical locations of the AZ data centers. By having your data stored in multiple locations (ie: redundancy) you drastically improve the avaibility of your resources. There are typically three Availability Zones per supported Azure region.*
 
-• Authentication Type: SSH Public Key
-• Username: azureuser
-• SSH Public Key Source: generate new key pair
-• Key Pair Name: VMDemo-1
+Security Type: Standard
 
+Image: Unbuntu Minimal 2204 LTS x64 Gen 2
+For image type, select "see all images" We will then select an Unbuntu Machine from the Marketplace. Simply select the words: see all images" to search all marketplace products. Type "Unbuntu in the search bar and locate the image entitled "Unbuntu Minimal 2204 LTS x64 Gen 2
 
+VM Architecture: Select 64 
 
+Scaling: 
+Instance Count: 4
+Click "Scaling Configuration": directly underneath "instance count:
+Next, Make the following scaling selections:
+Apply fore delete to scale0in operations: check box
 
+Maintain remaining default settings and click "Save"
 
-Select the following Orchestration Settings:
-Select the following spot discount and scaling settings:
-Select the following Admin settnavigateings
-We will name our user “unbuntuuser”
-Next: go to spot: no changes here
+Select the following "Admin Account" settings:
+Username: We will chage the name of our user from “unbuntuuser” to "prodapp1user"
+
+Next: skip the spot section (no changes will need to be made here)
+
 Next: go to disk
-Change os disk size to “standard” ssd”
+OS Disk Type: Change os disk size to “standard” ssd”
 We don’t need a premium option for the purposes of this tutorial
-Next we will  to: “Networking”
-For the “Virtual Network Configuration” setting, select the name of our previously created Vnet
-ProdApp1-Vnet"
 
-Select the previously named and created NIC by checking the appropriate box
-for Load Balancing options choose: Azure Load Balancer
+Next: go to Networking
+**Networking**<br>
+Regarding the "Networking" we make the following selections:<br>
+• Virtual Network: select previouslyy create Vnet name
+• Network Interface Category:
+Select the pencil icon on the far right
+This will allow us to configure the NIC
 
-Create a Load Balance fron within your scaleset
-We will name our Load : “ProdApp1-LB01"
+Edit Network Interface:
+• NIC network security group: a name will auto-populate
+• NIC Security Group: Select "Advanced"
+Very Important!:
+Public Ip Address: Disabled
+Accelerated Networking: Disabled
+select "OK"
 
-Make sure it is PUBLIC!
+• Select Load Balancer: select previously created resource
+• Select Backend Pool: select previously created resource
 
-we will establish two inbound rules:
-Load Balancer
-NAT
-Create
+Next: go to Health
+**Health**<br>
+Regarding the "Section" we make the following selection:<br>
+• Enable Applicaiton Health Monitoring: Check Box
 
-Next we will
-Edit the NIC
-
-disable public IP
-disable express
-
-Health: enable health monitoring and autp repairs
-Management: enable
-
-ADVANCED:
-spreading: fixed
-After naming our LB, we must provide our LB with its own IP address
-Enable user data:
-
-Similarly in AWS, when you enter in the subnet values, you should see the number of available addresses displayed on the right side of each entry.
-In our example you will notice the number "256" to the left of the subnet addresss. Use this as a method of "self checking" your work. If you accidentally type the wrong number or accidentally add whitespace at the end of the entry, you will see a different numerical value.<br>
+Next: go to Advanced
+**Advanced**<br>
+We will proceed to the "Advanced" section next: *Click Advanced next* <br>
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/2c079a21-b0a0-43ae-ac5e-f1613817bf40" width="25%" height="25%"><br>
 <br>
 <br>
-![256addresses](https://github.com/mindmotivate/multicloudclass/assets/130941970/4b5b49f7-3bb8-43c4-99e8-f9eb5258ba25)<br>
+**Enable Userdata**<br>
+Enable User Data: Check Box
 <br>
-After the subnetting is complete, click Ok: and proceed to "Networking" section<br>
+We will naviagte to the "add user data" box:<br>
+![userdataJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/24fc8b69-1c1f-4343-b6f5-95ab21530358)<br>
 <br>
 <br>
+Please copy and paste the following script in the box:<br>
+**Copy Launch Script Below:**\.
+
+```
+#!/bin/bash
+
+Remo Script
+
+
+```
+
+•Tags: Let’s add the following tags:<br>
+• Name: ProdApp1-VMscale<br>
+• Owner: Chewbacca
+• Location: Austin<br>
+• Planet: Mustafar<br>
+*tags are optional, however it is good practice to add them*
+
+
+•Review & Create: Let’s review an create!<br>
+*Wait for validation screen to appear*<br>
+•Now select “create”:<br>
+
+You will be prompted by a "Generate new key pair" message
+Select: Download the private key
+
+Once your deployment has completed you will go to your resource and locate the Public IP address
+
+ **Find Your IP Adress**<br>
+**Locate the IP address for your instance:**<br>
+
+<br>
+Type http:// in the search bar first before pasting the public IP address of your new instance<br>
+
+
+Instance details should be displayed on the screen:<br>
+
+
+**Teardown Procedure:**<br>
+-Type "resource groups" in the top search bar<br>
+-Select the vpc you want to delete.<br>
+-Click on the "Delete resource group" button.<br>
+-In the confirmation dialog box, paste your copied resource group name<br>
+--Click on Delete to complete the deletion process.<br>
+
+
+
 **Networking**<br>
 Regarding the "Networking" we make the following selections:<br>
 • Virtual Network: VMdemo-vnet<br>
