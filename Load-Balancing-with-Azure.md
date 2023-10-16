@@ -22,34 +22,23 @@ Azure provides multiple Load Balancing services on its platform. However, for th
 
 
 # Concept Scenarios
-Before we begin...If any of the terminlogy seems a bit confusing, it is completely ok! I have provided a few example scenarios to help break down the topic in an easily digestible fashion:
-Scenario 1
-Scenario 2
-Scenario 3
+Before we begin...If any of the terminlogy seems a bit confusing, it is completely ok! I have provided a few example scenarios to help break down the topic in an easily digestible fashion:<br>
+ •Scenario 1<br>
+ •Scenario 2<br>
+ •Scenario 3<br>
 
 # Process Outline
 Ok, now that we understand the general concepts, let's apply them by creating our first load balancer!
 
 **Basic Outline**:<br>
- • Sign in to Azure<br>
  • Sign in to the Azure portal<br>
- • Assign a Subscription<br>
  • Create a Resource Group<br>
+ • Create a Security Group
  • Create the virtual network<br>
- • Configure Subnet<br>
- • Assign NAT Gateway to your Subnet<br>
- • (the nat gateway will take ingerit thename of the VNet therfore if yoiu wan to specify that it is asspciated with public A you must rename<br> 
- • it approriatey)be sure to select create NEW ip<br>
- • Create A VM Scaleset<br>
- • from within your Scalet crate a public LB<br>
- • establish your LB rules<br>
- • Edit NIC<br>
- • from within nic:<br>
- • Create a Security Group(azure create new option)<br>
- • or use existing NSG from earlier?<br>
-
-
-
+ • Create a Load Balancer
+ • Create a VM Scale Set
+ 
+ 
 # 1. **Log in to the Azure portal** <br>
 **Go to the [Azure portal](https://portal.azure.com/) and sign in with your credentials.<br>**
 
