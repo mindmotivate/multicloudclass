@@ -20,9 +20,11 @@ Azure provides multiple Load Balancing services on its platform. However, for th
 
 ***For addtional documentation regarding Azure Load Balancing click the following link:***[AZURE::LB](https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/load-balancing-overview)<br>
 
+<br>
 
-# Concept Scenarios
+># Concept Scenarios
 Before we begin...If any of the terminlogy seems a bit confusing, it is completely ok! I have provided a few example scenarios to help break down the topic in an easily digestible fashion:<br>
+
  •Scenario 1<br>
  •Scenario 2<br>
  •Scenario 3<br>
@@ -33,10 +35,10 @@ Ok, now that we understand the general concepts, let's apply them by creating ou
 **Basic Outline**:<br>
  • Sign in to the Azure portal<br>
  • Create a Resource Group<br>
- • Create a Security Group
+ • Create a Security Group<br>
  • Create the virtual network<br>
- • Create a Load Balancer
- • Create a VM Scale Set
+ • Create a Load Balancer<br>
+ • Create a VM Scale Set<br>
  
  
 # 1. **Log in to the Azure portal** <br>
@@ -62,18 +64,17 @@ Fill out the required fields regarding *Project Details*:<br>
  • **Resource Groups:** For the purposes of this tutorial,we will name our resource group **"ProdApp1-RG"**<br> 
 •**Region:** Choose (US)West-US-3<br>
 •**Tags:** Let’s add the following tags:<br>
-<br>
 • Name: ProdApp1-RG<br>
-• Owner: Chewbacca
-• Location: Austin<br>
-• Planet: Mustafar<br>
+- Owner: Chewbacca
+- Location: Austin<br>
+- Planet: Mustafar<br>
 
 
-•Select: "review an create" once all the required field have been filled<br>
+Select: "review an create" once all the required field have been filled<br>
 *Wait for validation screen to appear*<br>
-•Now select “create”:<br>
-*Wait for deployment to complete*
-*You should now see your newly created resource group “ProdApp1-RG” appear under “resource groups”*:<br>
+Now select “create”:<br>
+*Wait for deployment to complete*<br>
+You should now see your newly created resource group “ProdApp1-RG” appear under “resource groups”:<br>
 
 
 
@@ -81,58 +82,60 @@ Fill out the required fields regarding *Project Details*:<br>
 
 
 # 3. **Create a Network Security Group** 
-Next, we will create our security group
-Navigate to network security group and select “create”
+Next, we will create our security group<br>
+Navigate to network security group and select “create”<br>
 For the purposes of this tutorial,we will name our resource group **"ProdApp1-NSG"**<br> 
-
+<br>
 •**Tags:** Let’s add the following tags:<br>
 <br>
 • Name: ProdApp1-NSG<br>
-• Owner: Chewbacca
+• Owner: Chewbacca<br>
 • Location: Austin<br>
 • Planet: Mustafar<br>
 
 •Select: "review an create" once all the required field have been filled<br>
 *Wait for validation screen to appear*<br>
 •Now select “create”:<br>
-*Wait for deployment to complete:*
+*Wait for deployment to complete:*<br>
+<br>
+After the deployment is complete, you may select "go to resource" <br>
+You will see what appears to be a “Firewall” environment complete with all of the bells and whistles!<br>
+<br>
+First...A few ground rules regarding Security Groups.....<br>
+>• Never modify your "Deny Rules” such as "Deny all inbound" or "Deny all outbound"<br>
+>• Never touch "outbound rules"<br>
+>If you break any of these rules, you will run the risk of rendering your firewall useless!<br>
+>You are basically locking the door inside your own house and throwing awawy the key!<br>
 
-After the deployment is complete, you may select "go to resource" 
-You will see what appears to be a “Firewall” environment complete with all of the bells and whistles!
+Regarding the numbers in from of your Firewall rules:<br>
+>Notice the order of the numbers, they represent the relative "weight" of the rules<br>
+>*The lightest(smaller numbers) stay at the top*<br>
+>8The heaviest(larger numbers) stay at the bottom*<br>
+<br>
+Let's add three inbound rules:<br>
+<br>
 
-First...A few ground rules regarding Security Groups:
-• Never modify your "Deny Rules” such as "Deny all inbound" or "Deny all outbound"
-• Never touch "outbound rules"
-If you break any of these rules, you will run the risk of rendering your firewall useless!!
-You are basically locking the door inside your own house and throwing awawy the key!
+>**Add Inbound Security Rules**<br>
+>Service: SSH<br>
+>Priority: 100<br>
+>Description: Myhomepage<br>
+><br>
+**Add Inbound Security Rules**<br>
+>Service: HTTP<br>
+>Priority: 110<br>
+>Description: Myhomepage<br>
+><br>
+**Add Inbound Security Rules**<br>
+>Service: RDP<br>
+>Priority: 120<br>
+>Description: RDP<br>
+><br>
 
-Regarding the numbers in from of your Firewall rules:
-Notice the order of the numbers, they represent the relative "weight" of the rules
-*The lightest(smaller numbers) stay at the top*
-8The heaviest(larger numbers) stay at the bottom*
-
-Let's add three inbound rules:
-
-**Add Inbound Security Rules**
-Service: SSH
-Priority: 100
-Description: Myhomepage
-
-**Add Inbound Security Rules**
-Service: HTTP
-Priority: 110
-Description: Myhomepage
-
-**Add Inbound Security Rules**
-Service: RDP
-Priority: 120
-Description: RDP
-
-Next, we will create VM Scale Set
-type "scale ste" into your top search bar and find the "scale set" icon
-
-# 4. **Create a Virtual Network** 
-Let’s create our VNnet next. Select from portal dashboard or type it into the search bar.
+Next, we will create VM Scale Set<br>
+Type "scale ste" into your top search bar and find the "scale set" icon<RB>
+<BR>
+# 4. **Create a Virtual Network**
+Let’s create our VNnet next. Select from portal dashboard or type it into the search bar.<br>
 <br>
 Select "Create" button<br>
 <br>
@@ -141,12 +144,12 @@ Select "Create" button<br>
 •The region will remain: (US) West US 3<br>
 •Select “Next”: We will skip the security section at the moment<br>
 •Select “Next” again and will proceed to the Ip addresses section<br>
-
-## Configure Subnet
+<br>
+## Configure Subnet<br>
 •*Note: Before Proceeding, go ahead and get your Planning Document<br>
 •If you do not have one, create one ASAP!<br>
-
-We will begin byb adding add our new CIDR<br>
+<br>
+>We will begin byb adding add our new CIDR<br>
 For this tutorial, we are using: **10.202.0.0/16**<br>
 **(Please remember to NEVER use the DEFAULT CIDR that is provided for you, as it lacks professionalism!)** <br>
 <br>
@@ -164,10 +167,10 @@ After the new CIDR has been added, delete old one from the subnet list
 Here we will establish our subnet ip addresses<br>
 As always, we will plan our subnets by utilizing a planning sheet:<br>
 <br>
-Example Planning Document:<br>
-PublicA: 10.202.1.0/24<br>
-PublicB: 10.202.2.0/24<br>
-PublicC: 10.202.3.0/24<br>
+>Example Planning Document:<br>
+>PublicA: 10.202.1.0/24<br>
+>PublicB: 10.202.2.0/24<br>
+>PublicC: 10.202.3.0/24<br>
 <br>
 For more info regarding subnet planning please visit the previous tutorial: [subnet design](https://github.com/mindmotivate/multicloudclass/assets/130941970/faf9162d-4155-4810-b0d8-cc20c5a78574)<br>
 *(The thought process and rules for building/naming subnets are similar to AWS)*<br>
@@ -399,25 +402,14 @@ Instance details should be displayed on the screen:<br>
 
 
 **Teardown Procedure:**<br>
--Type "resource groups" in the top search bar<br>
--Select the vpc you want to delete.<br>
--Click on the "Delete resource group" button.<br>
--In the confirmation dialog box, paste your copied resource group name<br>
---Click on Delete to complete the deletion process.<br>
+>-Type "resource groups" in the top search bar<br>
+>-Select the vpc you want to delete.<br>
+>-Click on the "Delete resource group" button.<br>
+>-In the confirmation dialog box, paste your copied resource group name<br>
+>--Click on Delete to complete the deletion process.<br>
 
 
 
-**Networking**<br>
-Regarding the "Networking" we make the following selections:<br>
-• Virtual Network: VMdemo-vnet<br>
-• Subnet: PublicA<br>
-• Public IP: VMdemo-1-ip, VMdemo-2-ip, VMdemo-3-ip<br>
-• NIC network security group: Basic<br>
-• Public inbound ports: Allow Selected Ports<br>
-• Select inbound ports: HTTP(80), SS(220<b)r>
-• Delete NIC when VM is deleted: Check Box<br>
-• Enable accelerated networking: Uncheck BoxCheck<br>
-<br>
 
 
 
