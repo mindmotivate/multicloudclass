@@ -4,7 +4,8 @@
 
 # Introduction
 
-You may be wondering...*What the heck is a Load Balancer?* Well here is a brief introduction along with some helpful terminology to help us make some sense of the topic!
+You may be wondering...*What the heck is a Load Balancer?*<br> 
+Well here is a brief introduction along with some helpful terminology to help us make some sense of the topic!...<br>
 
 A ***Load Balancer*** is a tool that manages incoming traffic and distributes it across multiple servers in a cloud environment. It performs this function so that that the system does not get overwhelmed and all requests can be handled in an efficient manner. In other words, the work done by a single computer gets distributed among multiple computers which makes the operation more reliable and available. It serves as a single point of contact for your incoming traffic.
 
@@ -39,7 +40,8 @@ Ok, now that we understand the general concepts, let's apply them by creating ou
  • Create the virtual network<br>
  • Create a Load Balancer<br>
  • Create a VM Scale Set<br>
- 
+ • Test out our Load Balancer
+ • Tear down our resources so we don't get charged!
  
 # 1. **Log in to the Azure portal** <br>
 **Go to the [Azure portal](https://portal.azure.com/) and sign in with your credentials.<br>**
