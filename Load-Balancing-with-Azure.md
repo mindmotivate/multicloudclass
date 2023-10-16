@@ -70,14 +70,20 @@ Within the hierarchy of azure, resource groups sit underneath your subscription*
 Fill out the required fields regarding *Project Details*:<br>
 <br>
  • **Subscription:** In order to proceed you must ensure that a Subscription is attached to your Resource.<br>
- • **Resource Groups:** Here will name our resource group.<br> 
- <br>
-For the purposes of this tutorial,we will name our resource group **"ProdApp1-RG"**<br> 
-•Region: Choose (US)West-US-3<br>
-•Tags: Let’s add the following tags:<br>
-•Review & Create: Let’s review an create!<br>
+ • **Resource Groups:** For the purposes of this tutorial,we will name our resource group **"ProdApp1-RG"**<br> 
+•**Region:** Choose (US)West-US-3<br>
+•**Tags:** Let’s add the following tags:<br>
+<br>
+• Name: ProdApp1-RG<br>
+• Owner: Chewbacca
+• Location: Austin<br>
+• Planet: Mustafar<br>
+
+
+•Select: "review an create" once all the required field have been filled<br>
 *Wait for validation screen to appear*<br>
 •Now select “create”:<br>
+*Wait for deployment to complete*
 *You should now see your newly created resource group “ProdApp1-RG” appear under “resource groups”*:<br>
 
 
@@ -85,61 +91,73 @@ For the purposes of this tutorial,we will name our resource group **"ProdApp1-RG
 
 
 
-# 2. **Create a Network Security Group** 
-Create a Security Group
+# 3. **Create a Network Security Group** 
 Next, we will create our security group
 Navigate to network security group and select “create”
-TAGS:
-Go ahead and create this familiar set of tags
-Validation Screen:
-If we select go to resource, we will be in what appears to be a “Firewall” environment complete with all of the bells and whistles
+For the purposes of this tutorial,we will name our resource group **"ProdApp1-NSG"**<br> 
 
+•**Tags:** Let’s add the following tags:<br>
+<br>
+• Name: ProdApp1-NSG<br>
+• Owner: Chewbacca
+• Location: Austin<br>
+• Planet: Mustafar<br>
 
-Never modify: “DENIES”
-Deny all inbound
-Deny all outbound
-As always don’t touch aoutbound rules as well
-It will render your firewall useless
-You “lock the door inside your own house”
-Your in door should obviously have limitations however your out door should not have limitation
+•Select: "review an create" once all the required field have been filled<br>
+*Wait for validation screen to appear*<br>
+•Now select “create”:<br>
+*Wait for deployment to complete:*
 
+After the deployment is complete, you may select "go to resource" 
+You will see what appears to be a “Firewall” environment complete with all of the bells and whistles!
 
-The 6500’s represent the relative weight
-The lightest stay at the top
-The heaviest stay at the bottom
-The smaller numbers go first
+First...A few ground rules regarding Security Groups:
+• Never modify your "Deny Rules” such as "Deny all inbound" or "Deny all outbound"
+• Never touch "outbound rules"
+If you break any of these rules, you will run the risk of rendering your firewall useless!!
+You are basically locking the door inside your own house and throwing awawy the key!
 
-Inbound Security Rules
+Regarding the numbers in from of your Firewall rules:
+Notice the order of the numbers, they represent the relative "weight" of the rules
+*The lightest(smaller numbers) stay at the top*
+8The heaviest(larger numbers) stay at the bottom*
 
+Let's add three inbound rules:
 
-Create another inbound rule for HTTP
+**Add Inbound Security Rules**
+Service: SSH
+Priority: 100
+Description: Myhomepage
 
+**Add Inbound Security Rules**
+Service: HTTP
+Priority: 110
+Description: Myhomepage
 
+**Add Inbound Security Rules**
+Service: RDP
+Priority: 120
+Description: RDP
 
+Next, we will create VM Scale Set
+type "scale ste" into your top search bar and find the "scale set" icon
 
-
-
-
-
-
-
-
-
-# 2. **Create a Virtual Network** 
+# 4. **Create a Virtual Network** 
 Let’s create our VNnet next. Select from portal dashboard or type it into the search bar.
 <br>
 Select "Create" button<br>
 <br>
 •Ensure that the proper subscription and resource groups are selected<br>
-•In instance details we will name our Vnet: “ProdApp1-Vnet”<br>
+•In "instance details" we will name our Vnet: “ProdApp1-Vnet”<br>
 •The region will remain: (US) West US 3<br>
 •Select “Next”: We will skip the security section at the moment<br>
 •Select “Next” again and will proceed to the Ip addresses section<br>
+
+## Configure Subnet
 •*Note: Before Proceeding, go ahead and get your Planning Document<br>
 •If you do not have one, create one ASAP!<br>
 
-## Configure Subnet
-We will add our new CIDR<br>
+We will begin byb adding add our new CIDR<br>
 For this tutorial, we are using: **10.202.0.0/16**<br>
 **(Please remember to NEVER use the DEFAULT CIDR that is provided for you, as it lacks professionalism!)** <br>
 <br>
@@ -147,9 +165,12 @@ For this tutorial, we are using: **10.202.0.0/16**<br>
 <br>
 **(The new CIDR that we have provided for this tutotrial is: 10.202.0.0/16)** <br>
 ![ciderrangeJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/1b419ebb-ef2a-4558-839f-12ad07e6af87)<br>
+
 **For addtional insights regarding CIDR please click the following link:**[AZURE::CIDR Notation](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)<br>
 <br>
 <br>
+After the new CIDR has been added, delete old one from the subnet list
+
 **Subnet IP Addresses**: <br>
 Here we will establish our subnet ip addresses<br>
 As always, we will plan our subnets by utilizing a planning sheet:<br>
@@ -168,22 +189,43 @@ For more info regarding subnet planning please visit the previous tutorial: [sub
 <br>
 
 Create Public A
-After we create our first IP range for PublicA, will selct "Create a New NAT Gateway"
+Name: PublicA
+Starting Address: 10.202.2.0
+*check to make sure you "Ip address space says "256 addresses" (avoid accidentally adding a white space)*
+
+After we create our first IP range for PublicA, will select "Create a New NAT Gateway"
 We will name our NAT gateway: "PublicA-NAT"
-We will select "PublicA-publicipAddress" for the public IP address
+We will select "(new)PublicA-publicipAddress" for the public IP address (this can be found in the associated drop down list)
 (azure creates this name based on your previous naming convention)
-Note: We will only need to add the NAT gateway name to one public IP address
+Network Security Group: Select "ProdApp1-NSG" (this is the securit group you previously created)
+***Note: We will only need to add the NAT gateway name to one public IP address***
+Press the "Add" button when complete
+
 Create Public B
+Name: PublicB
+Starting Address: 10.202.2.0
+*check to make sure you "Ip address space says "256 addresses" (avoid accidentally adding a white space)*
+Press the "Add" button when complete
+
 Create Public C
+Name: PublicC
+Starting Address: 10.202.3.0
+*check to make sure you "Ip address space says "256 addresses" (avoid accidentally adding a white space)*
+Press the "Add" button when complete
 
 •Tags: Let’s add the following tags:<br>
+• Name: ProdApp1-Vnet<br>
+• Owner: Chewbacca
+• Location: Austin<br>
+• Planet: Mustafar<br>
+*tags are optional, however it is good practice to add them*
+
 •Review & Create: Let’s review an create!<br>
 *Wait for validation screen to appear*<br>
 •Now select “create”:<br>
-*You should now see your newly created resource group “ProdApp1-VNET” appear under “virtual networks”*:<br>
+Patiently wait for your deployment to complete..lol
+Congrats! you have just sucessfully deployed your Virtual Network
 
-Congrats!, we have just deployed:
-Our VNET
 The Subnet NAT Gateway
 The public IP address for the Subnet
 
@@ -195,11 +237,12 @@ A resource group in Azure is a “Logical Container” It other words it is a wa
 
 
 
-Create a VM Scaleset
-Type “virtual machine sclae set” in the top search bar and select the VM icon
-In this tutorial we will be creating a “set “ of VM
-A set of “identical” vms called a “scale set”
+
+# 5. **Create a VM Scale Set** 
+Type “virtual machine scaLe set” in the top search bar and select the VM icon
+
 We will name our VM Scale Set ProdApp1-Vnet
+
 Settings:
 Availability Zone: These are physically separate zones, that lie within an Azure region. They represent the physical locations of the AZ data centers. By having your data stored in multiple locations (ie: redundancy) you drastically improve the avaibility of your resources. There are typically three Availability Zones per supported Azure region.
 Notice that after you select your specificied number of regions
@@ -215,6 +258,7 @@ For the following categories you will simply use the default settings:
 • Username: azureuser
 • SSH Public Key Source: generate new key pair
 • Key Pair Name: VMDemo-1
+
 
 
 
