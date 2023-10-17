@@ -372,11 +372,11 @@ For the purposes of this tutorial, we will name our Load Balancer **"ProdApp1-LB
 ![LBrequirments](https://github.com/mindmotivate/multicloudclass/assets/130941970/f652ecd5-32a3-40f0-a50c-742ef56f43a1)
 <br>
 Make the following Basic selections:<br>
-SKU: Standard<br>
+**SKU:** Standard<br>
 
 **Very Important: make sure "type" is set to public!<br>**
-Type: Public<br>
-Tier: Regional<br>
+**Type:** Public<br>
+**Tier:** Regional<br>
 <br>
 
 
@@ -528,11 +528,12 @@ select "OK"
 **Select Load Balancer:** select previously created resource<br>
 **Select Backend Pool:** select previously created resource<br>
 
-Next: go to Health<br>
+Next: Navigate to the "Health" section <br>
+
 **Health**<br>
 
 Regarding the "Section" we make the following selection:<br>
-• Enable Applicaiton Health Monitoring: Check Box<br>
+• Enable Application Health Monitoring: Check Box<br>
 ![healthscaleset](https://github.com/mindmotivate/multicloudclass/assets/130941970/7e9daa37-54b8-4dc6-a619-e1ac6d6698e0)
 <br>
 Next: go to Advanced<br>
@@ -548,7 +549,7 @@ Enable User Data: Check Box<br>
 
 We will naviagte to the "add user data" box:<br>
 
-COpy and paste the provided script in the user data box:<br>
+Copy and paste the provided script in the user data box:<br>
 
 ![enableuserdata1](https://github.com/mindmotivate/multicloudclass/assets/130941970/911ca360-4250-471b-a59e-6545c453df9d)
 
@@ -562,7 +563,7 @@ Insert Remo Script
 
 ```
 
-**Tags:**Let’s add the following tags:<br>
+**Tags:** Let’s add the following tags:<br>
 • Name: ProdApp1-VMscale<br>
 • Owner: Chewbacca
 • Location: Austin<br>
@@ -591,19 +592,26 @@ Example:
 
 <br>
 Type http:// in the search bar first before pasting the public IP address of your new instance<br>
+
 ![http](https://github.com/mindmotivate/multicloudclass/assets/130941970/12f57c91-61b8-4763-bdc0-1bb87cdecf2c)
 
 
-Instance details should be displayed on the screen:<br>
+Theh virtual machine instance details should be displayed on the screen:<br>
 ![instancedescription](https://github.com/mindmotivate/multicloudclass/assets/130941970/176d6e39-68cd-4ccc-94bf-5d5d6a4f0f03)
 
 
+ >***Test the functionality of Load Balancer by refreshing the browser page***
+ >***The displayed IP address should change after a few attempts***
+ >***Azure load balancers are dynamically assigned public IP addresses*** 
+ >***This means that the IP address of the load balancer may chnage with incomming traffic***
+ 
+
 # 7. **Resource Group Teardown** <br>
->-Type "resource groups" in the top search bar<br>
->-Select the vpc you want to delete.<br>
->-Click on the "Delete resource group" button.<br>
->-In the confirmation dialog box, paste your copied resource group name<br>
->--Click on Delete to complete the deletion process.<br>
+>•Type "resource groups" in the top search bar<br>
+>•Select the vpc you want to delete.<br>
+>•Click on the "Delete resource group" button.<br>
+>•In the confirmation dialog box, paste your copied resource group name<br>
+>•Click on Delete to complete the deletion process.<br>
 
 
 
