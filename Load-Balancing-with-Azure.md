@@ -213,9 +213,9 @@ Select "Create" button<br>
 
 ![vnetvame](https://github.com/mindmotivate/multicloudclass/assets/130941970/e5e16fb0-7c4a-49c8-ab32-7b70cf60f6d8)
 
-•Select “Next”: We will skip the security section at the moment<br>
+•Select “Next”: We will skip the **Security** section at the moment<br>
 
-•Select “Next” again and proceed to the IP addresses section<br>
+•Select “Next” again and proceed to the **IP addresses** section<br>
 
 <br>
 
@@ -224,16 +224,23 @@ Select "Create" button<br>
 *Note: Before Proceeding, go ahead and get your Planning Document<br>
 If you do not have one, create one ASAP!<br>
 <br>
->We will begin byb adding add our new CIDR<br>
-For this tutorial, we are using: **10.202.0.0/16**<br>
-**(Please remember to NEVER use the DEFAULT CIDR that is provided for you, as it lacks professionalism!)** <br>
+>*We will begin byb adding add our new CIDR<br>*
+*For this tutorial, we are using: **10.202.0.0/16** instead of the default **10.0.0.0/16** <br>*
+***Please remember to NEVER use the DEFAULT CIDR that is provided for you, as it lacks an orginal thought process as well as an overall sense of professionalism!*** <br>
+***Therefore we have changed the "0" in the second octet to "202"*** <br>
+***The number 202 lies comfortably within the designated range of (200-299) which represent Azure*** <br>
 <br>
 **(The new CIDR that we have provided for this tutotrial is: 10.202.0.0/16)** <br>
+<br>
 
 ![16png](https://github.com/mindmotivate/multicloudclass/assets/130941970/6c09672b-b047-4b89-8bf5-0498b04f104f)
+<br>
 
 **For addtional insights regarding CIDR please click the following link:**[AZURE::CIDR Notation](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)<br>
+
 <br>
+<br>
+
 <br>
 After the new CIDR has been added, delete old one from the subnet list<br>
 
@@ -258,7 +265,7 @@ For more info regarding subnet planning please visit the previous tutorial:<br>
 <br>
 <br>
 
-*Note: We will only be utilizing the ***public*** subnet ranges, therefore you will have ***three*** subnets total*<br>
+>*Note: We will only be utilizing the ***public*** subnet ranges, therefore you will have ***three*** subnets total*<br>
 
 <br>
 Select the "Add a Subnet" button:<br>
@@ -378,7 +385,8 @@ Next, naviagte to "Frontend ip configuration"<br>
 ![feipconfig](https://github.com/mindmotivate/multicloudclass/assets/130941970/0ae3eaa3-181e-4cc8-9fad-173c66abdda1)
 
 Make the following Frontend IP Configuration selections:<br>
-For the purposes of this tutorial,we will name our resource group **"ProdApp1-frontendip"**<br> 
+For the purposes of this tutorial, we will name our resource group **"ProdApp1-frontendip"**<br> 
+
 Select "create new" under the "Public IP Address" category<br>
 ![addfeip](https://github.com/mindmotivate/multicloudclass/assets/130941970/48195bf4-32ca-4d7f-9157-7cebbda565c5)
 
@@ -394,10 +402,11 @@ Name: For the purposes of this tutorial, we will name it:"ProdApp1-backendpool"<
 ![addbackendpool](https://github.com/mindmotivate/multicloudclass/assets/130941970/bf60f9e3-ff6a-44d1-b5b7-a01aaf04b84a)
 ![backendpoolname](https://github.com/mindmotivate/multicloudclass/assets/130941970/dce7cd1c-7c24-4ea4-9ff6-87b3b3899cc6)
 
-Virtual Network: Associate it with you Vnet: (the name of your virtual netowrk should auto populate this field)<br>
+Virtual Network: Associate it with you Vnet: (the name of your virtual network should auto-populate this field)<br>
 Click "Save" when complete<br>
 
 Similar to our security group, the load balancer will also have its own set of inbound rules...<br>
+
 **Add Load Balancing Rules**<br>
 Frontend IP address: select the "ProdApp1-frontendip" from the drop down <br>
 Backend Pool: select the "ProdApp1-backendpool" from the drop down list<br>
@@ -417,12 +426,13 @@ Click "Save" to complete your add load baancing rule selections<br>
 The load balancer will also have a NAT rules...<br>
 **Add NAT Rule**<br>
 
-Name: We will name it "ProdApp1-NAT"<br>
+**Name:** We will name it "ProdApp1-NAT"<br>
 **Target Backend Pool:** select the "ProdApp1-backendpool" from the drop down list<br>
 **Frontend IP Address:** select the "ProdApp1-frontendip" from the drop down list<br>
 **Frontend port rage start:** 50,0000<br>
 **Maximum number of machines:** 3,0000<br>
 **Backend Port:** 22 <br>
+
 Leave all other options on their default settings<br>
 Press the "Add" button when complete<br>
 <br>
@@ -458,6 +468,8 @@ We will name our VM Scale Set: "ProdApp1-VMscale"<br>
 ![crvmscaleset](https://github.com/mindmotivate/multicloudclass/assets/130941970/57b49a40-826b-4288-9da3-ea0b5252bc27)
 
 Select "Create" button<br>
+
+Make the following "Scale Set" selections:<br>
 **Subscription:** Ensure that the proper subscription and resource groups are selected<br>
 **Region:** The region will remain: (US) West US 3<br>
 **Availability Zone:** Select Zone1, Zone2 & Zone3<br>
@@ -470,12 +482,10 @@ Select "Create" button<br>
 
 ![vmscalesetimage](https://github.com/mindmotivate/multicloudclass/assets/130941970/230a57de-d8c3-4d2a-8c41-aa7440ff9b72)
 
+**VM Architecture:** Select 64 <br>
 
-
-VM Architecture: Select 64 <br>
-
-Scaling: <br>
-Instance Count: 4<br>
+**Scaling:** <br>
+**Instance Count:** 4<br>
 Click "Scaling Configuration": directly underneath "instance count:<br>
 
 ![configscalingoptions](https://github.com/mindmotivate/multicloudclass/assets/130941970/5e01cf54-d779-4198-8833-25253befdb8d)
@@ -498,26 +508,30 @@ OS Disk Type: Change os disk size to “standard” ssd”<br>
 We don’t need a premium option for the purposes of this tutorial<br>
 
 Next: go to Networking<br>
+
 **Networking**<br>
 Regarding the "Networking" we make the following selections:<br>
-• Virtual Network: select previouslyy create Vnet name<br>
-• Network Interface Category:<br>
+**Virtual Network:** select previouslyy create Vnet name<br>
+**Network Interface Category:** <br>
 Select the pencil icon on the far right<br>
 This will allow us to configure the NIC<br>
 
-Edit Network Interface:<br>
-• NIC network security group: a name will auto-populate<br>
-• NIC Security Group: Select "Advanced"<br>
-Very Important!:<br>
-Public Ip Address: Disabled<br>
-Accelerated Networking: Disabled<br>
+**Edit Network Interface:**<br>
+**NIC network security group:** a name will auto-populate<br>
+**NIC Security Group:** Select "Advanced"<br>
+
+**Very Important! The following two features must be disabled**<br>
+**Public Ip Address:** Disabled<br>
+**Accelerated Networking:** Disabled<br>
+
 select "OK"
 
-• Select Load Balancer: select previously created resource<br>
-• Select Backend Pool: select previously created resource<br>
+**Select Load Balancer:** select previously created resource<br>
+**Select Backend Pool:** select previously created resource<br>
 
 Next: go to Health<br>
 **Health**<br>
+
 Regarding the "Section" we make the following selection:<br>
 • Enable Applicaiton Health Monitoring: Check Box<br>
 ![healthscaleset](https://github.com/mindmotivate/multicloudclass/assets/130941970/7e9daa37-54b8-4dc6-a619-e1ac6d6698e0)
@@ -546,7 +560,7 @@ Please copy and paste the following script in the box:<br>
 ```
 #!/bin/bash
 
-Remo Script
+Insert Remo Script
 
 
 ```
@@ -556,11 +570,12 @@ Remo Script
 • Owner: Chewbacca
 • Location: Austin<br>
 • Planet: Mustafar<br>
-*tags are optional, however it is good practice to add them*
+*tags are optional, however it is good practice to use them*
 
 
 •Review & Create: Let’s review an create!<br>
 *Wait for validation screen to appear*<br>
+
 •Now select “create”:<br>
 
 You will be prompted by a "Generate new key pair" message<br>
