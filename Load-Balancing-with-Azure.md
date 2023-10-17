@@ -411,11 +411,11 @@ The load balancer will also have a NAT rules...<br>
 **Add NAT Rule**<br>
 
 Name: We will name it "ProdApp1-NAT"<br>
-Target Backend Pool: select the "ProdApp1-backendpool" from the drop down list<br>
-Frontend IP Address: select the "ProdApp1-frontendip" from the drop down list<br>
-Frontend port rage start: 50,0000<br>
-Maximum number of machines: 3,0000<br>
-Backend Port: 22 <br>
+**Target Backend Pool:** select the "ProdApp1-backendpool" from the drop down list<br>
+**Frontend IP Address:** select the "ProdApp1-frontendip" from the drop down list<br>
+**Frontend port rage start:** 50,0000<br>
+**Maximum number of machines:** 3,0000<br>
+**Backend Port:** 22 <br>
 Leave all other options on their default settings<br>
 Press the "Add" button when complete<br>
 <br>
@@ -451,15 +451,15 @@ We will name our VM Scale Set: "ProdApp1-VMscale"<br>
 ![crvmscaleset](https://github.com/mindmotivate/multicloudclass/assets/130941970/57b49a40-826b-4288-9da3-ea0b5252bc27)
 
 Select "Create" button<br>
-•Subscription: Ensure that the proper subscription and resource groups are selected<br>
-•Region: The region will remain: (US) West US 3<br>
-Availability Zone: Select Zone1, Zone2 & Zone3
-*These are physically separate zones, that lie within an Azure region. They represent the physical locations of the AZ data centers. By having your data stored in multiple locations (ie: redundancy) you drastically improve the avaibility of your resources. There are typically three Availability Zones per supported Azure region.*<br>
+**Subscription:** Ensure that the proper subscription and resource groups are selected<br>
+**Region:** The region will remain: (US) West US 3<br>
+**Availability Zone:** Select Zone1, Zone2 & Zone3<br>
+>These are physically separate zones, that lie within an Azure region. They represent the physical locations of the AZ data centers. By having your data stored in multiple >locations (ie: redundancy) you drastically improve the avaibility of your resources. There are typically three Availability Zones per supported Azure region.*<br>
 
-Security Type: Standard<br>
+**Security Type:** Standard<br>
 
-Image: Unbuntu Minimal 2204 LTS x64 Gen 2<br>
-For image type, select "see all images" We will then select an Unbuntu Machine from the Marketplace. Simply select the words: see all images" to search all marketplace<br> products. Type "Unbuntu in the search bar and locate the image entitled "Unbuntu Minimal 2204 LTS x64 Gen 2<br>
+**Image:** Unbuntu Minimal 2204 LTS x64 Gen 2<br>
+>For image type, select "see all images" We will then select an Unbuntu Machine from the Marketplace. Simply select the words: see all images" to search all marketplace<br> >products. Type "Unbuntu in the search bar and locate the image entitled "Unbuntu Minimal 2204 LTS x64 Gen 2<br>
 
 ![vmscalesetimage](https://github.com/mindmotivate/multicloudclass/assets/130941970/230a57de-d8c3-4d2a-8c41-aa7440ff9b72)
 
