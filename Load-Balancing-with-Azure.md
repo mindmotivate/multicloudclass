@@ -26,25 +26,28 @@ Azure provides multiple Load Balancing services on its platform. However, for th
 <br>
 
 ># Concept Scenarios
+
 Before we begin...If any of the terminlogy seems a bit confusing, it is completely ok! I have provided a few example scenarios to help break down the topic in an easily digestible fashion:[LB::Scenario](https://github.com/mindmotivate/multicloudclass/blob/main/Load_Balancing_Scenarios.md)<br>
 <br>
 
 
 
 # Process Outline
+
 Ok, now that we understand the general concepts, let's apply them by creating our first load balancer!
 
 **Basic Outline**:<br>
  • [Step1: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#1-log-in-to-the-azure-portal-)Sign in to the Azure portal<br>
  • [Step2: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#2-create-a-resource-group)Create a Resource Group<br>
- • Create a Security Group<br>
+ • [Step3: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#3-create-a-network-security-group)Create a Security Group<br>
  • Create the virtual network<br>
  • Create a Load Balancer<br>
  • Create a VM Scale Set<br>
  • Test out our Load Balancer
  • Tear down our resources so we don't get charged!
  
-# 1. **Log in to the Azure portal** <br>
+# 1. **Log in to the Azure portal**
+
 **Go to the [Azure portal](https://portal.azure.com/) and sign in with your credentials.<br>**
 
 <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/efca307d-db83-4e9d-b93b-6560981b2b09" width="40%" height="40%">
@@ -101,7 +104,11 @@ You should now see your newly created resource group “ProdApp1-RG” appear un
 
 # 3. **Create a Network Security Group** 
 Next, we will create our security group<br>
+![nsg](https://github.com/mindmotivate/multicloudclass/assets/130941970/4ac8ac4a-84c9-4453-aae3-d7afb866efe5)
+
 Navigate to network security group and select “create”<br>
+![navigtetonsg](https://github.com/mindmotivate/multicloudclass/assets/130941970/12cdb29c-bb38-4bd7-b27c-40aab5055d20)
+
 For the purposes of this tutorial,we will name our resource group **"ProdApp1-NSG"**<br> 
 <br>
 
@@ -113,6 +120,8 @@ For the purposes of this tutorial,we will name our resource group **"ProdApp1-NS
 • Owner: Chewbacca<br>
 • Location: Austin<br>
 • Planet: Mustafar<br>
+
+![nsgtags](https://github.com/mindmotivate/multicloudclass/assets/130941970/f7d1db43-846d-4307-9961-f5df58ab57c6)
 
 •Select: "review an create" once all the required field have been filled<br>
 *Wait for validation screen to appear*<br>
@@ -127,15 +136,20 @@ You will see what appears to be a “Firewall” environment complete with all o
 First...A few ground rules regarding Security Groups.....<br>
 >• Never modify your "Deny Rules” such as "Deny all inbound" or "Deny all outbound"<br>
 >• Never touch "outbound rules"<br>
->If you break any of these rules, you will run the risk of rendering your firewall useless!<br>
->You are basically locking the door inside your own house and throwing awawy the key!<br>
+>*If you break any of these rules, you will run the risk of rendering your firewall useless!<br>*
+>*You are basically locking the door inside your own house and throwing away the key!<br>*
 
-Regarding the numbers in from of your Firewall rules:<br>
+![denys](https://github.com/mindmotivate/multicloudclass/assets/130941970/cf7f40b4-2d42-40ea-8920-2e5d854c97b8)
+
+Regarding the numbers in front of your Firewall rules:<br>
 >Notice the order of the numbers, they represent the relative "weight" of the rules<br>
->*The lightest(smaller numbers) stay at the top*<br>
->8The heaviest(larger numbers) stay at the bottom*<br>
+>*The lightest(smaller numbers) stay at the top. They have first priority*<br>
+>*The heaviest(larger numbers) stay at the bottom. They have lowest priority*<br>
 <br>
-Let's add three inbound rules:<br>
+
+![weightedpriority](https://github.com/mindmotivate/multicloudclass/assets/130941970/acef0665-c35e-43b1-ba88-814e3228b4de)
+
+Let's add three inbound rules for our security group:<br>
 <br>
 
 >**Add Inbound Security Rules**<br>
@@ -154,8 +168,6 @@ Let's add three inbound rules:<br>
 >Description: Myhomepage<br>
 ><br>
 
-
-
 ![addunboundhhtp](https://github.com/mindmotivate/multicloudclass/assets/130941970/a0501b98-7ba4-47d7-b4b4-11c696d9d7dc)
 
 ![allowhttpriority](https://github.com/mindmotivate/multicloudclass/assets/130941970/634537a8-22a5-4904-86b6-29ba4f21cb1b)
@@ -171,18 +183,18 @@ Let's add three inbound rules:<br>
 
 •Select: "review an create" once all the required field have been filled<br>
 *Wait for validation screen to appear*<br>
-
-•Now select “create”:<br>
-*Wait for deployment to complete:*<br>
-
 ![NSGvalidation](https://github.com/mindmotivate/multicloudclass/assets/130941970/910301ce-0291-4908-b451-60eee22b2311)
 
+After validation has passed, select “create”:<br>
+Wait for deployment to complete:*<br>
 
 Next, we will create VM Scale Set<br>
 Type "scale ste" into your top search bar and find the "scale set" icon<RB>
 <BR>
+OK, Let’s create our VNnet next...<br>
+<br>
 # 4. **Create a Virtual Network**
-Let’s create our VNnet next. Select from portal dashboard or type it into the search bar.<br>
+Select from portal dashboard or type it into the search bar.<br>
 <br>
 ![vnsearch](https://github.com/mindmotivate/multicloudclass/assets/130941970/918eb192-7ebb-4e64-a24a-06d9992694cb)
 
