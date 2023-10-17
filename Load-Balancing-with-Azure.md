@@ -36,7 +36,7 @@ Ok, now that we understand the general concepts, let's apply them by creating ou
 
 **Basic Outline**:<br>
  • [Step1: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#1-log-in-to-the-azure-portal-)Sign in to the Azure portal<br>
- • Create a Resource Group<br>
+ • [Step2: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#2-create-a-resource-group)Create a Resource Group<br>
  • Create a Security Group<br>
  • Create the virtual network<br>
  • Create a Load Balancer<br>
@@ -51,13 +51,15 @@ Ok, now that we understand the general concepts, let's apply them by creating ou
 
 
 # 2. **Create a Resource Group**: 
-**Once you are inside the Azure portal, navigate to "Resource Group"<br>**
+**Once you are inside the Azure portal, navigate to "Resource Group"**<br>
     *Please note that there are several ways to access resource groups in Azure!<br>*
-     We can simply select the: **"Resource Group icon"** icon if it is already displayed on your dashboard 
-     After the "Create Resource" screen appears, select "Create"
+     We can simply select the: **"Resource Group icon"** icon if it is already displayed on your dashboard<br> 
+     <br>
+     After the "Create Resource" screen appears, select "Create a Resource"<br>
      ![resourcegroup](https://github.com/mindmotivate/multicloudclass/assets/130941970/4f68bc09-ebce-4cf4-be71-fea4f58f2425)
 
-***Note:*** In Azure,the majority of your resources will be associated with a subscription. ***Subscriptions*** are a unit of management that allow you to logically organize your resource groups and facilitate billing.
+>***Note:*** In Azure,the majority of your resources will be associated with a subscription.<br> 
+>***Subscriptions*** are a unit of management that allow you to logically organize your resource groups and facilitate billing.
 
 ![heirchy](https://github.com/mindmotivate/multicloudclass/assets/130941970/b787abef-5b32-4c57-a24d-7b34daf9009c)
 
@@ -86,15 +88,16 @@ Fill out the required fields regarding *Project Details*:<br>
 
 Select: "review an create" once all the required field have been filled<br>
 *Wait for validation screen to appear*<br>
+![rgvalidation](https://github.com/mindmotivate/multicloudclass/assets/130941970/9a14e10e-3ec5-44a0-a670-a77f1957c33c)
+
 Now select “create”:<br>
-*Wait for deployment to complete*<br>
+
+![create](https://github.com/mindmotivate/multicloudclass/assets/130941970/02d44a0b-d7e2-44a0-ad19-b68c6ad90fd2)
+
+*Wait for deployment to complete*...<br>
 You should now see your newly created resource group “ProdApp1-RG” appear under “resource groups”:<br>
 
-
 ![newresourcegroup](https://github.com/mindmotivate/multicloudclass/assets/130941970/791f9716-bcc7-4dbb-964c-75cb8c2dd8a8)
-
-
-
 
 # 3. **Create a Network Security Group** 
 Next, we will create our security group<br>
