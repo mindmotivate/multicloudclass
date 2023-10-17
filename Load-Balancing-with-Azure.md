@@ -40,11 +40,10 @@ Ok, now that we understand the general concepts, let's apply them by creating ou
  • [Step1: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#1-log-in-to-the-azure-portal-)Sign in to the Azure portal<br>
  • [Step2: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#2-create-a-resource-group)Create a Resource Group<br>
  • [Step3: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#3-create-a-network-security-group)Create a Security Group<br>
- • Create the virtual network<br>
- • Create a Load Balancer<br>
- • Create a VM Scale Set<br>
- • Test out our Load Balancer
- • Tear down our resources so we don't get charged!
+ • [Step4: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#4-create-a-virtual-network)Create the virtual network<br>
+ • [Step5: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#5-create-a-load-balancer)Create a Load Balancer<br>
+ • [Step6: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#6-create-a-vm-scale-set-)Create a VM Scale Set<br>
+ • [Step7: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#7-resource-group-teardown-)Resouce Group Teardown(...so we don't get charged extra!)
  
 # 1. **Log in to the Azure portal**
 
