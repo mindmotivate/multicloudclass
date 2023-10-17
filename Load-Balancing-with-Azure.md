@@ -497,7 +497,6 @@ Apply fore delete to scale-in operations: check box<br>
 
 ![scaleconfig](https://github.com/mindmotivate/multicloudclass/assets/130941970/73d9edcc-0c21-4217-9349-f2d237da10cd)
 
-
 Maintain remaining default settings and click "Save"<br>
 
 Select the following "Admin Account" settings:<br>
@@ -517,21 +516,26 @@ Regarding the **"Networking"** section, we make the following selections:<br>
 >Select the pencil icon on the far right<br>
 >This will allow us to configure the NIC<br>
 
-
-
+![pencilicon](https://github.com/mindmotivate/multicloudclass/assets/130941970/a8dc7a04-e0af-43ad-87bd-8575ecef19b8)
 
 **Edit Network Interface:** section:<br>
 • **NIC network security group:** a name will auto-populate<br>
 • **NIC Security Group:** Select "Advanced"<br>
 
+![nicadvanced](https://github.com/mindmotivate/multicloudclass/assets/130941970/ed2cefc6-bcc2-4321-a78b-a21c985f6182)
+
 **Very Important! The following two features must be disabled**<br>
 • **Public IP Address:** Disabled<br>
 • **Accelerated Networking:** Disabled<br>
+
+![disabled](https://github.com/mindmotivate/multicloudclass/assets/130941970/a41c0881-7a0e-4bfe-a4b3-e112d50318aa)
 
 Select "OK" to proceed<br>
 
 On the followin menu:<br>
 • **Select Load Balancer:** select previously created resource<br>
+
+![previouslbJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/f8a969b9-d74e-48c7-b60a-79644b77c5f8)
 
 Next: Navigate to the "Health" section <br>
 
