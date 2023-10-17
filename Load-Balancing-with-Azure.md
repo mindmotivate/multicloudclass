@@ -89,15 +89,16 @@ Fill out the required fields regarding *Project Details*:<br>
 
 ![rgtags](https://github.com/mindmotivate/multicloudclass/assets/130941970/4f9a13b0-df0c-42ab-b4af-b1990fc1554e)
 
-Select: "review an create" once all the required field have been filled<br>
-*Wait for validation screen to appear*<br>
-![rgvalidation](https://github.com/mindmotivate/multicloudclass/assets/130941970/9a14e10e-3ec5-44a0-a670-a77f1957c33c)
+Select: "review an create" once all the required fields have been filled<br>
 
-Now select “create”:<br>
+![reviewcreate](https://github.com/mindmotivate/multicloudclass/assets/130941970/e31c8707-baee-4ece-8539-0097b665bfa9)
 
-![create](https://github.com/mindmotivate/multicloudclass/assets/130941970/02d44a0b-d7e2-44a0-ad19-b68c6ad90fd2)
+*Wait for "validation passed" screen to appear*<br>
+
+<img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/851594d7-a1b1-465c-bb29-0b9b22d57274" width="50%" height="50%">
 
 *Wait for deployment to complete*...<br>
+
 You should now see your newly created resource group “ProdApp1-RG” appear under “resource groups”:<br>
 
 ![newresourcegroup](https://github.com/mindmotivate/multicloudclass/assets/130941970/791f9716-bcc7-4dbb-964c-75cb8c2dd8a8)
@@ -123,9 +124,10 @@ For the purposes of this tutorial,we will name our resource group **"ProdApp1-NS
 
 ![nsgtags](https://github.com/mindmotivate/multicloudclass/assets/130941970/f7d1db43-846d-4307-9961-f5df58ab57c6)
 
-•Select: "review an create" once all the required field have been filled<br>
+Select: "review an create" once all the required field have been filled<br>
 *Wait for validation screen to appear*<br>
-•Now select “create”:<br>
+
+Now select “create”:<br>
 ![create](https://github.com/mindmotivate/multicloudclass/assets/130941970/726d58da-f6c8-4ce0-b2a4-d64a189497b1)
 
 *Wait for deployment to complete:*<br>
@@ -133,7 +135,7 @@ For the purposes of this tutorial,we will name our resource group **"ProdApp1-NS
 After the deployment is complete, you may select "go to resource" <br>
 You will see what appears to be a “Firewall” environment complete with all of the bells and whistles!<br>
 <br>
-First...A few ground rules regarding Security Groups.....<br>
+Before we continue...A few ground rules regarding "Security Groups".....<br>
 >• Never modify your "Deny Rules” such as "Deny all inbound" or "Deny all outbound"<br>
 >• Never touch "outbound rules"<br>
 >*If you break any of these rules, you will run the risk of rendering your firewall useless!<br>*
@@ -188,21 +190,22 @@ Let's add three inbound rules for our security group:<br>
 After validation has passed, select “create”:<br>
 Wait for deployment to complete:*<br>
 
-Next, we will create VM Scale Set<br>
-Type "scale ste" into your top search bar and find the "scale set" icon<RB>
-<BR>
-OK, Let’s create our VNnet next...<br>
+Next, Let’s create our Virtual Network...<br>
 <br>
 # 4. **Create a Virtual Network**
 Select from portal dashboard or type it into the search bar.<br>
 <br>
 ![vnsearch](https://github.com/mindmotivate/multicloudclass/assets/130941970/918eb192-7ebb-4e64-a24a-06d9992694cb)
-
+<br>
+<br>
+![vn](https://github.com/mindmotivate/multicloudclass/assets/130941970/02594d0f-c2dd-4496-8fcb-bf9e227b8de5)
+<br>
+<br>
 Select "Create" button<br>
 ![createvn](https://github.com/mindmotivate/multicloudclass/assets/130941970/9ec41294-4553-4cd4-9fb2-f56d98d7f4ab)
 <br>
 •Ensure that the proper subscription and resource groups are selected<br>
-•In "instance details" we will name our Vnet: “ProdApp1-Vnet”<br>
+•In the "Virtual Network Name" field we will name our Vnet: “ProdApp1-Vnet”<br>
 
 ![vnetselect](https://github.com/mindmotivate/multicloudclass/assets/130941970/9667dd62-0688-415d-ad43-19fe12ae3b4d)
 
@@ -211,9 +214,13 @@ Select "Create" button<br>
 ![vnetvame](https://github.com/mindmotivate/multicloudclass/assets/130941970/e5e16fb0-7c4a-49c8-ab32-7b70cf60f6d8)
 
 •Select “Next”: We will skip the security section at the moment<br>
+
 •Select “Next” again and proceed to the IP addresses section<br>
+
 <br>
-## Configure Subnet<br>
+
+## Configure Subnet
+
 *Note: Before Proceeding, go ahead and get your Planning Document<br>
 If you do not have one, create one ASAP!<br>
 <br>
