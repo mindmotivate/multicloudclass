@@ -19,22 +19,23 @@ A ***Load Balancing rule*** is a configuration that defines how incoming traffic
 
 Azure provides multiple Load Balancing services on its platform. However, for the purposes of this tutorial we will be focusing soley in the standard load balancing option.
 
+![back-end-tech-primer](https://github.com/mindmotivate/multicloudclass/assets/130941970/8dcc1936-719e-42b0-be4c-e0a18f7aab38)
+
 ***For addtional documentation regarding Azure Load Balancing click the following link:***[AZURE::LB](https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/load-balancing-overview)<br>
 
 <br>
 
 ># Concept Scenarios
-Before we begin...If any of the terminlogy seems a bit confusing, it is completely ok! I have provided a few example scenarios to help break down the topic in an easily digestible fashion:<br>
+Before we begin...If any of the terminlogy seems a bit confusing, it is completely ok! I have provided a few example scenarios to help break down the topic in an easily digestible fashion:[LB::Scenario](https://github.com/mindmotivate/multicloudclass/blob/main/Load_Balancing_Scenarios.md)<br>
+<br>
 
- •Scenario 1<br>
- •Scenario 2<br>
- •Scenario 3<br>
+
 
 # Process Outline
 Ok, now that we understand the general concepts, let's apply them by creating our first load balancer!
 
 **Basic Outline**:<br>
- • Sign in to the Azure portal<br>
+ • [Step1: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#1-log-in-to-the-azure-portal-)Sign in to the Azure portal<br>
  • Create a Resource Group<br>
  • Create a Security Group<br>
  • Create the virtual network<br>
