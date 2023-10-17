@@ -472,12 +472,13 @@ Make the following "Scale Set" selections:<br>
 **Subscription:** Ensure that the proper subscription and resource groups are selected<br>
 **Region:** The region will remain: (US) West US 3<br>
 **Availability Zone:** Select Zone1, Zone2 & Zone3<br>
->These are physically separate zones, that lie within an Azure region. They represent the physical locations of the AZ data centers. By having your data stored in multiple >locations (ie: redundancy) you drastically improve the avaibility of your resources. There are typically three Availability Zones per supported Azure region.*<br>
+>*These are physically separate zones, that lie within an Azure region. They represent the physical locations of the AZ data centers. By having your data >stored in multiple locations (ie: redundancy) you drastically improve the avaibility of your resources. There are typically three Availability Zones per supported Azure region.<br>*
 
 **Security Type:** Standard<br>
 
 **Image:** Unbuntu Minimal 2204 LTS x64 Gen 2<br>
->For image type, select "see all images" We will then select an Unbuntu Machine from the Marketplace. Simply select the words: see all images" to search all marketplace<br> >products. Type "Unbuntu in the search bar and locate the image entitled "Unbuntu Minimal 2204 LTS x64 Gen 2<br>
+>*For image type, select "see all images" We will then select an Unbuntu Machine from the Marketplace. Simply select the words: see all images" to search all marketplace products.
+>Type "Unbuntu in the search bar and locate the image entitled "Unbuntu Minimal 2204 LTS x64 Gen 2<br>*
 
 ![vmscalesetimage](https://github.com/mindmotivate/multicloudclass/assets/130941970/230a57de-d8c3-4d2a-8c41-aa7440ff9b72)
 
@@ -502,48 +503,45 @@ Username: We will chage the name of our user from “unbuntuuser” to "prodapp1
 
 Next: skip the spot section (no changes will need to be made here)<br>
 
-Next: go to disk<br>
+Next: Navigate to "Disk" section<br>
 OS Disk Type: Change os disk size to “standard” ssd”<br>
 We don’t need a premium option for the purposes of this tutorial<br>
 
-Next: go to Networking<br>
+Next: Navigate to the "Networking" section<br>
 
-**Networking**<br>
-Regarding the "Networking" we make the following selections:<br>
-**Virtual Network:** select previouslyy create Vnet name<br>
-**Network Interface Category:** <br>
-Select the pencil icon on the far right<br>
-This will allow us to configure the NIC<br>
+Regarding the **"Networking"** section, we make the following selections:<br>
+• **Virtual Network:** select previously create Vnet name<br>
+• **Network Interface Category:** <br>
+>Select the pencil icon on the far right<br>
+>This will allow us to configure the NIC<br>
 
-**Edit Network Interface:**<br>
-**NIC network security group:** a name will auto-populate<br>
-**NIC Security Group:** Select "Advanced"<br>
+**Edit Network Interface:** section:<br>
+• **NIC network security group:** a name will auto-populate<br>
+• **NIC Security Group:** Select "Advanced"<br>
 
 **Very Important! The following two features must be disabled**<br>
-**Public Ip Address:** Disabled<br>
-**Accelerated Networking:** Disabled<br>
+• **Public Ip Address:** Disabled<br>
+• **Accelerated Networking:** Disabled<br>
 
-select "OK"
+Select "OK" to proceed
 
-**Select Load Balancer:** select previously created resource<br>
-**Select Backend Pool:** select previously created resource<br>
+• **Select Load Balancer:** select previously created resource<br>
+• **Select Backend Pool:** select previously created resource<br>
 
 Next: Navigate to the "Health" section <br>
 
-**Health**<br>
+Regarding the **"Health Section"** we make the following selection:<br>
+• **Enable Application Health Monitoring:** Check Box<br>
 
-Regarding the "Section" we make the following selection:<br>
-• Enable Application Health Monitoring: Check Box<br>
 ![healthscaleset](https://github.com/mindmotivate/multicloudclass/assets/130941970/7e9daa37-54b8-4dc6-a619-e1ac6d6698e0)
 <br>
-Next: go to Advanced<br>
-**Advanced**<br>
+
+Next: Naviagte to the **"Advanced"** section<br>
 We will proceed to the "Advanced" section next: *Click Advanced next* <br>
 <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/2c079a21-b0a0-43ae-ac5e-f1613817bf40" width="25%" height="25%"><br>
 <br>
 <br>
-**Enable Userdata**<br>
-Enable User Data: Check Box<br>
+**Enable Userdata: **Check Box<br>
 
 <br>![enableuserdata](https://github.com/mindmotivate/multicloudclass/assets/130941970/7930eab2-6a49-4358-a809-a6632e8f03a1)
 
