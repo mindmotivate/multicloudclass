@@ -17,7 +17,7 @@ A ***Backend Pool*** is a collection of resources that receive incoming traffic 
 
 A ***Load Balancing rule*** is a configuration that defines how incoming traffic is distributed to the instances within the backend pool. It maps a given frontend IP configuration and port to multiple backend IP addresses and ports. (There are several types of rules that can be invoked)
 
-Azure provides multiple Load Balancing services on its platform. However, for the purposes of this tutorial we will be focusing soley in the standard load balancing option.
+Azure provides multiple Load Balancing services on its platform. However, for the purposes of this tutorial we will be focusing soley on the *basic* load balancing option.
 
 ![back-end-tech-primer](https://github.com/mindmotivate/multicloudclass/assets/130941970/8dcc1936-719e-42b0-be4c-e0a18f7aab38)
 
@@ -211,11 +211,11 @@ Select "Create" button<br>
 ![vnetvame](https://github.com/mindmotivate/multicloudclass/assets/130941970/e5e16fb0-7c4a-49c8-ab32-7b70cf60f6d8)
 
 •Select “Next”: We will skip the security section at the moment<br>
-•Select “Next” again and will proceed to the Ip addresses section<br>
+•Select “Next” again and proceed to the IP addresses section<br>
 <br>
 ## Configure Subnet<br>
-•*Note: Before Proceeding, go ahead and get your Planning Document<br>
-•If you do not have one, create one ASAP!<br>
+*Note: Before Proceeding, go ahead and get your Planning Document<br>
+If you do not have one, create one ASAP!<br>
 <br>
 >We will begin byb adding add our new CIDR<br>
 For this tutorial, we are using: **10.202.0.0/16**<br>
@@ -244,53 +244,97 @@ As always, we will plan our subnets by utilizing a planning sheet:<br>
 >PublicB: 10.202.2.0/24<br>
 >PublicC: 10.202.3.0/24<br>
 <br>
-For more info regarding subnet planning please visit the previous tutorial: [subnet design](https://github.com/mindmotivate/multicloudclass/assets/130941970/faf9162d-4155-4810-b0d8-cc20c5a78574)<br>
-*(The thought process and rules for building/naming subnets are similar to AWS)*<br>
+For more info regarding subnet planning please visit the previous tutorial:<br>
+
+[Subnet Planning](https://github.com/mindmotivate/multicloudclass/blob/main/aws-vpc-tutorial.md#step-7-plan-subnet-routing)
+>*(The thought process and rules for building/naming subnets are similar to AWS)*<br>
 <br>
-<br>
-<br>
-*Note: We will only utilizing the **"public"** subnet ranges, therefore you will have three subnets total*<br>
 <br>
 
-Create Public A
-Name: PublicA
-Starting Address: 10.202.2.0
-*check to make sure you "Ip address space says "256 addresses" (avoid accidentally adding a white space)*
+*Note: We will only be utilizing the ***public*** subnet ranges, therefore you will have ***three*** subnets total*<br>
+
+<br>
+Select the "Add a Subnet" button:<br>
+
+![addsubnetscreen](https://github.com/mindmotivate/multicloudclass/assets/130941970/b3a11882-690b-4ec7-a99f-06a2f612d812)
+
+<br>
+Now, let us carefully create our subnet starting addresses...
+
+<br>
+
+***Create Public A<br>***
+Name: PublicA<br>
+Starting Address: 10.202.2.0<br>
+*Check to make sure your "IP address space says "256 addresses" (avoid accidentally adding a white space)*<br>
+
 ![24](https://github.com/mindmotivate/multicloudclass/assets/130941970/2b59913e-a3fb-4447-8824-3d081e3d21f9)
+<br>
+After we create our first IP range for PublicA, will select "Create a New NAT Gateway"<br>
+
+We will name our NAT gateway: "PublicA-NAT"<br>
+We will select "(new)PublicA-publicipAddress" for the public IP address<br> 
+>(this can be found in the associated drop down list)<br>
+>(azure creates this name based on your previous naming convention)<br>
+
+![newpublicip](https://github.com/mindmotivate/multicloudclass/assets/130941970/a039c0b4-a54b-408d-8f0c-0aa750409ff4)
 
 
-After we create our first IP range for PublicA, will select "Create a New NAT Gateway"
-We will name our NAT gateway: "PublicA-NAT"
-We will select "(new)PublicA-publicipAddress" for the public IP address (this can be found in the associated drop down list)
-(azure creates this name based on your previous naming convention)
-Network Security Group: Select "ProdApp1-NSG" (this is the securit group you previously created)
-***Note: We will only need to add the NAT gateway name to one public IP address***
-***The Subnet NAT Gateway bears the public IP address for the entire Subnet***
-Press the "Add" button when complete
+***Note: We will only need to add the NAT gateway name to one public IP address***<br>
+***The Subnet NAT Gateway bears the public IP address for the entire Subnet***<br>
+Press the "Add" button when complete<br>
 
-Create Public B
-Name: PublicB
-Starting Address: 10.202.2.0
-*check to make sure you "Ip address space says "256 addresses" (avoid accidentally adding a white space)*
-Press the "Add" button when complete
+![addsubneta](https://github.com/mindmotivate/multicloudclass/assets/130941970/925b5574-8e1b-42a5-92ed-d940e0fda293)
+<br>
 
-Create Public C
-Name: PublicC
-Starting Address: 10.202.3.0
-*check to make sure you "Ip address space says "256 addresses" (avoid accidentally adding a white space)*
-Press the "Add" button when complete
+>If we scroll down a bit on the "Add a Subnet" page, you will reveal the security settings: 
+>For "Network Security Group" Select "ProdApp1-NSG" (this is the security group you previously created)<br>
+<br>
 
-•Tags: Let’s add the following tags:<br>
+![subsec](https://github.com/mindmotivate/multicloudclass/assets/130941970/ca0e1799-c940-451e-af83-ed998506939f)
+
+
+**Create Public B<br>**
+Name: PublicB<br>
+Starting Address: 10.202.2.0<br>
+*check to make sure you "Ip address space says "256 addresses" (avoid accidentally adding a white space)*<br>
+Press the "Add" button when complete<br>
+![addpublicb](https://github.com/mindmotivate/multicloudclass/assets/130941970/065399b4-57e7-4bcd-93a7-0830ac5e280d)
+<br>
+
+>If we scroll down a bit on the "Add a Subnet" page, you will reveal the security settings: 
+>For "Network Security Group" Select "ProdApp1-NSG" (this is the security group you previously created)<br>
+<br>
+
+![subsec](https://github.com/mindmotivate/multicloudclass/assets/130941970/9c1205b2-eecf-4821-8d84-ef96f164893d)
+
+**Create Public C<br>**
+Name: PublicC<br>
+Starting Address: 10.202.3.0<br>
+*check to make sure you "IP address space says "256 addresses" (avoid accidentally adding a white space)*<br>
+Press the "Add" button when complete<br>
+<br>
+![addsubnetc](https://github.com/mindmotivate/multicloudclass/assets/130941970/24513de8-16d5-4f19-874b-0723a8378185)
+<br>
+
+>If we scroll down a bit on the "Add a Subnet" page, you will reveal the security settings: 
+>For "Network Security Group" Select "ProdApp1-NSG" (this is the security group you previously created)<br>
+<br>
+
+![subsec](https://github.com/mindmotivate/multicloudclass/assets/130941970/e00bd6aa-c006-4edd-b035-2d4077af47e4)
+
+**Tags:** Let’s add the following tags:<br>
 • Name: ProdApp1-Vnet<br>
-• Owner: Chewbacca
+• Owner: Chewbacca<br>
 • Location: Austin<br>
 • Planet: Mustafar<br>
-*tags are optional, however it is good practice to add them*
+*tags are optional, however it is good practice to add them*<br>
+<br>
 
-•Review & Create: Let’s review an create!<br>
+**Review & Create:** Let’s review an create!<br>
 *Wait for validation screen to appear*<br>
-•Now select “create”:<br>
-Patiently wait for your deployment to complete...<br>
+Now select “create”:<br>
+*Patiently wait for your deployment to complete...<br>*
 ![deploymentinprogress](https://github.com/mindmotivate/multicloudclass/assets/130941970/545a6e3d-5418-4709-bbd7-86fe7da9c57a)<br>
 <br>
 Congrats! you have just sucessfully deployed your Virtual Network<br>
@@ -298,175 +342,180 @@ Congrats! you have just sucessfully deployed your Virtual Network<br>
 Next, on to the Load Balancer....<br>
 <br>
 
-# 5. **Create a Load Balancer** 
-Next, we will create our Load Balancer
-Select from portal dashboard or type "Load Balancer" into the search bar.
+# 5. **Create a Load Balancer**<br> 
+Next, we will create our Load Balancer<br>
+Select from portal dashboard or type "Load Balancer" into the search bar.<br>
 <br>
-Select the "Load Balancer" icon:
-
+Select the "Load Balancer" icon<br>
+<br>
 ![LBicon](https://github.com/mindmotivate/multicloudclass/assets/130941970/7b963d73-d6ae-4504-9494-38099d65e5c7)
 ![lbcreate](https://github.com/mindmotivate/multicloudclass/assets/130941970/f1748da8-38a5-49ee-906c-1cb9b3b12203)
 ![loadbalancermkt](https://github.com/mindmotivate/multicloudclass/assets/130941970/7bbc20b7-4113-4d97-9471-0e28907afa2f)
 
 Ensure that the proper subscription and resource groups are selected<br>
-Select “create”
-For the purposes of this tutorial, we will name our resource group **"ProdApp1-LB"**<br> 
+Select “create”<br>
+For the purposes of this tutorial, we will name our Load Balancer **"ProdApp1-LB"**<br> 
 <br>
 ![LBrequirments](https://github.com/mindmotivate/multicloudclass/assets/130941970/f652ecd5-32a3-40f0-a50c-742ef56f43a1)
 <br>
-Make the following Basic selections:
-SKU: Standard
-*Very Important: make sure "type" is set to public!
-Type: Public
-Tier: Regional
+Make the following Basic selections:<br>
+SKU: Standard<br>
+
+**Very Important: make sure "type" is set to public!<br>**
+Type: Public<br>
+Tier: Regional<br>
+<br>
 
 
-
-Next, naviagte to "Frontendip configuration"
+Next, naviagte to "Frontend ip configuration"<br>
 ![feipconfig](https://github.com/mindmotivate/multicloudclass/assets/130941970/0ae3eaa3-181e-4cc8-9fad-173c66abdda1)
 
-Make the following Frontend IP Configuration selections:
+Make the following Frontend IP Configuration selections:<br>
 For the purposes of this tutorial,we will name our resource group **"ProdApp1-frontendip"**<br> 
-Select "create new" under the "Public IP Address" category
+Select "create new" under the "Public IP Address" category<br>
 ![addfeip](https://github.com/mindmotivate/multicloudclass/assets/130941970/48195bf4-32ca-4d7f-9157-7cebbda565c5)
 
-We will add a public ip address
+We will add a public ip address<br>
 For the purposes of this tutorial,we will name it:"ProdApp1-frontendip-public-address"<br> 
-select "OK"
-
-Next, Make the following "Backend Pool" selections:
-Press the "Add backend pool" button
+Select "OK"<br>
+<br>
+Next, Make the following "Backend Pool" selections:<br>
+Press the "Add backend pool" button<br>
+<br>
 Name: For the purposes of this tutorial, we will name it:"ProdApp1-backendpool"<br> 
-
+<br>
 ![addbackendpool](https://github.com/mindmotivate/multicloudclass/assets/130941970/bf60f9e3-ff6a-44d1-b5b7-a01aaf04b84a)
 ![backendpoolname](https://github.com/mindmotivate/multicloudclass/assets/130941970/dce7cd1c-7c24-4ea4-9ff6-87b3b3899cc6)
 
-Virtual Network: Associate it with you Vnet: (the name of your virtual netowrk should auto populate this field)
-Click "Save" when complete
+Virtual Network: Associate it with you Vnet: (the name of your virtual netowrk should auto populate this field)<br>
+Click "Save" when complete<br>
 
-Similar to our security group, the load balancer will also have its own set of inbound rules...
-**Add Load Balancing Rules**
-Frontend IP address: select the "ProdApp1-frontendip" from the drop down list
-Backend Pool: select the "ProdApp1-backendpool" from the drop down list
+Similar to our security group, the load balancer will also have its own set of inbound rules...<br>
+**Add Load Balancing Rules**<br>
+Frontend IP address: select the "ProdApp1-frontendip" from the drop down <br>
+Backend Pool: select the "ProdApp1-backendpool" from the drop down list<br>
 ![addaloadbalancingrule](https://github.com/mindmotivate/multicloudclass/assets/130941970/181383cf-43db-4a7a-87b0-aa5e8a6d711f)
 
-We will create a new health probe, so select "create new"
+We will create a new health probe, so select "create new"<br>
 
 ![createnewhp](https://github.com/mindmotivate/multicloudclass/assets/130941970/106e471e-9099-44f5-b361-04125c9b7c62)
 
-Health Probe: name it: ProdApp1-healthprobe
-Click "Save" to save you new health probe name
-Check over all you selections
-Click "Save" to complete your add load baancing rule selections
+Health Probe: name it: ProdApp1-healthprobe<br>
+Click "Save" to save you new health probe name<br>
+
+Check over all you selections<br>
+Click "Save" to complete your add load baancing rule selections<br>
 
 
-The load balancer will also have a NAT rules...
-**Add NAT Rule**
-Name: We will name it "ProdApp1-NAT"
-Target Backend Pool: select the "ProdApp1-backendpool" from the drop down list
-Frontend IP Address: select the "ProdApp1-frontendip" from the drop down list
-Frontend port rage start: 50,0000
-Maximum number of machines: 3,0000
-Backend Port: 22 
-Leave all other options on their default settings
-Press the "Add" button when complete
+The load balancer will also have a NAT rules...<br>
+**Add NAT Rule**<br>
 
-Outbound Rules: skip past these by pressing "next"
-
+Name: We will name it "ProdApp1-NAT"<br>
+Target Backend Pool: select the "ProdApp1-backendpool" from the drop down list<br>
+Frontend IP Address: select the "ProdApp1-frontendip" from the drop down list<br>
+Frontend port rage start: 50,0000<br>
+Maximum number of machines: 3,0000<br>
+Backend Port: 22 <br>
+Leave all other options on their default settings<br>
+Press the "Add" button when complete<br>
+<br>
+Outbound Rules: skip past these by pressing "next"<br>
+<br>
 •**Tags:** Let’s add the following tags:<br>
 <br>
 • Name: ProdApp1-LB<br>
-• Owner: Chewbacca
+• Owner: Chewbacca<br>
 • Location: Austin<br>
 • Planet: Mustafar<br>
-*tags are optional, however it is good practice to add them*
+*tags are optional, however it is good practice to add them*<br>
+
 •Review & Create: Let’s review an create!<br>
 *Wait for validation screen to appear*<br>
-
-![lbvalidaton](https://github.com/mindmotivate/multicloudclass/assets/130941970/894321fe-723c-4e4d-9b19-f90924a851a4)
-
+<br>
+![lbvalidaton](https://github.com/mindmotivate/multicloudclass/assets/130941970/894321fe-723c-4e4d-9b19-f90924a851a4)<br>
+<br>
 •Now select “create”:<br>
-Patiently wait for your deployment to complete...lol
-Congrats! you have just sucessfully created your Load Balancer
+Patiently wait for your deployment to complete...lol<br>
+Congrats! you have just sucessfully created your Load Balancer<br>
+<br>
+<br>
+![lbcreated](https://github.com/mindmotivate/multicloudclass/assets/130941970/f45f1d2b-0672-490d-aaef-b9743c9c89d3)<br>
+<br>
+<br>
 
-
-![lbcreated](https://github.com/mindmotivate/multicloudclass/assets/130941970/f45f1d2b-0672-490d-aaef-b9743c9c89d3)
-
-
-
-# 6. **Create a VM Scale Set** 
-Type “virtual machine scale set” in the top search bar and select the scale set icon
+# 6. **Create a VM Scale Set** <br>
+Type “virtual machine scale set” in the top search bar and select the scale set icon<br>
 ![vmscaleset](https://github.com/mindmotivate/multicloudclass/assets/130941970/e20bb20a-6776-40d6-9a2a-a9df3c40f6f4)
 
-We will name our VM Scale Set: "ProdApp1-VMscale"
+We will name our VM Scale Set: "ProdApp1-VMscale"<br>
 ![crvmscaleset](https://github.com/mindmotivate/multicloudclass/assets/130941970/57b49a40-826b-4288-9da3-ea0b5252bc27)
 
 Select "Create" button<br>
 •Subscription: Ensure that the proper subscription and resource groups are selected<br>
 •Region: The region will remain: (US) West US 3<br>
 Availability Zone: Select Zone1, Zone2 & Zone3
-*These are physically separate zones, that lie within an Azure region. They represent the physical locations of the AZ data centers. By having your data stored in multiple locations (ie: redundancy) you drastically improve the avaibility of your resources. There are typically three Availability Zones per supported Azure region.*
+*These are physically separate zones, that lie within an Azure region. They represent the physical locations of the AZ data centers. By having your data stored in multiple locations (ie: redundancy) you drastically improve the avaibility of your resources. There are typically three Availability Zones per supported Azure region.*<br>
 
-Security Type: Standard
+Security Type: Standard<br>
 
-Image: Unbuntu Minimal 2204 LTS x64 Gen 2
-For image type, select "see all images" We will then select an Unbuntu Machine from the Marketplace. Simply select the words: see all images" to search all marketplace products. Type "Unbuntu in the search bar and locate the image entitled "Unbuntu Minimal 2204 LTS x64 Gen 2
+Image: Unbuntu Minimal 2204 LTS x64 Gen 2<br>
+For image type, select "see all images" We will then select an Unbuntu Machine from the Marketplace. Simply select the words: see all images" to search all marketplace<br> products. Type "Unbuntu in the search bar and locate the image entitled "Unbuntu Minimal 2204 LTS x64 Gen 2<br>
 
 ![vmscalesetimage](https://github.com/mindmotivate/multicloudclass/assets/130941970/230a57de-d8c3-4d2a-8c41-aa7440ff9b72)
 
 
 
-VM Architecture: Select 64 
+VM Architecture: Select 64 <br>
 
-Scaling: 
-Instance Count: 4
-Click "Scaling Configuration": directly underneath "instance count:
+Scaling: <br>
+Instance Count: 4<br>
+Click "Scaling Configuration": directly underneath "instance count:<br>
 
 ![configscalingoptions](https://github.com/mindmotivate/multicloudclass/assets/130941970/5e01cf54-d779-4198-8833-25253befdb8d)
 
-Next, Make the following scaling selections:
-Apply fore delete to scale-in operations: check box
+Next, Make the following scaling selections:<br>
+Apply fore delete to scale-in operations: check box<br>
 
 ![scaleconfig](https://github.com/mindmotivate/multicloudclass/assets/130941970/73d9edcc-0c21-4217-9349-f2d237da10cd)
 
 
-Maintain remaining default settings and click "Save"
+Maintain remaining default settings and click "Save"<br>
 
-Select the following "Admin Account" settings:
-Username: We will chage the name of our user from “unbuntuuser” to "prodapp1user"
+Select the following "Admin Account" settings:<br>
+Username: We will chage the name of our user from “unbuntuuser” to "prodapp1user"<br>
 
-Next: skip the spot section (no changes will need to be made here)
+Next: skip the spot section (no changes will need to be made here)<br>
 
-Next: go to disk
-OS Disk Type: Change os disk size to “standard” ssd”
-We don’t need a premium option for the purposes of this tutorial
+Next: go to disk<br>
+OS Disk Type: Change os disk size to “standard” ssd”<br>
+We don’t need a premium option for the purposes of this tutorial<br>
 
-Next: go to Networking
+Next: go to Networking<br>
 **Networking**<br>
 Regarding the "Networking" we make the following selections:<br>
-• Virtual Network: select previouslyy create Vnet name
-• Network Interface Category:
-Select the pencil icon on the far right
-This will allow us to configure the NIC
+• Virtual Network: select previouslyy create Vnet name<br>
+• Network Interface Category:<br>
+Select the pencil icon on the far right<br>
+This will allow us to configure the NIC<br>
 
-Edit Network Interface:
-• NIC network security group: a name will auto-populate
-• NIC Security Group: Select "Advanced"
-Very Important!:
-Public Ip Address: Disabled
-Accelerated Networking: Disabled
+Edit Network Interface:<br>
+• NIC network security group: a name will auto-populate<br>
+• NIC Security Group: Select "Advanced"<br>
+Very Important!:<br>
+Public Ip Address: Disabled<br>
+Accelerated Networking: Disabled<br>
 select "OK"
 
-• Select Load Balancer: select previously created resource
-• Select Backend Pool: select previously created resource
+• Select Load Balancer: select previously created resource<br>
+• Select Backend Pool: select previously created resource<br>
 
-Next: go to Health
+Next: go to Health<br>
 **Health**<br>
 Regarding the "Section" we make the following selection:<br>
-• Enable Applicaiton Health Monitoring: Check Box
+• Enable Applicaiton Health Monitoring: Check Box<br>
 ![healthscaleset](https://github.com/mindmotivate/multicloudclass/assets/130941970/7e9daa37-54b8-4dc6-a619-e1ac6d6698e0)
-
-Next: go to Advanced
+<br>
+Next: go to Advanced<br>
 **Advanced**<br>
 We will proceed to the "Advanced" section next: *Click Advanced next* <br>
 <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/2c079a21-b0a0-43ae-ac5e-f1613817bf40" width="25%" height="25%"><br>
@@ -507,10 +556,10 @@ Remo Script
 *Wait for validation screen to appear*<br>
 •Now select “create”:<br>
 
-You will be prompted by a "Generate new key pair" message
-Select: Download the private key
+You will be prompted by a "Generate new key pair" message<br>
+Select: Download the private key<br>
 
-Once your deployment has completed you will go to your resource and locate the Public IP address
+Once your deployment has completed you will go to your resource and locate the Public IP address<br>
 ![vmdeployment](https://github.com/mindmotivate/multicloudclass/assets/130941970/9480016d-0f00-456e-8519-ec3c4e22bf72)
 
  **Find Your IP Adress**<br>
