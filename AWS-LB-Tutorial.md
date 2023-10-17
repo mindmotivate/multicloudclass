@@ -1,4 +1,4 @@
-# An Intro introduction to AWS VPC Creation:  
+# An Intro introduction to AWS Load Balancers:  
 
 [Motivated Mindstate](https://github.com/mindmotivate)
 
