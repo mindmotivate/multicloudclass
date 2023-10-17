@@ -547,10 +547,8 @@ Enable User Data: Check Box<br>
 <br>![enableuserdata](https://github.com/mindmotivate/multicloudclass/assets/130941970/7930eab2-6a49-4358-a809-a6632e8f03a1)
 
 We will naviagte to the "add user data" box:<br>
-![userdataJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/24fc8b69-1c1f-4343-b6f5-95ab21530358)<br>
-<br>
-<br>
-Please copy and paste the following script in the box:<br>
+
+COpy and paste the provided script in the user data box:<br>
 
 ![enableuserdata1](https://github.com/mindmotivate/multicloudclass/assets/130941970/911ca360-4250-471b-a59e-6545c453df9d)
 
