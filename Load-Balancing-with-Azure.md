@@ -44,7 +44,9 @@ Ok, now that we understand the general concepts, let's apply them by creating ou
  • [Step5: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#5-create-a-load-balancer)Create a Load Balancer<br>
  • [Step6: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#6-create-a-vm-scale-set-)Create a VM Scale Set<br>
  • [Step7: ](https://github.com/mindmotivate/multicloudclass/blob/main/Load-Balancing-with-Azure.md#7-resource-group-teardown-)Resouce Group Teardown(...so we don't get charged extra!)
- 
+
+<img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-azure-lb/lbdiagram4.png" width="50%" height="50%">
+
 # 1. **Log in to the Azure portal**
 
 **Go to the [Azure portal](https://portal.azure.com/) and sign in with your credentials.<br>**
@@ -499,13 +501,13 @@ Apply fore delete to scale-in operations: check box<br>
 Maintain remaining default settings and click "Save"<br>
 
 Select the following "Admin Account" settings:<br>
-Username: We will chage the name of our user from “unbuntuuser” to "prodapp1user"<br>
+**Username:** We will chage the name of our user from “unbuntuuser” to "prodapp1user"<br>
 
-Next: skip the spot section (no changes will need to be made here)<br>
+Next: Skip the "Spot" section (*no changes will need to be made here*)<br>
 
 Next: Navigate to "Disk" section<br>
-OS Disk Type: Change os disk size to “standard” ssd”<br>
-We don’t need a premium option for the purposes of this tutorial<br>
+**OS Disk Type:** Change os disk size to “standard” ssd”<br>
+*We don’t need a premium option for the purposes of this tutorial<br>*
 
 Next: Navigate to the "Networking" section<br>
 
@@ -515,18 +517,21 @@ Regarding the **"Networking"** section, we make the following selections:<br>
 >Select the pencil icon on the far right<br>
 >This will allow us to configure the NIC<br>
 
+
+
+
 **Edit Network Interface:** section:<br>
 • **NIC network security group:** a name will auto-populate<br>
 • **NIC Security Group:** Select "Advanced"<br>
 
 **Very Important! The following two features must be disabled**<br>
-• **Public Ip Address:** Disabled<br>
+• **Public IP Address:** Disabled<br>
 • **Accelerated Networking:** Disabled<br>
 
-Select "OK" to proceed
+Select "OK" to proceed<br>
 
+On the followin menu:<br>
 • **Select Load Balancer:** select previously created resource<br>
-• **Select Backend Pool:** select previously created resource<br>
 
 Next: Navigate to the "Health" section <br>
 
@@ -556,7 +561,48 @@ Copy and paste the provided script in the user data box:<br>
 ```
 #!/bin/bash
 
-Insert Remo Script
+# Update system and install Apache2 and jq
+apt-get update -y
+apt-get install -y apache2 jq
+
+# Ensure Apache2 is running and enabled on boot
+systemctl start apache2
+systemctl enable apache2
+
+# Fetch Azure VM metadata
+METADATA=$(curl -H Metadata:true -s "http://169.254.169.254/metadata/instance?api-version=2021-01-01")
+
+# Log metadata for debugging purposes
+echo "$METADATA" > /tmp/metadata.json
+
+# Extract data from the fetched metadata
+local_ipv4=$(echo "$METADATA" | jq -r '.network.interface[0].ipv4.ipAddress[0].privateIpAddress')
+az=$(echo "$METADATA" | jq -r '.compute.location')
+vm_id=$(echo "$METADATA" | jq -r '.compute.vmId')
+
+# Generate an HTML file with the extracted data
+cat <<EOF > /var/www/html/index.html
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+<title>Details for Azure VM</title>
+</head>
+<body>
+<div>
+<h1>Don't Touch</h1>
+<h1>Outbound Rules!</h1>
+
+<p><b>Instance Name:</b> $(hostname -f)</p>
+<p><b>Instance Private IP Address:</b> ${local_ipv4}</p>
+<p><b>Availability Zone:</b> ${az}</p>
+<p><b>Virtual Machine ID:</b> ${vm_id}</p>
+</div>
+</body>
+</html>
+EOF
+
+# Remove the temporary file
+rm /tmp/metadata.json
 
 
 ```
@@ -566,7 +612,7 @@ Insert Remo Script
 • Owner: Chewbacca
 • Location: Austin<br>
 • Planet: Mustafar<br>
-*tags are optional, however it is good practice to use them*
+**tags are optional however, it is good practice to use them*
 
 
 •**Review & Create:** Let’s review an create!<br>
@@ -602,7 +648,10 @@ Theh virtual machine instance details should be displayed on the screen:<br>
  >***The displayed IP address should change after a few attempts***
  >***Azure load balancers are dynamically assigned public IP addresses*** 
  >***This means that the IP address of the load balancer may chnage with incomming traffic***
- 
+
+ Now that we have completed the entire process and tested it to make sure it is functional....<br>
+ It's time for the "easy" part...<br>
+ Let's get ready to tear everything down! (unless you want to be charged for your running resources that is!)<br>
 
 # 7. **Resource Group Teardown** <br>
 >•Type "resource groups" in the top search bar<br>
