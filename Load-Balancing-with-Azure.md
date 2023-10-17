@@ -565,7 +565,7 @@ Insert Remo Script
 
 ```
 
-•Tags: Let’s add the following tags:<br>
+**Tags:**Let’s add the following tags:<br>
 • Name: ProdApp1-VMscale<br>
 • Owner: Chewbacca
 • Location: Austin<br>
@@ -573,13 +573,15 @@ Insert Remo Script
 *tags are optional, however it is good practice to use them*
 
 
-•Review & Create: Let’s review an create!<br>
+•**Review & Create:** Let’s review an create!<br>
 *Wait for validation screen to appear*<br>
 
 •Now select “create”:<br>
 
 You will be prompted by a "Generate new key pair" message<br>
-Select: Download the private key<br>
+Select: "Download the private key and create resource" button<br>
+
+<img width="240" alt="download-key" src="https://github.com/mindmotivate/multicloudclass/assets/130941970/5e6864cb-ade5-4a35-91a8-0c49069349da">
 
 Once your deployment has completed you will go to your resource and locate the Public IP address<br>
 ![vmdeployment](https://github.com/mindmotivate/multicloudclass/assets/130941970/9480016d-0f00-456e-8519-ec3c4e22bf72)
@@ -587,15 +589,19 @@ Once your deployment has completed you will go to your resource and locate the P
  **Find Your IP Adress**<br>
 **Locate the IP address for your instance:**<br>
 
+Example:
+![ipaddress](https://github.com/mindmotivate/multicloudclass/assets/130941970/ceecf56f-5044-43d7-af1d-4e88f1edc433)
+
 <br>
 Type http:// in the search bar first before pasting the public IP address of your new instance<br>
+![http](https://github.com/mindmotivate/multicloudclass/assets/130941970/12f57c91-61b8-4763-bdc0-1bb87cdecf2c)
 
 
 Instance details should be displayed on the screen:<br>
 ![instancedescription](https://github.com/mindmotivate/multicloudclass/assets/130941970/176d6e39-68cd-4ccc-94bf-5d5d6a4f0f03)
 
 
-**Teardown Procedure:**<br>
+# 7. **Resource Group Teardown** <br>
 >-Type "resource groups" in the top search bar<br>
 >-Select the vpc you want to delete.<br>
 >-Click on the "Delete resource group" button.<br>
