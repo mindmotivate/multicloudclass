@@ -21,7 +21,56 @@ Autoscaling is an essential part of cloud computing, as it allows you to scale y
 
 # What are Load Balancers for exactly?.....
 
-LBs can be used with autoscaling to ensure that your applications are always available to perofrm at their best! For example, you can configure an ALB to distribute traffic across a set of EC2 instances that are managed by an autoscaling group. The autoscaling group will automatically add or remove EC2 instances from the group based on the traffic load. This ensures that your application always has enough resources to handle the current load, without having to manually provision or deprovision resources.
+LBs can be used with autoscaling to ensure that your applications are always available to perform at their best! For example, you can configure an ALB to distribute traffic across a set of EC2 instances that are managed by an autoscaling group. The autoscaling group will automatically add or remove EC2 instances from the group based on the traffic load. This ensures that your application always has enough resources to handle the current load, without having to manually provision or deprovision resources.
+
+Application Load Balancers (ALBs) are a type of load balancer that is designed for HTTP and HTTPS traffic. ALBs can be used to distribute traffic across multiple EC2 instances, ECS containers, or AWS Lambda functions.
+
+
+, the load balancer sends requests to the backend pool via their public IP addresses, on port 80 by default. This is because the load balancer is located in a public subnet and needs to be able to communicate with the backend servers, which are located in a private subnet.
+
+The backend servers in a private subnet will have a public IP address assigned to them by the NAT gateway. This IP address is used for communication with the load balancer. However, the backend servers will not be directly accessible to the general web. Instead, all traffic to the backend servers must be routed through the load balancer.
+
+Here is a diagram of the network architecture: Internet -> Load Balancer -> NAT Gateway -> Backend Servers
+
+Internet -> Load Balancer -> NAT Gateway -> Backend Servers
+The load balancer will distribute traffic to the backend servers using a load balancing algorithm. The most common algorithm is round robin, which distributes traffic evenly across all of the backend servers.
+
+When a client sends a request to the load balancer, the load balancer will translate the client's public IP address to the public IP address of one of the backend servers. The load balancer will then forward the request to the selected backend server.
+
+The backend server will process the request and generate a response. The backend server will then send the response back to the load balancer. The load balancer will then forward the response back to the client.
+
+This process ensures that all traffic to the backend servers is routed through the load balancer. This helps to improve the security and reliability of the backend servers.
+
+It is also important to note that the load balancer can be configured to use HTTPS instead of HTTP. This is a more secure way to communicate with the backend servers. However, it will require the backend servers to be configured with SSL certificates.
+
+Now in reverse:
+
+a server in a private subnet that wants to communicate with the web must go through the NAT gateway first, and then to the load balancer. This is because the server does not have a public IP address and cannot communicate directly with the web.
+
+The NAT gateway will translate the server's private IP address to a public IP address. The server will then use this public IP address to communicate with the web.
+
+The load balancer is not used for outgoing traffic from the server to the web. This is because the server can communicate directly with the web using the public IP address that is assigned to it by the NAT gateway.
+The load balancer only needs to interact with the servers when they are fulfilling a request from the web. Otherwise, the servers can send information directly to the internet via the NAT gateway.
+
+Here is a diagram of the network architecture:
+
+Server (Private Subnet) -> NAT Gateway -> Internet
+The server will initiate the communication with the web by sending a request to the NAT gateway. The NAT gateway will translate the server's private IP address to a public IP address and then forward the request to the web.
+
+One more thing...
+It is important to note that some organizations may choose to block all outbound traffic from servers in private subnets, except for traffic that is routed through the load balancer. This is done to improve security and control.
+
+
+# Ok so what is this NIC i hear so much about?>
+NIC is the Network Interface Card, Hers how it comes into play....
+A client sends a request to the load balancer's public IP address.
+The load balancer forwards the request to one of the servers in the target group/backend pool.
+The server receives the request on its NIC.
+The server processes the request and generates a response.
+The server sends the response back to the load balancer on its NIC.
+The load balancer forwards the response back to the client.
+The server's NIC is essential for this process because it allows the server to communicate with the load balancer. Without the NIC, the server would not be able to send or receive traffic to or from the load balancer.
+
 
 # Auto Scale Scenario:
 
