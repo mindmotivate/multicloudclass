@@ -11,22 +11,22 @@ The following will be a continuation of the tutorial where we created our first 
 In this tutorial we will be creating a load balancer which will attach to our previous VPC.
 If you like to visit the previous tutorial please use the following link:
 
+Ok, nwo that wever gotten the formalities out of the wway.. 
+Here is more infomration than you ever we wanted to know about Autoscaling, Load Balancing, NAT's, NIC's, ASG's and other Three-letter acronyms...lol 
+
 # So what does "Autoscaling" mean?
 
 Autoscaling is the process of automatically adjusting the number of computing resources that are allocated to an application or service based on demand. This can help to ensure that your application is always available and performant, even when traffic spikes.
 
-Autoscaling is a critical part of cloud computing, as it allows you to scale your infrastructure up or down without having to manually provision or deprovision resources. This can save you time and money, and it can also help to improve the reliability and performance of your applications.
-
-Autoscaling is an essential part of cloud computing, as it allows you to scale your infrastructure up or down based on demand without having to manually provision or deprovision resources. This can have a number of benefits, including: Cost Reduction , Improved Reliability and Increased Performance
+Autoscaling is a critical part of cloud computing, as it allows you to scale your infrastructure up or down without having to manually provision or deprovision resources. This can save you time and money, and it can also help to improve the reliability and performance of your applications. Autoscaling is an essential part of cloud computing!
 
 # What are Load Balancers for exactly?.....
 
-LBs can be used with autoscaling to ensure that your applications are always available to perform at their best! For example, you can configure an ALB to distribute traffic across a set of EC2 instances that are managed by an autoscaling group. The autoscaling group will automatically add or remove EC2 instances from the group based on the traffic load. This ensures that your application always has enough resources to handle the current load, without having to manually provision or deprovision resources.
+LB's can be used with autoscaling to ensure that your applications are always available to perform at their best! For example, you can configure an ALB to distribute traffic across a set of EC2 instances that are managed by an autoscaling group. The autoscaling group will automatically add or remove EC2 instances from the group based on the traffic load. This ensures that your application always has enough resources to handle the current load, without having to manually provision or deprovision resources.
 
 Application Load Balancers (ALBs) are a type of load balancer that is designed for HTTP and HTTPS traffic. ALBs can be used to distribute traffic across multiple EC2 instances, ECS containers, or AWS Lambda functions.
 
-
-, the load balancer sends requests to the backend pool via their public IP addresses, on port 80 by default. This is because the load balancer is located in a public subnet and needs to be able to communicate with the backend servers, which are located in a private subnet.
+The load balancer will receive web requests and send them to the backend pool via their public IP addresses, on port 80 by default. This is because the load balancer is located in a public subnet and needs to be able to communicate with the backend servers, which are located in a private subnet.
 
 The backend servers in a private subnet will have a public IP address assigned to them by the NAT gateway. This IP address is used for communication with the load balancer. However, the backend servers will not be directly accessible to the general web. Instead, all traffic to the backend servers must be routed through the load balancer.
 
