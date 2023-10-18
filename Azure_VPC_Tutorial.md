@@ -35,9 +35,9 @@ Ok, Let's Begin!<br>
 <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/bf49c6c9-3632-4343-b5b6-fb6f1ff2959a" width="50%" height="50%"><br>
 
 **Alternate Method 4:**
-   Although we will not cover this method in this tutotial, you have the ability to create a VM using the "CLI"(command line interface)<br>
+   Although we will not cover this method in this tutorial, you do have the ability to create a VM using the "CLI"(command line interface)<br>
     <br>
-    For more infrmation regarding the creation of a VM using Azure CLI refer to the following documentation:[AZURE::CLI](https://learn.microsoft.com/en-us/azure/virtual-network/quick-create-cli)<br>
+    For more information regarding the creation of a VM using Azure CLI, refer to the following documentation:[AZURE::CLI](https://learn.microsoft.com/en-us/azure/virtual-network/quick-create-cli)<br>
     <br>
     ***As you can see, there are a variety of menu options at your disposal!<br>***
 
@@ -45,7 +45,7 @@ Ok, Let's Begin!<br>
 Fill out the required fields regarding **Project Details**<br>
     <br>
     **Subscription:** In order to proceed you must ensure that a Subscription is attached to your VM.<br>
-    **Resource Groups:** Here will name our resource group. Select "Create New" (in blue letters)<br>
+    **Resource Groups:** Here we will name our resource group. Select "Create New" (in blue letters)<br>
     <br>
     *(For the purposes of this tutorial we will name our resource group "Demogroup")*<br>
     <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/a9846886-74b3-44f6-8372-eea35191eb9a" width="75%" height="75%">
@@ -60,7 +60,7 @@ Fill out the required fields regarding **Project Details**<br>
 <br>
 <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/56832148-bd83-4ef0-81a5-f8a9efad06d6" width="75%" height="75%">
 <br>
-  ***Notice that after you select your specificied number of regions, you will see the coresponding number of VM names displayed in the "Virtual Machine Name" box: VMdemo-1, VMdemo-2, VMdemo-3***<br>
+  ***Notice that after you select your specificied number of regions, you will see the corresponding number of VM names displayed in the "Virtual Machine Name" box: VMdemo-1, VMdemo-2, VMdemo-3***<br>
 <br>
 <img src="https://github.com/mindmotivate/multicloudclass/assets/130941970/56832148-bd83-4ef0-81a5-f8a9efad06d6" width="75%" height="75%">
 <br>
@@ -70,7 +70,7 @@ Fill out the required fields regarding **Project Details**<br>
     ![standardsecurity](https://github.com/mindmotivate/multicloudclass/assets/130941970/857ad278-2e26-4952-8500-00ec3045bdb9)
     <br> 
     **Image:<br>**
-    For image type, we will select an Unbuntu Machine from the Marketplace. Simply select the words: see all images" to search all marketplace products.
+    For image type, we will select an Unbuntu Machine from the Marketplace. Simply select the words: "see all images" to search all marketplace products.
     Type "Unbuntu in the search bar and locate the image entitled ***"Unbuntu Minimal 2204 LTS x64 Gen 2"<br>***
     ![seeallimages](https://github.com/mindmotivate/multicloudclass/assets/130941970/b06a13c7-9221-425c-befb-c06c9a8d458d)<br>
     <br>
