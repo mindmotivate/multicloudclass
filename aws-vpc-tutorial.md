@@ -220,17 +220,60 @@ VPC Endpoints: (default)<br>
 
  <img src="https://raw.githubusercontent.com/mindmotivate/multicloudclass/gh-pages-vpc/createvpcwaitscreen.png" width="50%" height="50%">
 
-## Step 10: Create Security Groups for each VPC ##
+## Create a security group: ##
 *For instructions on how to setup a security group refer to the following documentation:<br>*
 [Security Group Tutorial](https://github.com/mindmotivate/multicloudclass/blob/main/launch-template-tutorial-test.md#create-a-security-group-)
 
-## Create a security group: ## 
+ ## Step 10: Create Security Groups for your VPC ##
 1. From your console, navigate to Security Groups<br>
 2. Choose Create security group.(Use simlar namong convention as VPC)<br>
 3. Enter a name and description for the security group<br>
 4. Select the VPC we created to associate it with<br>
+
+Note: You will have to click the "x" next the VPC name in order to reveal your created VPC 
+
 5. Add inbound and outbound rules as needed (HTTP IPV4 / SSH IPv4 / RDP IPb4)<br>
+Please create the following three inbound rules:\.
+
+Inbound Rule 1: TCP ingress rule that allows HTTP access (port 80) from anywhere IPv4\.
+Inbound Rule 2: TCP ingress rule that allows SSH access (port 22) from anywhere IPv4\.
+Inbound Rule 3: TCP ingress rule that allows RDP access (port 3389) from anywhere IPv4\.
+
+**Add descriptions to your inbound rules:** 
+
+Additonally, you have the option of adding descriptions for each rule. You may use thes following descriptions or create your own.\.
+
+HTTP 80 Anywhere IPv4	Description: **My Homepage or My App**\.
+SSH 22 Anywhere IPv4    Description: **SSH**\.
+RDP 3389 Anywhere IPv4	Description: **Windows or Evilbox**\.
+
+**Don't even think about touching Outbound Rules** 
+
+6. Add Tags (Optional)
+7. Create your security group!
+   
+## Step 10: Create Security Groups for your VPC ##
+Follow the previous procedure in order to create your Load Balancer Security Group
+3. Enter a name and description for the security group (enure consitency with your naming convention)<br>
+4. Just as before, Select the VPC we created to associate it with<br>
+
+Please create only one inbound rule:\.
+
+Inbound Rule: TCP ingress rule that allows HTTP access (port 80) from anywhere IPv4\.
+
+This rule is designed to allow web traffic only into the LB
+
+Add tags as needed and Create your second security group!
+
+
+
+In general, it is a good practice to have one load balancer per VPC. This can help to improve the security, performance, and cost-effectiveness of your VPC. 
+However you will ultimately do what your employer requires!
+
 6. (Optional)Choose "Create Key Pair" Windows (.pem) <br>
+
+
+
 
 ## Step 11:Create an EC2 instance ## 
 *For instructions on how to create an EC2 instances refer to the following documentation:<br>*
