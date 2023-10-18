@@ -265,27 +265,121 @@ This rule is designed to allow web traffic only into the LB
 
 Add tags as needed and Create your second security group!
 
-
-
 In general, it is a good practice to have one load balancer per VPC. This can help to improve the security, performance, and cost-effectiveness of your VPC. 
 However you will ultimately do what your employer requires!
-
-6. (Optional)Choose "Create Key Pair" Windows (.pem) <br>
-
-
-
 
 ## Step 11:Create an EC2 instance ## 
 *For instructions on how to create an EC2 instances refer to the following documentation:<br>*
 [EC2 Tutorial](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
-
+We will use this instance to create a launch template
 ## Create an EC2 instance: ##
 1. From Amazon EC2 console, navigate to Instances and choose Launch Instance and assign matching naming convention<br>
-2. Select an Amazon Machine Image (default) and choose Next.<br>
-3. Choose an instance type and configure any additional settings as needed.<br>
+2. Select an Amazon Machine Image (Use default Amazon Linux 2023 AMI) and choose Next.<br>
+3. Choose an instance type (use default t2.micro free tier)<br>
+4. You may choose to create an optional keypair as needed.<br>
+
+
+Network Settings: Click "Edit"
+VPC: Choose the VPC you intially created
+
+Important!
+When you configure your Network Settings
+Be sure to select: "Do not include launch template" under the "subnet category"
+(this will cause all of your EC2s to be laUnched in the same AZ)
+
+We dont want our private EC2 ip adresses to be exposed to the public internet, so weil Auto-Assign them a Public IP
+
+Generally speaking, you can create an EC2 instance in a private subnet with an auto-assigned public IP address.
+This will allow the EC2 instance to communicate with the load balancer, while preventing it from being directly exposed to the public internet.
+When the EC2 instance launches, it will be assigned a public IP address. However, the public IP address will not be exposed to the public internet. Instead, it ?will be used by the load balancer to distribute traffic to the EC2 instance.
+
+For Example:
+A client sends a request to the load balancer's public IP address.
+The load balancer distributes the request to one of the EC2 instances in the target group.
+The EC2 instance processes the request and sends a response back to the load balancer.
+The load balancer forwards the response back to the client.
+
+Select the existing security group for your server (NOT the one for your Load Balancer)
 4. Select the VPC we previously created with the instance and choose a subnet within that VPC.<br>
-5. Configure any additional settings as needed (such as User Data).<br>
+5. Scroll down to advanced details and find the "user data"<br>
+Enter the following script:
+(Jay Remo script)
 6. Review your settings and launch your instance.<br>
+
+## Create a Template from your EC2 Instance ##
+Navigate to "Instances" and choose your newly created instance
+From the Actions menu select "Create template from image"
+Enter a name and description for the security group (enure consitency with your naming convention)<br>
+
+Select your existing security group
+Add tags as needed
+Lauch your template
+
+## Temrminate your previous EC2 Instance ##
+Now that we have created a template we can navigaet back to our previous instance and terminate it via the actions menu
+
+
+## Create a Target Group ##
+A target group in AWS is a collection of EC2 instances that can be used by a load balancer to distribute traffic. 
+Target groups are used to define the pool of EC2 instances that the load balancer can forward traffic to. In Azure they would refer to this as a "Backend Pool"
+
+Navigate to "Target Groups" and Create a new target group
+Click the "Instances" button in the"Choose a target type" list
+Enter a name and description
+
+Protocal: HTTP 80
+IP Address Type: IPv4
+VPC:Choose your previously created VPC
+Health Checks:Keep all defaults settings
+Advanced Health Checks:Keep all defaults settings
+Add optional Tags
+Create Target Group
+
+233
+
+## Create a Load Balancer ##
+Once you have created a target group, you can associate it with a load balancer. 
+In the navigation pane, choose Load Balancing.
+Choose Load Balancers.
+Choose Create Load Balancer.
+Under Load balancer type, choose Application Load Balancer.
+Do Not Talk About CLASSIC Load Balancers
+Enter a name for your load balancer.
+
+Under Scheme, choose Internet-facing.
+Under IP address type, choose IPv4 or dualstack.
+Very Important
+Under "Network Mapping"
+Under VPC: Choose your created VPC
+Under Mapping: 
+Choose a public subnet for each AZ! (make sure you don't accidentaly pick private)
+
+Under Security groups, select the security groups that you want to associate with your load balancer.
+Under Subnets, select the subnets that you want to associate with your load balancer.
+Under Target groups, select the target groups that you want to associate with your load balancer.
+Choose Create.
+
+Health Checks:Keep all defaults settings
+
+
+
+When you associate a target group with a load balancer, you must specify a listener. A listener is a rule that defines how the load balancer should distribute traffic to the target group.
+
+
+
+For example, you could create a listener that routes all HTTP traffic to the target group. You could also create a listener that routes traffic to the target group based on the path of the request.
+
+
+Once you have associated a target group with a load balancer, the load balancer will start distributing traffic to the EC2 instances in the target group. The load balancer will use the health check to determine whether or not an EC2 instance is healthy before forwarding traffic to it.
+
+239
+
+When you configure your launch template, do not include the subnet
+
+
+
+
+
 
 ## Teardown Procedure ##
 There is a specific order that you must follow when tearing down resources in AWS VPC.<br>
