@@ -199,13 +199,54 @@ Your Load balancer will be communicating with the public subnet ranges
 The back-end pool can contain instances in any subnet in the load balancer's VPC. However, if you want to ensure that the load balancer sends incoming traffic to the public subnet ranges in the AZs, you need to select one public subnet from each AZ for the "mapping" category.
  
   Scroll down to **Security groups** and select your **Load balancer** security group
- **V J
- 8. For **Listener**, choose **Create New Listener** 
-9. For **Protocol**, select **HTTP**.
-10. For **Port**, enter 80.
-11. For **Forward Target Group**, select the target group you created in step 4.
-12. Choose **Create Listener**.
+**Important**
+> Your listeners determine which application your using
+> In this tutorial we will not add listener. However, in the future we will use one to assist with load balacning multiple applications
+For **Add on services** use default
+Add descriptive tags as needed
 13. Choose **Create Load Balancer**.
+Patiently wait for your load balancer to deploy
+
+
+
+
+### Create an autoscaling group
+
+1. In the Amazon EC2 console, navigate to **Auto Scaling** > **Auto Scaling Groups**.
+2. Choose **Create Auto Scaling Group**.
+4. For **Launch Template**, select the launch template or configuration that references the EC2 instance type you created previously.
+3. Click Next
+4. Under the "Choose instnace launch options dashboard
+5. 7. Scroll down to the **VPC** category and select the VPC you created earlier
+ For **Network** under "Availabuility Zones and subnets" choose Private 
+> We want our instances launched in a private subnet
+Select the private subnets from each AZ
+> Select Next
+> **Attach to existing Load Balancer**
+>  **Select existing target group**
+> leave default
+Turn on Health checks
+1:56
+120 seconds
+5. For **Min Size**, enter the desired minimum number of instances.
+6. For **Max Size**, enter the desired maximum number of instances.
+7. For **Desired Capacity**, enter the desired number of instances to start with.
+8. Under **Load Balancing**, choose **Attach to Existing Load Balancer**.
+9. For **Load Balancer**, select the load balancer you created.
+10. For **Target Group**, select the target group you created in step 1.
+11. Choose **Create Auto Scaling Group**.
+
+u555u5u5uu55
+
+
+
+
+
+
+
+
+
+
 - On the Load Balancing Category click on the Load Balancer tab
 - Click on Create load balancer
 - Under the Load balancer types click Create under the Application Load Balancer
