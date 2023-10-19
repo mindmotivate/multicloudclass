@@ -62,7 +62,7 @@ It is important to note that some organizations may choose to block all outbound
 
 
 # Ok so what is this NIC i hear so much about?>
-NIC is the Network Interface Card, Hers how it comes into play....
+NIC is the Network Interface Card, Here's how it comes into play....
 A client sends a request to the load balancer's public IP address.
 The load balancer forwards the request to one of the servers in the target group/backend pool.
 The server receives the request on its NIC.
@@ -95,32 +95,210 @@ Now that we understnad the overall concept, lets demonstrate this in AWS with ou
 1. In the Amazon EC2 console, navigate to **Security Groups**.
 2. Choose **Create Security Group**.
 3. Enter a name and description for the security group.
-4. For **VPC**, select the VPC you created.
-5. Add inbound and outbound rules to allow the traffic that you need for your application.
-6. Choose **Create**.
+4. For **VPC**, select the VPC you *previoulsy* created.<br>
+> *On VPC click on the x and replace the VPC that is labeled “TouchItAndDie” replace it*<br>
+> *with the VPC that you created<br>*<br>![vpcnsg](https://github.com/mindmotivate/multicloudclass/assets/130941970/da252db6-8eb0-47e0-994a-30a4af26cfdd)
 
-### Create a security group for the LB
+6. Add inbound and outbound rules to allow the traffic that you need for your application.<br>
+> *We will be creating Three: SSH, HTTP, RDP<br>*
+7. Scroll down to Inbound rules and click on Add rule
+8. Click on the dropdown under Type and select SSH
+> *Repeat the same steps after clicking Add rule but select HTTP, then afterwards select RDP<br>
+9. For each rule under the Source tabs click on the drop down and select Anywhere-IPv4
+10. Give each of your rule a description under the Description tabs<br>![vpcsecurity](https://github.com/mindmotivate/multicloudclass/assets/130941970/fa7955be-d86d-4121-8efb-ad7445c4c10b)
+
+***Next: PLEASE SKIP THE OUTBOUND RULES***<br>
+
+11. Add descriptive Tags 
+12. Choose **Create**.
+
+
+
+### Create a security group for the Load Balancer
 
 1. In the Amazon EC2 console, navigate to **Security Groups**.
 2. Choose **Create Security Group**.
 3. Enter a name and description for the security group.
-4. For **VPC**, select the VPC you created.
-5. For **Inbound Rules**, add a rule to allow traffic on port 80 from all sources.
-6. For **Outbound Rules**, add a rule to allow all traffic to all destinations.
-7. Choose **Create**.
+5. For **VPC**, select the VPC you created.
+> *On VPC click on the x and replace the VPC that is labeled “TouchItAndDie” replace it
+with the VPC that you created*
+6. For **Inbound Rules**, add a rule to allow traffic on port 80 from all sources.
+7. Click on the dropdown under Type and select HTTP
+8. For "Source", click on the drop down and select Anywhere-IPv4
+9. Provide a description under the Description tab<br>![LBsecuritygroupdetails](https://github.com/mindmotivate/multicloudclass/assets/130941970/c9426542-6049-46fb-95c2-d7408cdf4954)
+
+***Next: PLEASE SKIP THE OUTBOUND RULES***
+10. Add descriptive tags as needed
+11. Lastly, Choose **Create** to Create security group
+> *Click on Security group on the top of the screen to verify both security groups*
+
 
 ### Create an EC2 instance
 
-1. In the Amazon EC2 console, navigate to **Instances**.
-2. Choose **Launch Instance**.
-3. Choose an AMI and instance type appropriate for your application.
-4. For **VPC**, select the VPC you created.
-5. For **Subnet**, select the public subnet for the availability zone in which you want to launch the instance.
-6. For **Security Groups**, select the security group you created for the VPC in step 1.
-7. Under **Advanced Details**, click **Edit** next to **Network Settings**.
-8. For **Subnet**, select the public subnet for the availability zone in which you want to launch the instance.
-9. For **Auto Assign Public IP Address**, select **Enable**.
-10. Choose **Launch Instances**.
+1. Navigate to the Amazon EC2 console,
+2. Choose **Launch Template** from left side menu
+3. Click on Create launch templates
+- Under Launch template name type in the name of your template
+- Simply copy and paste the same name into the "descrption" field
+- Ensure that there is some meaningful naming convention to maintain organization
+Under "Application and OS Images" choose "Quick Start"
+Select the **Amazon Linux 2023 AMI** Image
+ Choose "t2.micro" for your instance type
+- Click on **Create new keypair** type in and label your keypair. Make sure you have RSA /
+.pem format then click Create key pair
+***Important Step***
+  - Under **Network settings** make sure the **Subnet** drop dpown menu has the option ***Don’t include in launch
+template***
+- Under the **Firewall (security groups)** Select ***existing security group*** click on the drop
+down and choose the VPC security group that you will attach to your server (ex: ASG01-SG01-Server)
+- Click the dropdown on **Advanced network configuration**
+- Here we will set up our Network Interface
+Navigate to Auto-assign public IP click on the dropdown and choose ***Disable***
+> You do not want your instances to be accessible from the public internet
+Under the **Security Group** category - Make sure the VPC security group you attach to your server is selected
+- Scroll all the way down and click on **Advanced details** then scroll all the way down to
+**User data** and click on **Choose file**
+  Copy and paste the following script in the **User Data" field
+(insert Jay Remo Script)
+- Add Tags as needed
+- Click on **Create launch template**
+
+
+### Create an autoscaling target group
+
+1. In the Amazon EC2 console, navigate to the EC2 Dashboard and select **Target Groups**.
+2. Choose **Create Target Group**.
+4. For **Target Group Name**, enter a name for the target group.
+7. For **Protocol**, select **HTTP**.
+8. For **Port**, enter 80.
+9. For **IP Address Type** use default IPv4
+6. For **Availability Zones**, select all of the availability zones in your region.
+For **VPC** click on the dropdown on the VPC you created VPC-App02
+8. For **Protocal Version**, use default **HTTP1**.
+9. For **Health Check Protocal**, use default **HTTP**.
+10. For **Health Check Path**, use default `/`.
+11. Add descriptive tags as needed
+12. Choose **Create Target Group**.
+12. Choose **Next**.
+12. Choose **Create Target Group**.
+
+### Create an AWS Application Load Balancer
+
+1. In the Amazon EC2 console, navigate to **Load Balancers**.
+2. Choose **Create Load Balancer**.
+4. Choose **Application Load Balancer**.
+***COMPLETELY IGNORE THE CLASSIC LOAD BALANCER*** (It is being decomissioned)
+6. For **Scheme**, use default internet-facing
+7. Scroll down to the **VPC** category and select the VPC you created earlier
+**Important**
+Under **Mappings** Click and checkbox each Zone and select all on public subnets
+7. For **Availability Zones**, select all of the availability zones in your region.
+Choose a "Public Subnet" from each AZ
+Your Load balancer will be communicating with the public subnet ranges
+ When you create a load balancer, you need to specify a subnet for the load balancer's front-end. This subnet is where the load balancer will receive incoming traffic. The load balancer will then distribute this traffic to the instances in its back-end pool.
+The back-end pool can contain instances in any subnet in the load balancer's VPC. However, if you want to ensure that the load balancer sends incoming traffic to the public subnet ranges in the AZs, you need to select one public subnet from each AZ for the "mapping" category.
+ 
+  Scroll down to **Security groups** and select your **Load balancer** security group
+ **V J
+ 8. For **Listener**, choose **Create New Listener** 
+9. For **Protocol**, select **HTTP**.
+10. For **Port**, enter 80.
+11. For **Forward Target Group**, select the target group you created in step 4.
+12. Choose **Create Listener**.
+13. Choose **Create Load Balancer**.
+- On the Load Balancing Category click on the Load Balancer tab
+- Click on Create load balancer
+- Under the Load balancer types click Create under the Application Load Balancer
+- Type in the name under the Load balancer name
+- Scroll down to the VPC category and select the VPC you created earlier
+- Under Mappings Click and checkbox each Zone and select all on public subnets
+- Scroll down to Security groups and select your Load balancer security group
+- Under Listeners and routing under default action select your existing Target group
+- Scroll down to Load balancer tags click Add new tag and label your description
+- Verify all your configuration and if everything is ok click Create load balancer
+- Click on View load balancer
+- Now it is time to set up your Auto Scaling group
+
+
+
+
+### Create a load balancer listener
+
+1. In the Amazon EC2 console, navigate to **Load Balancing** > **Listeners**.
+2. Choose **Create Listener**.
+3. For **Protocol**, select **HTTP**.
+4. For **Port**, enter 80.
+5. For **Default Action**, choose **Forward to Target Group**.
+6. For **Target Group**, select the target group you created in the prerequisites.
+7. Choose **Create Listener**.
+
+
+
+
+
+
+
+
+- On the left dashboard go the the Load Balancing Category and click on Target Groups
+- Click on the orange tab on the right side of the screen and click on Create target group
+- Scroll down to Target group name and type in the name of your Target group
+- Scroll down to your VPC and click on the dropdown on the VPC you created VPC-App02
+- Scroll down to your Tags and label your tag to describe your Target Groups
+- Click Next
+- Scroll down and click on Create target group
+- Time to create your load balancer next
+
+
+
+
+
+
+4. Choose an AMI and instance type appropriate for your application.
+5. For **VPC**, select the VPC you previously created.
+6. For **Subnet**, select the public subnet for the availability zone in which you want to launch the instance.
+7. 
+8. For **Security Groups**, select the security group you created for the VPC in step 1.
+9. Ensure that you do not select your Load Balancer security group!
+10. Under **Advanced Details**, click **Edit** next to **Network Settings**.
+11. 
+12. For **Subnet**, select the public subnet for the availability zone in which you want to launch the instance.
+13. For **Auto Assign Public IP Address**, select **Enable**.
+    Keep in mind, the EC2 instances that you are creating will be located in a private subnet
+    They will need to be assigned a Public IP to communicate with the Load Balancer and the NAT gateway
+14. Choose **Launch Instances**.
+
+
+- Click on the EC2 tab or type on the spacebar EC2 and click on EC2 on the dropdown
+- On your left under the Instance category click on the Launch Templates tab
+- Click on Create launch templates
+- Under Launch template name type in the name of your template (copy + paste)
+- Under Template version description type in the name of your template
+- Under Quick Start make sure it is under Amazon Linux ami if not click on it
+- Click on the AMI dropdown and make sure you are on t2.micro free tier eligible
+- Click on Create new keypair type in and label your keypair. Make sure you have RSA /
+.pem format then click Create key pair
+- Under Network settings make sure Subnet drop has the option Don’t include in launch
+template
+- Under the Firewall (security groups) Select existing security group click on the drop
+down and choose the VPC security group you will attach to your server ex:
+TKY-SG-Server
+- Click the dropdown on Advanced network configuration, click on Add network
+interface, go to Auto-assign public IP click on the dropdown and choose Disable
+- Make sure the VPC security group you attach to your server is selected
+- Scroll all the way down and click on Advanced details then scroll all the way down to
+User data and click on Choose file with the script you want to upload.
+- Click on Create launch template
+- Click on View launch templates
+- Click on the AWS tab on the top left hand side
+- Click on the EC2 tab
+- Now it is time to set up your Target Groups
+
+
+
+
+
+
+
 
 ### Create a launch template
 
