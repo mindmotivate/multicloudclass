@@ -21,9 +21,9 @@ Here is more information than you ever wanted to know about Autoscaling, Load Ba
 
 Autoscaling is a critical part of cloud computing, as it allows you to scale your infrastructure up or down without having to manually provision or deprovision resources. This can save you time and money, and it can also help to improve the reliability and performance of your applications. Autoscaling is an essential part of cloud computing!
 
-# What are Load Balancers for exactly?.....
+# What are "Load Balancers" for exactly?.....
 
-A Load Balancer is a tool, commonly used with autoscaling to ensure that your applications are always available to perform at their best! For example, you can configure an ALB to distribute traffic across a set of EC2 instances that are managed by an autoscaling group. The autoscaling group will automatically add or remove EC2 instances from the group based on the traffic load. This ensures that your application always has enough resources to handle the current load, without having to manually provision or deprovision resources.
+A *Load Balancer* is a tool, commonly used with autoscaling to ensure that your applications are always available to perform at their best! For example, you can configure an ALB to distribute traffic across a set of EC2 instances that are managed by an autoscaling group. The autoscaling group will automatically add or remove EC2 instances from the group based on the traffic load. This ensures that your application always has enough resources to handle the current load, without having to manually provision or deprovision resources.
 
 *Application Load Balancers (ALBs)* are a type of load balancer that is designed for **HTTP** and **HTTPS** traffic. ALBs can be used to distribute traffic across multiple EC2 instances, ECS containers, or AWS Lambda functions.
 
@@ -31,7 +31,10 @@ The load balancer will receive web requests and send them to the backend pool vi
 
 The backend servers in a private subnet will have a public IP address assigned to them. This IP address is used for communication with the load balancer. The backend servers will not be directly accessible from the public web. Instead, all traffic to the backend servers must be routed through the load balancer.
 
-Here is a diagram of the network architecture: Internet -> Load Balancer -> Backend Servers (insert graphic)
+
+Here is a diagram of the network architecture: Internet -> Load Balancer -> Backend Servers <br>
+
+![lbs](https://github.com/mindmotivate/multicloudclass/assets/130941970/dbf1746b-d4aa-4757-a921-ada5a79250e7)
 
 > *Note: This is an example of an "External" Load Balancer. There are also Internal Load Balancers, which we will demonstrate ina future tutorial.*
 
@@ -41,9 +44,9 @@ The backend server will process the request and generate a response. The backend
 
 This process ensures that all traffic to the backend servers is routed through the load balancer. This helps to improve the security and reliability of the backend servers.
 
-> Note: The load balancer can be configured to use *HTTPS* instead of *HTTP*. This is a more secure way to communicate with the backend servers. However, it will > require the backend servers to be configured with SSL certificates.
+> *Note: The load balancer can be configured to use *HTTPS* instead of *HTTP*. This is a more secure way to communicate with the backend servers. However, it will > require the backend servers to be configured with SSL certificates.*
 
-# But what if one of the Backend Servers wants to communicate witht the WWW?:
+# But what if one of the Backend Servers wants to communicate with the world wide web?:
 
 Glad you you asked! This is where the NAT Gateway comes into play. NAT stands for Network Address Translation. It is a method of mapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device.
 
@@ -54,13 +57,16 @@ The NAT gateway will translate the server's private IP address to a public IP ad
 # Simple Diagram:
 Here is a diagram of the network architecture:
 
-Server (Private Subnet) -> NAT Gateway -> Internet
+![nat-instance_updated](https://github.com/mindmotivate/multicloudclass/assets/130941970/cb987284-3b3c-4dfd-a75b-ee8e028a4a23)
+
+
+Example Path: Server (Private Subnet) -> NAT Gateway -> Internet
 The server will initiate the communication with the web by sending a request to the NAT gateway. The NAT gateway will translate the server's private IP address to a public IP address and then forward the request to the web.
 
 One more thing...
 It is important to note that some organizations may choose to block all outbound traffic from servers in private subnets, except for traffic that is routed through the load balancer. This is done to improve security and control.
 
-# Ok so what is this "NIC" i hear so much about?>
+# Ok so what is this "NIC" i hear so much about?
 NIC is the Network Interface Card, Here's how it comes into play....
 A client sends a request to the load balancer's public IP address.
 The load balancer forwards the request to one of the servers in the target group/backend pool.
@@ -219,7 +225,12 @@ The back-end pool can contain instances in any subnet in the load balancer's VPC
 
 **Important**
 > Your listeners determine which application your using
-> In this tutorial we will not add listener. However, in the future we will use one to assist with load balacning multiple applications
+
+
+
+![Listener](https://github.com/mindmotivate/multicloudclass/assets/130941970/af3989f3-5943-46bc-97aa-bfe0fc6699d2)
+
+
 For **Add on services** use default
 Add descriptive tags as needed
 13. Choose **Create Load Balancer**.
@@ -233,23 +244,44 @@ Patiently wait for your load balancer to deploy
 4. For **Launch Template**, select the launch template or configuration that references the EC2 instance type you created previously.
 3. Click Next
 4. Under the "Choose instnace launch options dashboard
-5. 7. Scroll down to the **VPC** category and select the VPC you created earlier
- For **Network** under "Availabuility Zones and subnets" choose Private 
+5.  For **Network** under "Availability Zones and subnets" choose Private 
+6. 7. Scroll down to the **VPC** category and select the VPC you created earlier
+![asggrouoplaunchJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/e8a89865-ca35-4a3b-8ec1-81682472abf7)
+
 > We want our instances launched in a private subnet
 Select the private subnets from each AZ
 > Select Next
 > **Attach to existing Load Balancer**
+
+
+![addtargetgrouptoasg](https://github.com/mindmotivate/multicloudclass/assets/130941970/958a0568-9fe6-42ac-adb5-024fabd80f73)
+
+
 >  **Select existing target group**
 > leave default
 Turn on Health checks
 1:56
 120 seconds
+![addsettings](https://github.com/mindmotivate/multicloudclass/assets/130941970/a7375cd9-ae0d-4633-9e89-1690da7355f3)
+
+
+
+
+>
+> ![HealthChecks](https://github.com/mindmotivate/multicloudclass/assets/130941970/610c4bfa-aa19-4909-9bc5-a1f4595a15a3)
+
+> 
 5. For **Min Size**, enter the desired minimum number of instances.
 6. For **Max Size**, enter the desired maximum number of instances.
 7. For **Desired Capacity**, enter the desired number of instances to start with.
 8. Under **Load Balancing**, choose **Attach to Existing Load Balancer**.
 9. For **Load Balancer**, select the load balancer you created.
 10. For **Target Group**, select the target group you created in step 1.
+
+Carefully review all of your selections before proceeding!
+![Checkyourwork](https://github.com/mindmotivate/multicloudclass/assets/130941970/bfb3c222-4974-49bc-b2ce-dc13c4bcc937)
+
+
 11. Choose **Create Auto Scaling Group**.
 
 u555u5u5uu55
