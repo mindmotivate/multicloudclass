@@ -11,7 +11,7 @@ The following will be a continuation of our last AWS tutorial where we created o
 In this tutorial we will be creating a load balancer which will attach to our previous VPC.
 If you like to visit the previous tutorial please use the following link: [AWS::VPC](https://github.com/mindmotivate/multicloudclass/blob/main/aws-vpc-tutorial.md)
 
-Ok, noW that we've gotten the formalities out of the way...
+Ok, now that we've gotten the formalities out of the way...
 Here is more information than you ever wanted to know about Autoscaling, Load Balancing, NAT's, NIC's, ASG's and other Three-letter acronyms...lol 
 (Not interested in the technical aspects? Click this link to skip the "tech talk" and get right down to business:)(insert link) 
 
@@ -151,11 +151,14 @@ with the VPC that you created*
 1. Navigate to the Amazon EC2 console,
 2. Choose **Launch Template** from left side menu
 3. Click on Create launch templates
-> - Under Launch template name type in the name of your template
-> - Simply copy and paste the same name into the "description" field
-> - Ensure that there is some meaningful naming convention to maintain organization
+
+
+> *Under Launch template name type in the name of your template<br>Simply copy and paste the same name into the "description" field<br>Ensure that there is some meaningful naming convention to maintain organization* <br>
+
+
   
 ![Temp DescriptionJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/2671bb14-82f7-43f9-8427-82e5c8cfa3d5)
+
 
 4. Under "Application and OS Images" choose "Quick Start"
 Select the **Amazon Linux 2023 AMI** Image
@@ -173,15 +176,16 @@ Select the **Amazon Linux 2023 AMI** Image
 ![launchtemplatekeypair](https://github.com/mindmotivate/multicloudclass/assets/130941970/0dea68bc-9ebf-4174-88d3-f17948e978ea)
 
 
-***Important Step***
+***Important Step!***
   - Under **Network settings** make sure the **Subnet** drop dpown menu has the option ***Don’t include in launch
 template***![donotincude](https://github.com/mindmotivate/multicloudclass/assets/130941970/86a4284c-4011-4164-868c-077daaaa4e45)
 
 7. Under the **Firewall (security groups)** Select ***existing security group*** click on the drop
 down and choose the VPC security group that you will attach to your server (ex: ASG01-SG01-Server)
-8. Click the dropdown on **Advanced network configuration**
-- Here we will set up our Network Interface
-Navigate to Auto-assign public IP click on the dropdown and choose ***Disable***
+ Click the dropdown on **Advanced network configuration**
+> *Here we will set up our Network Interface*
+> Navigate to Auto-assign public IP click on the dropdown and choose ***Disable***
+
 9. You do not want your instances to be accessible from the public internet
 
 ![advancednetworkconfig](https://github.com/mindmotivate/multicloudclass/assets/130941970/9611492d-c714-4ec2-b9a7-54ec2df98637)
@@ -191,8 +195,8 @@ Navigate to Auto-assign public IP click on the dropdown and choose ***Disable***
 **User data** and click on **Choose file**
   Copy and paste the following script in the **User Data" field<br>
 
-Please copy and paste the following script in the box:<br>
-**Copy Launch Script Below:**\.
+> Please copy and paste the following script in the box:<br>
+> **Copy Launch Script Below:**\.
 
 ```
 #!/bin/bash
@@ -248,8 +252,8 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 
                                                                
 ```
-- Add Tags as needed
-- Click on **Create launch template**
+12. Add Tags as needed
+13. Click on **Create launch template**
 
 
 ### 4. Create a Target Group
@@ -257,16 +261,16 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 1. In the Amazon EC2 console, navigate to the EC2 Dashboard and select **Target Groups**.
 2. Choose **Create Target Group**.
 3. Choose **Instances** under Basic Configuration.
-4. 
+ 
 ![Tgroupbasic](https://github.com/mindmotivate/multicloudclass/assets/130941970/c5fa0e93-83f2-4ecc-8559-458968d9c3f1)
-5. 
-6. For **Target Group Name**, enter a name for the target group.
-7. For **Protocol**, select **HTTP**.
-8. For **Port**, enter 80.
-9. For **IP Address Type** use default IPv4
-10. For **Availability Zones**, select all of the availability zones in your region.
-For **VPC** click on the dropdown on the VPC you created VPC-App02
-11. For **Protocal Version**, use default **HTTP1**.
+ 
+4. For **Target Group Name**, enter a name for the target group.
+5. For **Protocol**, select **HTTP**.
+6. For **Port**, enter 80.
+7. For **IP Address Type** use default IPv4
+8. For **Availability Zones**, select all of the availability zones in your region.
+9. For **VPC** click on the dropdown on the VPC you created VPC-App02
+10. For **Protocal Version**, use default **HTTP1**.
 
 ![tgname](https://github.com/mindmotivate/multicloudclass/assets/130941970/13b66183-022f-415b-acca-ec4962df23a0)
 
@@ -299,7 +303,7 @@ Choose a "Public Subnet" from each AZ
 ![networkmapper](https://github.com/mindmotivate/multicloudclass/assets/130941970/632f53d1-f3f3-4d51-85a7-8cb5f65a1e64)
 
 
-> Your Load balancer will be communicating with the public subnet ranges. When you create a load balancer, you need to specify a subnet for the load balancer's front-end. This subnet is where the load balancer will receive incoming traffic. The load balancer will then distribute this traffic to the instances in its back-end pool. The back-end pool can contain instances in any subnet in the load balancer's VPC. However, if you want to ensure that the load balancer sends incoming traffic to the public subnet ranges in the AZs, you need to select one public subnet from each AZ for the "mapping" category.
+> *Your Load balancer will be communicating with the public subnet ranges. When you create a load balancer, you need to specify a subnet for the load balancer's front-end. This subnet is where the load balancer will receive incoming traffic. The load balancer will then distribute this traffic to the instances in its back-end pool. The back-end pool can contain instances in any subnet in the load balancer's VPC. However, if you want to ensure that the load balancer sends incoming traffic to the public subnet ranges in the AZs, you need to select one public subnet from each AZ for the "mapping" category.*
 
  
 9. Scroll down to **Security groups** and select your **Load balancer** security group
@@ -308,16 +312,16 @@ Be sure to delete the default security group!
   ![REMOVEDEFAULTSECGR](https://github.com/mindmotivate/multicloudclass/assets/130941970/c40511fc-b1c9-4f5b-ad33-1349ef6a2a00)
 
 **Important**
-> Your listeners determine which application your using
+> *Your listeners determine which application your using
 > As of right now we have only one Target Group to select. However, in the future we will use several.
 > At which time we would use the "Add Listener" feature.
-> We will leave the remaining defaults for now. (just keep this in mind for the future!
+> We will leave the remaining defaults for now. (just keep this in mind for the future!*
 
 
 10. For **Add on services** use default
 11. Add descriptive tags as needed
 
-Review you Summary carefully!
+***Review you Summary carefully!***
 
 ![LBsummary](https://github.com/mindmotivate/multicloudclass/assets/130941970/8f250e78-61dd-4087-8c22-e945b3dcdbb6)
 
@@ -339,17 +343,16 @@ Patiently wait for your load balancer to deploy
 6. Scroll down to the **VPC** category and select the VPC you created earlier
 7. For **Network** under "Availabuility Zones and subnets" choose Private 
 > We want our instances launched in a private subnet
-Select the private subnets from each AZ
+> Select the private subnets from each AZ
 8. Select Next
 9. **Attach to existing Load Balancer**
-10.  **Select existing target group**
-11. Turn on **Health checks**
- leave default
+10. **Select existing target group**
+11. Turn on **Health checks** (leave the rest of the default settings)<br>
 ![healthcheck](https://github.com/mindmotivate/multicloudclass/assets/130941970/5a425885-0334-4424-86d5-044297f63d61)
 12. For **Scaling Policies**
 > Select "Target tracking scaling policy"
-13.  **Scaling Policies Name** Create a policy name
-14.> **Scaling Policies**
+13. **Scaling Policies Name** Create a policy name
+14. **Scaling Policies**
 15. Target Value:  75
 16. Instance Warmup: 120 seconds
 ![scalingpolicy2](https://github.com/mindmotivate/multicloudclass/assets/130941970/3f8bf24f-b014-4280-ae57-a0f8c1ac918b)
@@ -366,13 +369,10 @@ Select the private subnets from each AZ
 
 ![atatchanexistinlbtoasgJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/9c927bb6-8f83-423c-91ee-5ca4e150f010)
 
-11. Choose **Create Auto Scaling Group**.
+23. Choose **Create Auto Scaling Group**.
 
-u555u5u5uu55
 
 ![instancescael](https://github.com/mindmotivate/multicloudclass/assets/130941970/04b3dae0-5411-497b-9e77-bdd9a396d16c)
-
-
 
 
 ### Test the load balancer
