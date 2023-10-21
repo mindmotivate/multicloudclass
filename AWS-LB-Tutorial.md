@@ -378,3 +378,60 @@ Patiently wait for your load balancer to deploy
 ### Test the load balancer
 
 To test the load balancer, you can use a tool like curl or Postman to send HTTP requests to the load balancer DNS name. You should see that the requests are forwarded to the autoscaling target group and that the responses are returned successfully.
+
+
+## Tear Down Process
+
+**Delete the Auto Scaling group. This will terminate all of the instances in the group.**
+Open the Amazon EC2 console.
+In the navigation pane, choose Auto Scaling groups.
+Select the Auto Scaling group that you want to delete and choose Delete.
+In the Confirm deletion dialog box, choose Delete.
+
+**Delete the load balancer.**
+Open the Amazon EC2 console.
+In the navigation pane, choose Load Balacers.
+Select the Load Balancer that you want to delete and choose Delete.
+In the Confirm deletion dialog box, choose Delete.
+
+> *Before deleting the Auto Scaling group, you should make sure that all of the instances in the group are in a terminated state.
+Before deleting the target group, you should make sure that there are no load balancers using the target group.
+Before deleting the load balancer, you should make sure that there are no target groups associated with the load balancer.
+Before deleting the security group, you should make sure that there are no instances or network interfaces associated with the security group.
+Before deleting the VPC, you should make sure that there are no resources associated with the VPC, such as subnets, internet gateways, and route tables.
+Additional steps*
+
+**Delete the Auto Scaling group**
+Open the Amazon EC2 console.
+In the navigation pane, choose Auto Scaling groups.
+Select the Auto Scaling group that you want to delete and choose Delete.
+In the Confirm deletion dialog box, choose Delete.
+Delete the launch template
+
+
+**Delete the launch template.**
+Open the Amazon EC2 console.
+In the navigation pane, choose Launch Templates.
+Select the launch template that you want to delete and choose Delete.
+In the Confirm deletion dialog box, choose Delete.
+Delete the target group
+
+
+**Delete the target group.**
+In the navigation pane, choose Target groups.
+Select the target group that you want to delete and choose Delete.
+In the Confirm deletion dialog box, choose Delete.
+Delete the load balancer
+
+
+In addition to the above steps, you may also want to consider the following:
+Delete any NIC's that were created from the instances in the Auto Scaling group.
+Delete any Elastic Ip addresses that may exist
+
+
+
+
+
+
+
+
