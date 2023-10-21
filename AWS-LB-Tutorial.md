@@ -377,7 +377,7 @@ Patiently wait for your load balancer to deploy
 
 ### Test the load balancer
 
-To test the load balancer, you can use a tool like curl or Postman to send HTTP requests to the load balancer DNS name. You should see that the requests are forwarded to the autoscaling target group and that the responses are returned successfully.
+To test the load balancer
 
 
 ## Tear Down Process
