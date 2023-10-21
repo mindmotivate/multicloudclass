@@ -377,7 +377,19 @@ Patiently wait for your load balancer to deploy
 
 ### Test the load balancer
 
-To test the load balancer
+To test the load balancer Navigate to the navigation plane and select "Load Balancer"
+Navigate to the Load Balancing details and copy the the DNS name and paste it in your Browser search bar
+(Ensure that you have "http:" in front of the URL)
+
+The Instance Description should appear on the screen
+Click he refresh button on your browser and observe the changing instance details
+Note:The Availability Zone number should match Third Octect of the Ip address
+
+![instancedetails1](https://github.com/mindmotivate/multicloudclass/assets/130941970/c1f6b6df-63f4-4ae8-b9c3-3029554f1e5a)
+
+![instancedetails2](https://github.com/mindmotivate/multicloudclass/assets/130941970/5f78e4cb-ab54-4ef5-8b9b-6ecf38651d64)
+
+![instancedetails3](https://github.com/mindmotivate/multicloudclass/assets/130941970/7d094bb6-05bf-4088-86d2-51ca007a6465)
 
 
 ## Tear Down Process
