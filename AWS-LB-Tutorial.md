@@ -103,7 +103,7 @@ Now that we understand the overall concepts, let's demonstrate this in AWS with 
 > ### Note: We are beggining this tutorial with an established VPC! ###
 
 
-### 1. Create a security group for the VPC
+# 1. Create a security group for the VPC
 
 1. In the Amazon EC2 console, navigate to **Security Groups**.
 2. Choose **Create Security Group**.
@@ -126,7 +126,7 @@ Now that we understand the overall concepts, let's demonstrate this in AWS with 
 10. Add descriptive Tags <br>
 11. Choose **Create**.<br>
 
-## 2. Create a security group for the Load Balancer
+# 2. Create a security group for the Load Balancer
 
 1. In the Amazon EC2 console, navigate to **Security Groups**.
 2. Choose **Create Security Group**.
@@ -146,7 +146,7 @@ with the VPC that you created*
 
 ![confirmsg3](https://github.com/mindmotivate/multicloudclass/assets/130941970/57ecf7da-4639-4e42-9845-16b9e5c799c4)
 
-## 3. Create a Launch Template
+# 3. Create a Launch Template
 
 1. Navigate to the Amazon EC2 console,
 2. Choose **Launch Template** from left side menu
@@ -256,7 +256,7 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 13. Click on **Create launch template**
 
 
-## 4. Create a Target Group
+# 4. Create a Target Group
 
 1. In the Amazon EC2 console, navigate to the EC2 Dashboard and select **Target Groups**.
 2. Choose **Create Target Group**.
@@ -281,7 +281,7 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 16. Choose **Create Target Group**.
 
 
-## 5. Create an AWS Application Load Balancer
+# 5. Create an AWS Application Load Balancer
 
 1. In the Amazon EC2 console, navigate to **Load Balancers**.
 2. Choose **Create Load Balancer**.
@@ -333,7 +333,7 @@ Be sure to delete the default security group!
 Patiently wait for your load balancer to deploy
 ![LBcreated](https://github.com/mindmotivate/multicloudclass/assets/130941970/cd422e55-799a-4135-93bb-9bda2260f0d0)
 
-## 6. Create an autoscaling group
+# 6. Create an autoscaling group
 
 1. In the Amazon EC2 console, navigate to **Auto Scaling** > **Auto Scaling Groups**.
 2. Choose **Create Auto Scaling Group**.
@@ -412,7 +412,7 @@ Note:The Availability Zone number should match Third Octect of the Ip address
 
 # Congratulations! You have created a functioning Load Balancer! Now here comes the fun part....the tear down!
 
-##7. Tear Down Process
+#7. Tear Down Process
 
 **Delete the Auto Scaling group. This will terminate all of the instances in the group.**
 Open the Amazon EC2 console.
