@@ -13,7 +13,7 @@ If you like to visit the previous tutorial please use the following link: [AWS::
 
 Ok, now that we've gotten the formalities out of the way...
 Here is more information than you ever wanted to know about Autoscaling, Load Balancing, NAT's, NIC's, ASG's and other Three-letter acronyms...lol 
-(Not interested in the technical aspects? Click this link to skip the "tech talk" and get right down to business:)(insert link) 
+(Not interested in the technical aspects? Click this link to skip the "tech talk" and get right down to business:([Let's Begin!](https://github.com/mindmotivate/multicloudclass/blob/main/AWS-LB-Tutorial.md#lets-begin)) 
 
 # So what does "Autoscaling" mean?
 
