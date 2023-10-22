@@ -447,17 +447,21 @@ Select the launch template that you want to delete and choose Delete.
 In the Confirm deletion dialog box, choose Delete.
 Delete the target group
 
-
 **Delete the target group.**
 In the navigation pane, choose Target groups.
 Select the target group that you want to delete and choose Delete.
 In the Confirm deletion dialog box, choose Delete.
 Delete the load balancer
 
+**Release Elastic IP's.**
+In the navigation pane, choose Elastic IP.
+Select the elastic ip that you want to release and choose release.
+release the elastic IP
 
-In addition to the above steps, you may also want to consider the following:
-Delete any NIC's that were created from the instances in the Auto Scaling group.
-Delete any Elastic Ip addresses that may exist
+**Delete VPC.**
+In the navigation pane, VPC
+Select the VPC that you want to release and choose delete
+Delete the VPC
 
 
 
