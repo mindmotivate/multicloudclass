@@ -433,14 +433,6 @@ Before deleting the security group, you should make sure that there are no insta
 Before deleting the VPC, you should make sure that there are no resources associated with the VPC, such as subnets, internet gateways, and route tables.
 Additional steps*
 
-**Delete the Auto Scaling group**
-Open the Amazon EC2 console.
-In the navigation pane, choose Auto Scaling groups.
-Select the Auto Scaling group that you want to delete and choose Delete.
-In the Confirm deletion dialog box, choose Delete.
-Delete the launch template
-
-
 **Delete the launch template.**
 Open the Amazon EC2 console.
 In the navigation pane, choose Launch Templates.
