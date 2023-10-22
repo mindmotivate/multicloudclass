@@ -277,7 +277,8 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 12. For **Health Check Protocal**, use default **HTTP**.
 13. For **Health Check Path**, use default `/`.
 14. Add descriptive tags as needed
-15. Choose **Create Target Group**.
+15. Click "Next" (Leave all default options on this page)
+16. Choose **Create Target Group**.
 
 
 ### 5. Create an AWS Application Load Balancer
@@ -310,6 +311,9 @@ Choose a "Public Subnet" from each AZ
 Be sure to delete the default security group!
 
   ![REMOVEDEFAULTSECGR](https://github.com/mindmotivate/multicloudclass/assets/130941970/c40511fc-b1c9-4f5b-ad33-1349ef6a2a00)
+10. Under **Listeners & Routing** Select the Target Group you created in the previous section
+
+![Listner](https://github.com/mindmotivate/multicloudclass/assets/130941970/8e95815c-d329-4775-8135-76fde9376f34)
 
 **Important**
 > *Your listeners determine which application your using
@@ -317,9 +321,8 @@ Be sure to delete the default security group!
 > At which time we would use the "Add Listener" feature.
 > We will leave the remaining defaults for now. (just keep this in mind for the future!*
 
-
-10. For **Add on services** use default
-11. Add descriptive tags as needed
+11. For **Add on services** use default
+12. Add descriptive tags as needed
 
 ***Review you Summary carefully!***
 
@@ -341,47 +344,62 @@ Patiently wait for your load balancer to deploy
 4. Click Next
 5. Under the "Choose instnace launch options dashboard
 6. Scroll down to the **VPC** category and select the VPC you created earlier
-7. For **Network** under "Availabuility Zones and subnets" choose Private 
+7. For **Network** under "Availabuility Zones and subnets" select your Private subnets only (one from each region)
+
+![asggrouoplaunchJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/109e486d-051e-47e8-9c86-b99487c55e8a)
+
 > We want our instances launched in a private subnet
 > Select the private subnets from each AZ
 8. Select Next
 9. **Attach to existing Load Balancer**
 10. **Select existing target group**
-11. Turn on **Health checks** (leave the rest of the default settings)<br>
+11. Turn on **Elastic Load Balancing Health checks** 
+12. **Health Check Garce Period** ahould be 300 seconds
 ![healthcheck](https://github.com/mindmotivate/multicloudclass/assets/130941970/5a425885-0334-4424-86d5-044297f63d61)
-12. For **Scaling Policies**
-> Select "Target tracking scaling policy"
-13. **Scaling Policies Name** Create a policy name
-14. **Scaling Policies**
-15. Target Value:  75
-16. Instance Warmup: 120 seconds
+
+13. For **Additional Settings**
+14. Enable group metrics collection within Cloudwatch
+15. **Default Instance Warmup:** 120 seconds
+16. Select Next
+
 ![scalingpolicy2](https://github.com/mindmotivate/multicloudclass/assets/130941970/3f8bf24f-b014-4280-ae57-a0f8c1ac918b)
 
-17. For **Min Size**, enter the desired minimum number of instances.
-18. For **Max Size**, enter the desired maximum number of instances.
-19. For **Max Capacity**, enter the desired number of instances to start with.
+17. For **Desired Capacity**, enter the desired number of instances to start with.
+18. For **Min Size**, enter the desired minimum number of instances.
+19. For **Max Size**, enter the desired maximum number of instances.
 
 ![grouppolcy](https://github.com/mindmotivate/multicloudclass/assets/130941970/fa6059ad-f206-4f6f-a509-28fa03c331f4)
 
-20. Under **Load Balancing**, choose **Attach to Existing Load Balancer**.
-21. For **Load Balancer**, select the load balancer you created.
-22. For **Target Group**, select the target group you created in step 1.
 
-![atatchanexistinlbtoasgJPG](https://github.com/mindmotivate/multicloudclass/assets/130941970/9c927bb6-8f83-423c-91ee-5ca4e150f010)
+12. For **Scaling Policies** Select "Target tracking scaling policy"
+13. **Scaling Policies Name** Create a policy name
+14. **Metric type** use default
+15. Target Value:  75
+16. Instance Warmup: 120 seconds
+17. **Instance scale-in protection** Enable metric scale in protection
+18. Click "Next" on the "Add notifictions" screen
+19. Add descriptive tags as needed
+20. Carefully look over review page
 
-23. Choose **Create Auto Scaling Group**.
+![review](https://github.com/mindmotivate/multicloudclass/assets/130941970/c9ea6718-d963-4dfd-9b5d-949e7eda12ec)
 
+21. Choose **Create Auto Scaling Group**.
 
-![instancescael](https://github.com/mindmotivate/multicloudclass/assets/130941970/04b3dae0-5411-497b-9e77-bdd9a396d16c)
+> *Take a moment to navigate to your "instances" page and see if all of your instances have been created!*
 
 
 ### Test the load balancer
 
-To test the load balancer Navigate to the navigation plane and select "Load Balancer"
+>To test the load balancer Navigate to the navigation plane and select "Load Balancer"
 Navigate to the Load Balancing details and copy the the DNS name and paste it in your Browser search bar
+
+![lbdns](https://github.com/mindmotivate/multicloudclass/assets/130941970/38ebf568-5f20-4822-b67c-4a70e71187e1)
+
 (Ensure that you have "http:" in front of the URL)
 
-The Instance Description should appear on the screen
+![httpdns](https://github.com/mindmotivate/multicloudclass/assets/130941970/db5c0a8e-61cb-41b2-bcb1-592e7bb81694)
+
+>The Instance Description should appear on the screen
 Click he refresh button on your browser and observe the changing instance details
 Note:The Availability Zone number should match Third Octect of the Ip address
 
@@ -392,7 +410,9 @@ Note:The Availability Zone number should match Third Octect of the Ip address
 ![instancedetails3](https://github.com/mindmotivate/multicloudclass/assets/130941970/7d094bb6-05bf-4088-86d2-51ca007a6465)
 
 
-## Tear Down Process
+# Congratulations! You have created a functioning Load Balancer! Now here comes the fun part....the tear down!
+
+##7. Tear Down Process
 
 **Delete the Auto Scaling group. This will terminate all of the instances in the group.**
 Open the Amazon EC2 console.
