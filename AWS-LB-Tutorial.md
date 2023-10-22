@@ -287,8 +287,8 @@ rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
 2. Choose **Create Load Balancer**.
 3. Choose **Application Load Balancer**.![Applb](https://github.com/mindmotivate/multicloudclass/assets/130941970/8a2144f3-ef42-45fd-9726-88f12b01dd9a)
 
-***COMPLETELY IGNORE THE CLASSIC LOAD BALANCER*** (It is being decomissioned)
-4. For **Scheme**, use default internet-facing
+***COMPLETELY IGNORE THE CLASSIC LOAD BALANCER*** (It is being decomissioned)<br>
+4. For **Scheme**, use default internet-facing<br>
 5. For **IP address type**, use default IPv4![Basiclbinfo](https://github.com/mindmotivate/multicloudclass/assets/130941970/fec0f286-e8e2-4894-a90e-1de134221d65)
 
 6. Scroll down to the **VPC** category and select the VPC you created earlier
@@ -371,19 +371,19 @@ Patiently wait for your load balancer to deploy
 ![grouppolcy](https://github.com/mindmotivate/multicloudclass/assets/130941970/fa6059ad-f206-4f6f-a509-28fa03c331f4)
 
 
-12. For **Scaling Policies** Select "Target tracking scaling policy"
-13. **Scaling Policies Name** Create a policy name
-14. **Metric type** use default
-15. Target Value:  75
-16. Instance Warmup: 120 seconds
-17. **Instance scale-in protection** Enable metric scale in protection
-18. Click "Next" on the "Add notifictions" screen
-19. Add descriptive tags as needed
-20. Carefully look over review page
+20. For **Scaling Policies** Select "Target tracking scaling policy"
+21. **Scaling Policies Name** Create a policy name
+22. **Metric type** use default
+23. Target Value:  75
+24. Instance Warmup: 120 seconds
+25. **Instance scale-in protection** Enable metric scale in protection
+26. Click "Next" on the "Add notifictions" screen
+27. Add descriptive tags as needed
+28. Carefully look over review page
 
 ![review](https://github.com/mindmotivate/multicloudclass/assets/130941970/c9ea6718-d963-4dfd-9b5d-949e7eda12ec)
 
-21. Choose **Create Auto Scaling Group**.
+29. Choose **Create Auto Scaling Group**.
 
 > *Take a moment to navigate to your "instances" page and see if all of your instances have been created!*
 
