@@ -433,7 +433,14 @@ Before deleting the security group, you should make sure that there are no insta
 Before deleting the VPC, you should make sure that there are no resources associated with the VPC, such as subnets, internet gateways, and route tables.
 Additional steps*
 
-**Delete the launch template.**
+**Delete NAT Gateways**
+Open the Amazon EC2 console.
+In the navigation pane, choose NAT Gateways.
+Select the NAT Gateways that you want to delete and choose Delete.
+In the Confirm deletion dialog box, choose Delete.
+Delete the NAT gateway
+
+**Delete the launch template.**(optional)
 Open the Amazon EC2 console.
 In the navigation pane, choose Launch Templates.
 Select the launch template that you want to delete and choose Delete.
